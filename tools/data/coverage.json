@@ -9,7 +9,7 @@
   "",
   "The denominator is NOT the hundred ranked rows. PRD section 12.15 took assorted-recipe listings out of it: a variety pack has no guaranteed analysis, so no entry can exist for it and no score can be returned. A figure measured this way is not comparable to the 0 of 100 recorded on 2026-09-09, which counted them."
  ],
- "measured": "2026-09-11",
+ "measured": "2026-09-27",
  "capture": {
   "source": "amazon",
   "list": "cat-food",
@@ -61,7 +61,7 @@
    "verdict": "scorable",
    "servedBy": "catalogue",
    "match": {
-    "barcode": "CFC-purina-friskies-gravy-swirlers",
+    "barcode": "050000168620",
     "name": "Friskies Gravy Swirlers Dry Cat Food with Flavors of Chicken, Salmon & Gravy",
     "brands": "Friskies",
     "overlap": 1.0,
@@ -171,15 +171,14 @@
     "scorable": true
    },
    "outsideCategory": {
-    "verdict": "no-ingredients",
+    "verdict": "unmatched",
     "match": {
-     "barcode": "10505454",
-     "name": "Friskies cat food adult seafood sensations 2.5 kg",
+     "barcode": "0056366006989",
+     "name": "Friskies Seafood Supreme (pate)",
      "brands": "Purina",
-     "overlap": 0.67,
+     "overlap": 0.33,
      "shared": [
-      "seafood",
-      "sensations"
+      "seafood"
      ],
      "brandConfirmed": true,
      "scorable": false
