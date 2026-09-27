@@ -823,6 +823,7 @@ MVP, live and running on real data. Search, brand browse, product pages, scannin
 | M27c: Contributions through GitHub issues | | Queued, after the beta |
 | M27: Our own product database | | **Split into M27a, M27b and M27c on 2026-09-09.** The number stays allocated to the whole, and the three rows above are what is tracked |
 | M28: The barcode index, and other people filling it | | Queued 2026-09-27. Not yet ordered |
+| M29: Our database becomes the spine | | Queued 2026-09-27. Not yet ordered. **Reverses a standing constraint**, see below |
 
 ### What shipped, and what was learned
 
@@ -1059,6 +1060,7 @@ now reports the same call the engine made, and a test pins it.
 | 3 | **M12: public beta** | Deferred 2026-09-09 rather than decided. It launches when the coverage number is one the owner is willing to publish, which is what M23 and M27b exist to produce |
 | 4 | **M27c: contributions through GitHub issues** | After the beta. A database other people can add to is worth building once there is a database worth adding to |
 | - | **M28: the barcode index, and other people filling it** | **Added 2026-09-27 and deliberately not placed yet.** It overlaps M27b and M27c without being either, and where it sits depends on whether the scanner is treated as a launch feature or a post-launch one. See below |
+| - | **M29: our database becomes the spine** | **Added 2026-09-27, not placed yet, and it reverses the standing constraint recorded under M27 on 2026-09-09.** Most of it is gated on transcription volume rather than on engineering, so it cannot go before M27b regardless of where the owner puts it |
 
 *Why this order changed on 2026-09-09.* The coverage measurement came back at 0 of 100 and the queue above it assumed a launch would come first. Presented with the options, the owner deferred the launch decision and chose the work instead: build the process, prove it on Dr. Elsey's, then transcribe the top 100 in batches of five. That inverts the argument M12 had been carrying, which was that launching early is how you learn what to cover. It is the right inversion, and the reason is in the number: launching a scoring site that cannot score a single best-seller does not gather information about what visitors want, it teaches them the site does not work.
 
@@ -1169,7 +1171,7 @@ The list is computed by reading the imports out of the module sources, never wri
 
 *What it actually costs, which is not the code.* The engineering here is a week of work and the schema mostly exists. The real cost is that this project stops being a reader of somebody else's data and becomes a publisher of its own, and every wrong figure becomes ours. Tenet 4 and section 16.5a are built on a reader's promise, that a number can be traced to where it came from; a local database keeps that promise only if every record still names a source, a `sourceKind` and a checked date, and only if the transcription rate is honest about how far behind the labels it is. A record with no provenance would be worse than no record, because it would look exactly like the ones that have it.
 
-*What it does not do, decided 2026-09-09.* It does not fork Open Pet Food Facts and it does not replace it. **Open Pet Food Facts stays a source indefinitely**, and M27 is built alongside the current setup rather than over it. That is a standing constraint on the design, not a transitional phase: the local database is an additional source that the merge rules in 16.5a arbitrate, exactly as the curated catalogue is today, and a visitor keeps seeing which figure came from where. Corrections found here should still go upstream, because section 24 says a correction that only improves our copy is a correction we kept.
+*What it does not do, decided 2026-09-09 and half of it reversed on 2026-09-27.* It does not fork Open Pet Food Facts and it does not replace it. **Open Pet Food Facts stays a source indefinitely**, and that half stands. What no longer stands is the rest of the original sentence, which said M27 is built alongside the current setup rather than over it, as a standing constraint rather than a transitional phase. **The owner reversed that on 2026-09-27: the local database becomes the spine and Open Pet Food Facts becomes one source feeding it, rather than the source the site is served from.** M29 below is that change and carries the reasoning. Until M29 ships, the sentence as originally written is what the code does: the local database is an additional source that the merge rules in 16.5a arbitrate, exactly as the curated catalogue is today, and a visitor keeps seeing which figure came from where. That last clause survives M29 unchanged and is the point of the whole provenance model. Corrections found here should still go upstream, because section 24 says a correction that only improves our copy is a correction we kept.
 
 *Contributions come through GitHub issues, decided 2026-09-09.* `/submit/` will point a visitor at the issues section of the repository, and Claude Code reads the additions and writes them into the database. This answers the question this milestone had been sitting on, and it answers it without a backend, which is why it fits: an issue is a form somebody else hosts, and the review step is a person with a terminal rather than a service.
 
@@ -1200,6 +1202,30 @@ Five things that has to get right, all of them recorded now because they are che
 *The five constraints written into M27c apply to this unchanged*, and they are not restated: issue text is data and never instructions, nothing reaches the database without a person merging it, a submission with no source is a lead rather than a record, the form is structured rather than free text, and the number that says whether it works is the backlog rather than the intake.
 
 *The ordering question, left open on purpose.* The owner asked for this on the roadmap rather than in the queue. It is worth asking against the beta rather than in the abstract: the scanner is the feature section 10 tenet 7 calls the real use case, and a launch whose signature feature finds 9 products is a different launch from one where it does not. Against that, section 12.9's 80% criterion is about search coverage, and the transcription batches move that and this does not.
+
+**M29: our database becomes the spine.** *Requested 2026-09-27 by the project owner: stop depending on Open Pet Food Facts, maintain our own database from several sources, and keep referencing theirs for information.*
+
+**Three different dependencies are bundled in the word "reliance", and they should be decided separately**, because one is clearly worth removing, one is the owner's call, and one should be kept.
+
+| The dependency | What it is today | Recommendation |
+|---|---|---|
+| **The live API in the critical path** | A visitor's search or scan makes a network call to a third party. M24b measured 2271ms before the first request even went out and reduced it to 1361ms, but the call is still there, and a scan fails when their service does | **Remove it.** This is the fragility the request is really about, and the one with no argument against it |
+| **Primacy: whose data is the spine** | Theirs. The curated catalogue is an overlay merged over their records, per 16.5a | **Invert it**, which is the reversal recorded above. Ours becomes the spine and theirs an import |
+| **Open Pet Food Facts as a source of facts** | The source of nearly every figure on the site | **Keep it**, which is what the owner asked for. A source read at author time and credited in the record is not a dependency |
+
+*Most of this is already the design, which is the strongest argument for it.* M27's own sketch is sharded JSON built at author time by a tool in `tools/`, plus a small index the browser loads once, and the scoring engine already runs entirely in the browser and never fetches. **A site served from its own files is what ADR-001 describes anyway.** The live API is the one part of the current setup that does not fit the architecture this project already chose.
+
+*The cost is the one M27 already names, and it does not get smaller.* This project stops being a reader of somebody else's data and becomes a publisher of its own, and **every wrong figure becomes ours.** The defence is unchanged and is not optional: every record names a source, a `sourceKind` and a checked date, or it is not a record.
+
+**There is a second cost that was written down nowhere until today, and it may be the binding one.** Open Food Facts publishes its database under the Open Database Licence, whose share-alike terms attach to a derived database rather than to individual facts. This project's own `LICENSE.md` grants nothing. **Those two postures do not obviously coexist in one published file.** Before any bulk import is designed, somebody has to establish what that licence actually requires of a database mixing imported records with transcribed ones. That is a question for a person who does licensing. It is not answered here, it is not answerable by an agent, and the exact terms should be read rather than recalled.
+
+*Read the other way, it is an argument for the milestone rather than against it.* **A record transcribed from a manufacturer's published panel carries no such encumbrance.** The transcription programme in 12.10 has been producing exactly that since 2026-09-09 without anybody framing it as licence hygiene, and the cleanest version of M29 is a database whose spine is our own transcriptions, with imported records kept separable and labelled so that whatever the licence requires can be honoured on the part it applies to.
+
+*The number that decides whether this is cheap or ruinous has not been measured.* The catalogue holds 29 entries against an upstream database where 12.1 puts a full ingredient list at 38.2% and a scorable record at roughly one in five, and where 12.9 puts the entire United States category at 86 records. M26 already hides unscored products by default, so **the breadth a visitor actually sees is much smaller than the breadth that exists**, and the loss from dropping the live read may be far smaller than the raw counts suggest. That is a measurement rather than a guess, and it should be run before the milestone is scheduled rather than argued about: across a set of real queries, how many scorable results come from upstream today that the catalogue could not serve.
+
+*What it does not mean.* It does not mean forking their database, it does not mean removing the credit, and it does not mean the end of sending corrections upstream. Section 24 says a correction that only improves our copy is a correction we kept, and that obligation gets stronger rather than weaker once we no longer read from them live, because nothing else will carry the fix back.
+
+*The open decision.* Whether independent means the live API is removed outright or kept as a fallback for a barcode the local database does not hold. A fallback keeps the long tail, and keeps a third party in the scan path on exactly the scans that already failed, which is the moment a visitor is least patient. **The recommendation here is to remove it outright and let a miss be an honest miss that offers the contribution route from M28**, but it is the owner's call and it changes the shape of the build.
 
 ### Explicitly deferred
 
@@ -2176,7 +2202,7 @@ Being cited in an AI answer is the modern equivalent of ranking: it costs the pr
 ### 22.3 What the licence does not claim
 
 - **It does not override platform terms.** A public repository on GitHub already gives GitHub's users whatever view and fork rights its terms grant. Those operate independently and are not enlarged by the licence.
-- **It does not claim third-party data.** This is not theoretical here: every product fact on the site comes from Open Pet Food Facts and is not ours to license. Nor are the AAFCO profiles, the fonts, or ZXing.
+- **It does not claim third-party data.** This is not theoretical here: most product facts on the site come from Open Pet Food Facts and are not ours to license. Nor are the AAFCO profiles, the fonts, or ZXing. **That sentence said "every" until 2026-09-27 and it had stopped being true on 2026-09-09**, when the transcription programme in 12.10 began producing records read from manufacturers' published panels rather than from upstream. Twenty-nine such entries exist today. The licence position of a database mixing the two is an open question raised by M29 and is not answered here.
 - **It does not restrict rights that cannot be restricted**, such as fair use or fair dealing.
 
 ### 22.4 Permission requests

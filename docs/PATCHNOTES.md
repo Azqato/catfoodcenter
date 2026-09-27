@@ -44,6 +44,53 @@ Notes
   is the first unplanned test of it.
 * No site code changed, so no gate behaviour changed.
 
+## [0.45.0] - 2026-09-27
+
+**M29 on the roadmap: our database becomes the spine, and Open Pet Food Facts becomes a source
+feeding it rather than the source the site is served from.** Roadmap and two corrections. No code.
+
+Added
+* **PRD section 13 gains M29**, requested by the project owner. The request bundles three different
+  dependencies under the word "reliance" and the entry separates them, because they do not have the
+  same answer: **the live API in a visitor's critical path** should go, **primacy** should invert,
+  and **Open Pet Food Facts as a source of facts** should stay, which is what the owner asked for.
+* **A licence question nothing in this project had recorded.** Open Food Facts publishes its
+  database under the Open Database Licence, whose share-alike terms attach to a derived database,
+  and this project's `LICENSE.md` grants nothing. Those two do not obviously coexist in one
+  published file. It is flagged as a question for a person who does licensing, not answered, and
+  the terms should be read rather than recalled. Read the other way it argues *for* the milestone:
+  **a record transcribed from a manufacturer's published panel carries no such encumbrance**, and
+  the transcription programme has been producing exactly those since 2026-09-09 without anybody
+  framing it as licence hygiene.
+* **The measurement that should decide the schedule, named and not yet run**: across a set of real
+  queries, how many scorable results come from upstream today that the catalogue could not serve.
+  M26 hides unscored products by default, so the breadth a visitor sees is much smaller than the
+  breadth that exists, and the cost of dropping the live read may be far smaller than the raw counts
+  suggest. Guessing at it would be the wrong move twice over.
+
+Changed
+* **A standing constraint was reversed, and it is marked as reversed where it was written.** Section
+  13 recorded on 2026-09-09 that M27 is built alongside the current setup rather than over it,
+  explicitly as a standing constraint rather than a transitional phase. The owner reversed that half
+  on 2026-09-27. The other half stands: Open Pet Food Facts stays a source indefinitely. The
+  original sentence is still what the code does until M29 ships, and the entry says so.
+
+Fixed
+* **Section 22.3 claimed every product fact on the site comes from Open Pet Food Facts**, and it had
+  stopped being true on 2026-09-09, when the transcription programme began producing records read
+  from manufacturers' panels. Twenty-nine such entries exist. Corrected in place with the date it
+  went stale, because a licence section that misdescribes what the site holds is the kind of error
+  that matters outside this repository.
+
+Notes
+* **One decision left to the owner and not taken here**: whether independent means the live API is
+  removed outright or kept as a fallback for a barcode the local database does not hold. A fallback
+  keeps the long tail and keeps a third party in the scan path on exactly the scans that already
+  failed. The recommendation recorded is to remove it outright and let a miss be an honest miss that
+  offers the M28 contribution route, but it changes the shape of the build.
+* M29 is not ordered in the queue. Most of it is gated on transcription volume rather than
+  engineering, so it cannot precede M27b wherever the owner puts it.
+
 ## [0.44.0] - 2026-09-27
 
 **M28 on the roadmap: a barcode index, and a route for other people to fill it.** Roadmap only. No
