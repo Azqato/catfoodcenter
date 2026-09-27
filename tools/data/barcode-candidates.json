@@ -11,11 +11,11 @@
   "that query. That is an answer, not a failure, and it is what provisional keys",
   "exist for (section 12.12)."
  ],
- "measured": "2026-09-11",
+ "measured": "2026-09-14",
  "endpoint": {
   "limit": 100,
-  "remaining": 88,
-  "spentThisRun": 12
+  "remaining": 80,
+  "spentThisRun": 27
  },
  "resolved": {
   "B072DTFZHL": {
@@ -919,6 +919,864 @@
      "barcode": "859610000852",
      "title": "Blue Buffalo Tastefuls Adult Indoor Dry Cat Food with Chicken & Brown Rice - 3lbs",
      "brand": "Blue Buffalo"
+    }
+   ]
+  },
+  "B005M2ONIG": {
+   "position": 29,
+   "title": "Meow Mix Seafood Favorites, Wet Food Variety Pack, 12 Cups",
+   "brand": "Meow Mix",
+   "query": "Meow Mix Seafood Favorites",
+   "candidates": [
+    {
+     "barcode": "640791613562",
+     "title": "Meow Mix Seafood Favorites Variety Pack Wet Cat Food, 2.75-Ounce (pack of 12)",
+     "brand": "Meow Mix"
+    },
+    {
+     "barcode": "689850974633",
+     "title": "Meow Mix Seafood Favorites Variety Pack Wet Cat Food, 2.75-ounce (pack Of 12)",
+     "brand": "Meow Mix"
+    },
+    {
+     "barcode": "696228537239",
+     "title": "Meow Mix Seafood Favorites Variety Pack Wet Cat Food, 2.75-ounce (pack Of 12)",
+     "brand": "Meow Mix"
+    },
+    {
+     "barcode": "829274216104",
+     "title": "Meow Mix Grain Free with Real Tuna and Whitefish in Sauce, 2.75 oz",
+     "brand": "Meow Mix"
+    },
+    {
+     "barcode": "829274450904",
+     "title": "Meow Mix Savory Morsels Seafood Favorites Variety Pack  2.75-Ounce Cans  Pack of 12",
+     "brand": "Meow Mix"
+    }
+   ]
+  },
+  "B003M60K54": {
+   "position": 30,
+   "title": "Hill's Science Diet Sensitive Stomach & Skin Dry Cat Food | #1 Veterinarian Recommended, Adult Formula, Chicken & Rice, 7 lb. Bag (Updated Formula)",
+   "brand": "Hill's",
+   "query": "Hill's Science Diet Sensitive Stomach",
+   "candidates": [
+    {
+     "barcode": "052742886008",
+     "title": "Hill s Science Diet Adult Sensitive Stomach & Skin Chicken Recipe Dry Dog Food  15.5 lb bag",
+     "brand": "Hill s Pet Nutrition"
+    },
+    {
+     "barcode": "052742883908",
+     "title": "Hill s Science Diet Adult Sensitive Stomach & Skin Chicken Recipe Dry Dog Food  30 lb bag",
+     "brand": "Hill s Pet Nutrition"
+    },
+    {
+     "barcode": "052742888408",
+     "title": "Hill's Science Diet Adult Sensitive Stomach & Skin Dry Cat Food, Chicken & Rice Recipe, 7 lb Bag (B003M60K54)",
+     "brand": "Hill's Science Diet"
+    },
+    {
+     "barcode": "052742887807",
+     "title": "Hill s Science Diet Sensitive Stomach & Skin Chicken & Rice Dry Cat Food  15.5lb Bag",
+     "brand": "Hill s Science Diet"
+    },
+    {
+     "barcode": "052742033198",
+     "title": "Hill's Science Diet Adult Sensitive Stomach and Skin, Small Bites Dry Dog Food, Chicken & Barley Recipe, 30 lb. Bag (B083FHWTL3)",
+     "brand": "Hill's Pet Nutrition Sales, Inc."
+    }
+   ]
+  },
+  "B07DJ7T3RR": {
+   "position": 31,
+   "title": "IAMS Proactive Health Urinary Tract Health Dry Cat Food, Chicken, 7 lb | Veterinarian-recommended, real chicken #1 ingredient, reduces urinary pH, antioxidants, antioxidants for immune support",
+   "brand": "Iams",
+   "query": "Iams Proactive Health Urinary Tract",
+   "candidates": [
+    {
+     "barcode": "019014802203",
+     "title": "IAMS Proactive Health Urinary Tract Chicken Flavor Dry Cat Food - 3.5lbs",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "019014802210",
+     "title": "IAMS Proactive Health Urinary Tract Chicken Flavor Dry Cat Food - 7lbs",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "019014802234",
+     "title": "IAMS Proactive Health Urinary Tract Chicken Flavor Dry Cat Food - 16lbs",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "019014805860",
+     "title": "IAMS Proactive Health Urinary Tract Chicken Flavor Dry Cat Food - 22lbs",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "461455793464",
+     "title": "Bundle: IAMS PROACTIVE HEALTH Urinary Tract Health Dry Cat Food with Chicken  16 lb. Bag & IAMS PERFECT PORTIONS Indoor Grain Free* Wet Cat Food Pate Variety Pack  Salmon & Turkey  2.6 oz. Trays",
+     "brand": "IAMS"
+    }
+   ]
+  },
+  "B00HW5LI9S": {
+   "position": 32,
+   "title": "Hill's Science Diet Adult Perfect Weight Dry Cat Food | #1 Veterinarian Recommended, Chicken Recipe, 7 lb. Bag",
+   "brand": "Hill's",
+   "query": "Hill's Science Diet Perfect Weight",
+   "candidates": [
+    {
+     "barcode": "052742060491",
+     "title": "Hill's Science Diet Adult Perfect Weight & Joint Support Chicken Recipe Dry Dog Food, 3.5 lbs.",
+     "brand": "Hill's"
+    },
+    {
+     "barcode": "052742060507",
+     "title": "Hill's Science Diet Adult Perfect Weight & Joint Support Chicken Recipe Dry Dog Food, 12 lbs.",
+     "brand": "Hill's"
+    },
+    {
+     "barcode": "052742060514",
+     "title": "Hill's Science Diet Adult Perfect Weight & Joint Support Chicken Recipe Dry Dog Food, 25 lbs.",
+     "brand": "Hill's"
+    },
+    {
+     "barcode": "052742060521",
+     "title": "Hill's Science Diet Adult Perfect Weight & Joint Support Chicken Recipe Large Breed Dry Dog Food, 25 lbs.",
+     "brand": "Hill's"
+    },
+    {
+     "barcode": "052742060583",
+     "title": "Hill s Science Diet Perfect Weight  Adult 1-5  Large Breed Weight Management Support  Dry Dog Food  Chicken Recipe  25 lb Bag",
+     "brand": "Hill s Pet Nutrition"
+    }
+   ]
+  },
+  "B01BMBYKUQ": {
+   "position": 33,
+   "title": "IAMS Proactive Health Healthy Kitten Dry Cat Food, Chicken, 3.5 lb | Veterinarian-recommended, real chicken #1 ingredient, Omega-3 DHA & taurine, supports digestion, skin health, immune system",
+   "brand": "Iams",
+   "query": "Iams Proactive Health Healthy",
+   "candidates": [
+    {
+     "barcode": "019014025916",
+     "title": "IAMS PROACTIVE HEALTH Healthy Aging Wet Dog Food Classic Ground with Slow Cooked Chicken and Rice, 12-Pack of 13 oz. Cans (B0026LIXHI)",
+     "brand": "Iams"
+    },
+    {
+     "barcode": "019014802234",
+     "title": "IAMS Proactive Health Urinary Tract Chicken Flavor Dry Cat Food - 16lbs",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "019014804115",
+     "title": "Iams Proactive Health Salmon Dry Cat Food  3.5 Lb Bag",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "640791615726",
+     "title": "IAMS PROACTIVE HEALTH HEALTHY SENIOR Dry Mature Cat Food with Chicken Cat Kibble  7 lb. Bag",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "689988902751",
+     "title": "Neal's Yard Remedies Almond Moisturiser 50g",
+     "brand": "Neal's Yard Remedies"
+    }
+   ]
+  },
+  "B003MA3AW0": {
+   "position": 36,
+   "title": "Hill's Science Diet Adult 1-6 Indoor Dry Cat Food | #1 Veterinarian Recommended, Chicken Recipe, 7 lb. Bag",
+   "brand": "Hill's",
+   "query": "Hill's Science Diet 1-6 Indoor",
+   "candidates": [
+    {
+     "barcode": "052742553207",
+     "title": "Hill s Science Diet Adult Indoor Chicken Recipe Dry Cat Food  3.5 lb bag",
+     "brand": "Hill s Pet Nutrition"
+    }
+   ]
+  },
+  "B000YKD6UW": {
+   "position": 40,
+   "title": "Royal Canin Feline Health Nutrition Indoor Adult Dry Cat Food, 7 lb Bag | Formulated For Indoor Cats, Optimal Cat Stool, For Adult Cats, Crunchy Kibble, Developed by Veterinarians",
+   "brand": "Royal Canin",
+   "query": "Royal Canin Feline Health Nutrition Indoor",
+   "candidates": [
+    {
+     "barcode": "030111624079",
+     "title": "Royal Canin Feline Health Nutrition Light Dry Cat Food, 7 lb",
+     "brand": "Royal Canin"
+    },
+    {
+     "barcode": "030111628084",
+     "title": "Royal Canin Indoor Adult Dry Cat Food, 7 lb",
+     "brand": "Royal Canin"
+    },
+    {
+     "barcode": "030111630223",
+     "title": "Royal Canin Hairball Care Dry Cat Food, 6 lb bag (B000HAJZHM)",
+     "brand": "Royal Canin"
+    },
+    {
+     "barcode": "030111630322",
+     "title": "Royal Canin Indoor Mature Senior Dry Cat Food, 5.5 lb",
+     "brand": "Royal Canin"
+    },
+    {
+     "barcode": "744759022905",
+     "title": "Microwave Soup Mug With Steam Release Vent Lid And Locking Clips Dishwasher Safe",
+     "brand": "Sistema"
+    }
+   ]
+  },
+  "B00ZQYGSU6": {
+   "position": 41,
+   "title": "Hill's Science Diet Adult Urinary & Hairball Control Dry Cat Food | #1 Veterinarian Recommended, Chicken Recipe, 7 lb. Bag",
+   "brand": "Hill's",
+   "query": "Hill's Science Diet Urinary Hairball",
+   "candidates": [
+    {
+     "barcode": "052742002156",
+     "title": "Hill s Science Diet Adult Urinary & Hairball Control Chicken Recipe Dry Cat Food  3.5 lb bag",
+     "brand": "Hill s Pet Nutrition"
+    },
+    {
+     "barcode": "052742002170",
+     "title": "Hill s Science Diet Adult Urinary & Hairball Control Chicken Recipe Dry Cat Food  7 Lb",
+     "brand": "Hill s Pet Nutrition"
+    },
+    {
+     "barcode": "052742002194",
+     "title": "Hill s Science Diet Adult Urinary & Hairball Control Chicken Recipe Dry Cat Food  15.5 lb bag",
+     "brand": "Hill s Pet Nutrition"
+    },
+    {
+     "barcode": "052742002217",
+     "title": "Hill s Science Diet Adult Urinary & Hairball Control Canned Cat Food  2.9 oz  24-pack",
+     "brand": "Hill s Pet Nutrition"
+    },
+    {
+     "barcode": "052742010212",
+     "title": "Hill s Science Diet Adult Urinary & Hairball Control Canned Cat Food  Savory Chicken Entrée  5.5 oz  24 Pack wet cat food",
+     "brand": "Hill s Pet Nutrition"
+    }
+   ]
+  },
+  "B01I3IUWHQ": {
+   "position": 43,
+   "title": "ORIJEN Grain Free WHOLEPREY Dry Cat Food Original Recipe 4lb Bag | 90% Animal Ingredients, Freeze Dried, Fresh or Raw Ingredients, High Protein, Heart Health, Free-Run Poultry",
+   "brand": "Orijen",
+   "query": "Orijen Grain Free WHOLEPREY Original",
+   "candidates": [
+    {
+     "barcode": "064992724184",
+     "title": "ORIJEN ORIGINAL Freeze Dried Grain Free Dog Food and Topper WholePrey Ingredients, 6 oz.",
+     "brand": "Orijen"
+    }
+   ]
+  },
+  "B005FVLAKI": {
+   "position": 46,
+   "title": "Purina Cat Chow Naturals High Protein Dry Cat Food, 13 lb Bags | Indoor cat food with real chicken and salmon plus whole grains, natural nutrition with added vitamins, minerals and nutrients",
+   "brand": "Cat Chow",
+   "query": "Cat Chow Purina Naturals High Protein",
+   "candidates": [
+    {
+     "barcode": "017800166331",
+     "title": "Purina Cat Chow Gentle  Sensitive Stomach Dry Cat Food  Turkey  13 lb Bag",
+     "brand": "Cat Chow"
+    },
+    {
+     "barcode": "017800181693",
+     "title": "Purina Kitten Chow Natural  High Protein Dry Kitten Food  Naturals Chicken - 3.15 lb. Bag",
+     "brand": "Cat Chow"
+    },
+    {
+     "barcode": "017800181716",
+     "title": "Purina Kitten Chow Naturals Chicken Flavor Dry Cat Food for Kittens - 6.3lbs",
+     "brand": "Cat Chow"
+    },
+    {
+     "barcode": "017800181747",
+     "title": "Purina Kitten Chow Naturals  Indoor Dry Kitten Food  Chicken  13 lb Bag",
+     "brand": "Cat Chow"
+    },
+    {
+     "barcode": "622013148878",
+     "title": "Purina Cat Chow Dry Cat Food, Gentle, 13-pound Bag, Pack of 1",
+     "brand": "Purina Cat Chow"
+    }
+   ]
+  },
+  "B0CFPGMH9X": {
+   "position": 47,
+   "title": "Blue Buffalo Tastefuls Chicken Adult Sensitive Stomach Dry Cat Food, 3 lb | Chicken & Brown Rice Recipe, Whole Grains, Garden Veggies & Fruit, No Corn, Wheat, or Soy",
+   "brand": "Blue Buffalo",
+   "query": "Blue Buffalo Tastefuls Chicken Sensitive Stomach",
+   "candidates": [
+    {
+     "barcode": "601957734040",
+     "title": "Blue Buffalo Tastefuls Sensitive Stomach Natural Chicken Adult Dry Cat Food (Pack of 2)",
+     "brand": "BLUE SENSITIVE STOMACH"
+    },
+    {
+     "barcode": "601957734057",
+     "title": "Blue Buffalo Tastefuls Sensitive Stomach Natural Chicken Adult Dry Cat Food (Pack of 3)",
+     "brand": "BLUE SENSITIVE STOMACH"
+    },
+    {
+     "barcode": "601957734064",
+     "title": "Blue Buffalo Tastefuls Sensitive Stomach Natural Chicken Adult Dry Cat Food (Pack of 4)",
+     "brand": "BLUE SENSITIVE STOMACH"
+    },
+    {
+     "barcode": "601957734071",
+     "title": "Blue Buffalo Tastefuls Sensitive Stomach Natural Chicken Adult Dry Cat Food (Pack of 6)",
+     "brand": "BLUE SENSITIVE STOMACH"
+    },
+    {
+     "barcode": "850030118998",
+     "title": "Blue Buffalo Tastefuls Natural Sensitive Stomach Adult Chicken & Brown Rice Dry Cat Food, 6.8-Kg Bag",
+     "brand": "Blue Buffalo"
+    }
+   ]
+  },
+  "B00J2DRUYA": {
+   "position": 48,
+   "title": "Purina Fancy Feast Delights with Cheddar Wet Cat Food, 3 oz cans, 24-Pack | Grilled Chicken, Turkey or Whitefish in Gravy recipes with no artificial colors or preservatives",
+   "brand": "Fancy Feast",
+   "query": "Fancy Feast Purina Delights Cheddar",
+   "candidates": [
+    {
+     "barcode": "050000579334",
+     "title": "Purina Fancy Feast Delights with Cheddar Grilled Gourmet Wet Cat Food Turkey & Cheddar Cheese Feast In Gravy - 3oz",
+     "brand": "Fancy Feast"
+    },
+    {
+     "barcode": "050000579310",
+     "title": "Purina Fancy Feast Delights with Cheddar Grilled Gourmet Wet Cat Food Chicken & Cheddar Cheese Feast In Gravy - 3oz",
+     "brand": "Fancy Feast"
+    },
+    {
+     "barcode": "050000579280",
+     "title": "Purina Fancy Feast Delights with Cheddar Grilled Gourmet Wet Cat Food Tuna & Cheddar Cheese Feast In Gravy - 3oz",
+     "brand": "Fancy Feast"
+    },
+    {
+     "barcode": "050000579327",
+     "title": "Purina Fancy Feast Delights with Cheddar Wet Cat Food  Grilled Chicken  3 oz Cans (24 Pack)",
+     "brand": "Fancy Feast"
+    },
+    {
+     "barcode": "050000579341",
+     "title": "Purina Fancy Feast Delights with Cheddar Wet Cat Food  Grilled Turkey & Cheddar  3 oz Cans (24 Pack)",
+     "brand": "Fancy Feast"
+    }
+   ]
+  },
+  "B0DK47HH36": {
+   "position": 49,
+   "title": "Meow Mix Tender Centers, Salmon & White Meat Chicken Flavors, 20 lb. Bag | Dry cat food with two texture kibble, meaty center surrounded by a crunchy outer layer.",
+   "brand": "Meow Mix",
+   "query": "Meow Mix Tender Centers",
+   "candidates": [
+    {
+     "barcode": "829274512503",
+     "title": "Meow Mix Tender Centers Salmon & White Meat Chicken Dry Cat Food  13.5 Pounds",
+     "brand": "Meow Mix"
+    },
+    {
+     "barcode": "829274515979",
+     "title": "Meow Mix Tender Centers Salmon & White Meat Chicken Flavor Cat Food, 15.5-Pound",
+     "brand": "Meow Mix"
+    },
+    {
+     "barcode": "829274512527",
+     "title": "Meow Mix Tender Centers Salmon and Chicken Flavor Dry Cat Food - 3lbs",
+     "brand": "Meow Mix"
+    },
+    {
+     "barcode": "829274519120",
+     "title": "Meow Mix Tender Centers with Flavors of Salmon & Turkey Adult Complete & Balanced Dry Cat Food - 13.5lbs",
+     "brand": "Meow Mix"
+    },
+    {
+     "barcode": "709092296680",
+     "title": "Meow Mix Tender Centers 18.6 lb Bag of Irresistible Salmon & White Meat Chicken Flavors Dry Cat Food, Crunchy Outer Layer, Meaty Center to Keep Your Cat Healthy & Happy with Irresistible Taste.",
+     "brand": "Meow Mix Tender Centers"
+    }
+   ]
+  },
+  "B000WFLZ0C": {
+   "position": 55,
+   "title": "Purina ONE Sensitive Skin and Stomach Dry Cat Food 16 lb Bag | Real turkey is the first ingredient, easily digestible with prebiotic fiber, calcium and antioxidants for sensitive systems",
+   "brand": "Purina ONE",
+   "query": "Purina ONE Sensitive Skin Stomach",
+   "candidates": [
+    {
+     "barcode": "001780003199",
+     "title": "Purina one sensitive systems adult dry cat food  3.5 lb",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "017800031974",
+     "title": "Purina ONE Plus  Sensitive Skin & Stomach  Dry Cat Food  Turkey  16 lb Bag",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "017800031998",
+     "title": "Purina ONE Sensitive Skin & Stomach Natural Turkey Flavor Dry Cat Food - 3.5lbs",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "696230987886",
+     "title": "Purina ONE 1780003197 Turkey Recipe Sensitive Skin & Stomach Dry Cat Food",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "798118628567",
+     "title": "Purina ONE Sensitive Skin & Stomach With Real Turkey  Natural Adult Dry Cat Food 16lb",
+     "brand": "Purina ONE"
+    }
+   ]
+  },
+  "B003M5VN92": {
+   "position": 61,
+   "title": "Royal Canin Feline Health Nutrition Kitten Thin Slices in Gravy Cat Food, 3 oz (Pack of 24).",
+   "brand": "Royal Canin",
+   "query": "Royal Canin Feline Health Nutrition Thin",
+   "candidates": [
+    {
+     "barcode": "030111174642",
+     "title": "Royal Canin Feline Health Nutrition Kitten Instinctive Thin Slices in Gravy All Breeds Kitten Wet Cat Food  3 oz (Pack of 6)",
+     "brand": "Royal Canin"
+    },
+    {
+     "barcode": "030111175083",
+     "title": "Royal Canin Feline Health Nutrition Kitten Instinctive Thin Slices in Gravy All Breeds Kitten Wet Cat Food, 3 oz (Case of 12)",
+     "brand": "Royal Canin"
+    },
+    {
+     "barcode": "030111471550",
+     "title": "AMERICAN DISTRIBUTION & MFG CO Feline Health Nutrition Cat Food, Digest Sensitive, 3-oz. Can",
+     "brand": "Royal Canin"
+    },
+    {
+     "barcode": "030111604415",
+     "title": "Royal Canin Feline Health Nutrition Kitten Thin Slices in Gravy Canned Cat Food, 3 Oz Can, Pack of 24 (B003M5VN92)",
+     "brand": "Royal Canin"
+    },
+    {
+     "barcode": "030111751522",
+     "title": "Royal Canin Feline Health Nutrition Kitten Thin Slices in Gravy Canned Cat Food, 54 oz., Count of 18",
+     "brand": "Royal Canin"
+    }
+   ]
+  },
+  "B0DM6VHS87": {
+   "position": 62,
+   "title": "Purina ONE LiveClear Allergen-Reducing Dry Cat Food, 6.3 lb Bag | Real chicken is the #1 ingredient, reduces allergens in cat hair and dander by 47%, includes DHA for cat vision support",
+   "brand": "Purina ONE",
+   "query": "Purina ONE LiveClear Allergen-Reducing",
+   "candidates": [
+    {
+     "barcode": "017800101998",
+     "title": "Purina ONE LiveClear Chicken Flavor Adult Dry Cat Food - 3lbs",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "017800102018",
+     "title": "Purina ONE LiveClear Chicken Flavor Adult Dry Cat Food - 6.3lbs",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "017800102056",
+     "title": "Purina ONE LiveClear Chicken Flavor Kitten Dry Cat Food - 5lbs",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "055800497864",
+     "title": "Fancy Feast Purina One Liveclear Allergen-Reducing Formula With Real Chicken, Dry Cat Food, 1.36 Kg 1.36 Kg",
+     "brand": "Fancy Feast"
+    },
+    {
+     "barcode": "055800498090",
+     "title": "Purina One Liveclear Allergen-Reducing Formula With Real Chicken, Dry Cat Food, 2.86 Kg 2.86 Kg",
+     "brand": "Purina ONE"
+    }
+   ]
+  },
+  "B003MW77W2": {
+   "position": 63,
+   "title": "Hill's Science Diet Kitten Formula Dry Cat Food | #1 Veterinarian Recommended, Chicken Recipe, 7 lb. Bag",
+   "brand": "Hill's",
+   "query": "Hill's Science Diet",
+   "candidates": [
+    {
+     "barcode": "052742303208",
+     "title": "Hill s Natural Grain Free Dog Treats with Chicken & Apples  Crunchy Dog Treat  8 oz bag (Previously known as Hill s Science Diet Dog treats)",
+     "brand": "Hill s Pet Nutrition"
+    },
+    {
+     "barcode": "052742244808",
+     "title": "Hill's Grain Free Soft-Baked Naturals Dog Treats, with Chicken & Carrots, 8 oz bag (Previously known as Hill's Science Diet Dog treats)",
+     "brand": "Hill's Science Diet"
+    },
+    {
+     "barcode": "052742187907",
+     "title": "Hill s Natural Soft and Chewy Training Dog Treats with Real Chicken  3 oz bag (Previously known as Hill s Science Diet Dog treats)",
+     "brand": "Hill s Pet Nutrition"
+    },
+    {
+     "barcode": "052742909400",
+     "title": "Hill s Science Diet Puppy Small Paws Chicken Meal  Barley & Brown Rice Recipe Dry Dog Food  4.5 lb bag",
+     "brand": "Hill s Pet Nutrition"
+    },
+    {
+     "barcode": "052742008998",
+     "title": "Hill s Natural Fruity Snacks with Apples & Oatmeal  Crunchy Dog Treats  8 oz bag (Previously known as Hill s Science Diet Dog treats)",
+     "brand": "Hill s Pet Nutrition"
+    }
+   ]
+  },
+  "B08CGCV762": {
+   "position": 64,
+   "title": "Nulo Freestyle Cat & Kitten Dry Food - Chicken & Cod Recipe, High Protein Grain Free Cat Food, Natural Kibble with Probiotics & Omega Fatty Acids, 4lb Bag",
+   "brand": "Nulo",
+   "query": "Nulo Freestyle Chicken Cod",
+   "candidates": [
+    {
+     "barcode": "376128698857",
+     "title": "Nulo FreeStyle Cat and Kitten Grain Free Chicken and Cod Recipe Dry Cat Food 12 lb",
+     "brand": "Nulo"
+    },
+    {
+     "barcode": "811939020157",
+     "title": "nulo adult & kitten grain free dry cat food with bc30 probiotic (chicken  5lb bag)",
+     "brand": "new"
+    },
+    {
+     "barcode": "811939020171",
+     "title": "Nulo Freestyle Grain-Free Chicken & Cod Dry Cat Food, 12 Lb",
+     "brand": "Nulo"
+    },
+    {
+     "barcode": "811939021321",
+     "title": "FSTYL C KTN GF CKN COD 2#",
+     "brand": "Nulo"
+    },
+    {
+     "barcode": "8119390201576",
+     "title": "Nulo Freestyle Grain-Free Chicken & Cod Dry Cat Food, 5 Lb",
+     "brand": "Nulo"
+    }
+   ]
+  },
+  "B00OLSAVDI": {
+   "position": 65,
+   "title": "Sheba Perfect Portions Pate Wet Cat Food, Sustainable Salmon, 2.6 oz, 24 ct | Grain-free, made in USA, Sustainable salmon, no fillers or artificial flavors, complete & balanced, twin-pack trays",
+   "brand": "Sheba",
+   "query": "Sheba Perfect Portions Pate",
+   "candidates": [
+    {
+     "barcode": "023100110202",
+     "title": "Sheba Perfect Portions Savory Chicken Flavor Pate Wet Cat Food - 2.64oz",
+     "brand": "Sheba"
+    },
+    {
+     "barcode": "023100110257",
+     "title": "Sheba Perfect Portions Tender Beef and Chicken Flavored Pate Wet Cat Food - 2.64oz",
+     "brand": "Sheba"
+    },
+    {
+     "barcode": "023100118840",
+     "title": "Sheba Perfect Portions Fish, Salmon, Seafood and Tuna Flavor Variety Pack Pate Wet Cat Food - 2.6oz/24ct",
+     "brand": "Sheba"
+    },
+    {
+     "barcode": "689718435801",
+     "title": "Sheba Perfect Portions Pate Wet Cat Food Trays - Seafood Complete Natural Treats",
+     "brand": "Perfect Portions"
+    },
+    {
+     "barcode": "696597486237",
+     "title": "Bosmere Storm Black 2 Seat Bistro Set Cover, Black, D511",
+     "brand": "Bosmere"
+    }
+   ]
+  },
+  "B0DZ99MK94": {
+   "position": 68,
+   "title": "A Strong Heart Adult Cat Pate, Mixed Grill Dinner, 13.2oz Cans, 12pk | Chicken, liver & turkey pate, AAFCO complete & balanced, Made in USA, 12-pack",
+   "brand": null,
+   "query": "Strong Heart Pate",
+   "candidates": []
+  },
+  "B07JWD9P95": {
+   "position": 69,
+   "title": "Purina Fancy Feast Chicken Classic Pate Wet Cat Food, Pack of 24, 3 oz Cans | Grain-free, gourmet recipe with a smooth, savory texture in rich gravy for a flavor-filled taste",
+   "brand": "Fancy Feast",
+   "query": "Fancy Feast Purina Chicken Classic Pate",
+   "candidates": [
+    {
+     "barcode": "050000429943",
+     "title": "Purina Fancy Feast Classic Paté Gourmet Wet Cat Food Chicken Feast - 3oz",
+     "brand": "Fancy Feast"
+    },
+    {
+     "barcode": "050000429042",
+     "title": "Purina Fancy Feast Classic Paté Gourmet Wet Cat Food Tender Liver & Chicken Feast - 3oz",
+     "brand": "Fancy Feast"
+    },
+    {
+     "barcode": "050000429745",
+     "title": "Purina Fancy Feast Classic Paté Gourmet Wet Cat Food Tender Beef & Chicken Feast - 3oz",
+     "brand": "Fancy Feast"
+    },
+    {
+     "barcode": "050000172399",
+     "title": "(12 Pack) Fancy Feast Grain Free Pate Wet Kitten Food Variety Pack  Kitten Classic Pate Collection Chicken & Salmon  3 oz. Cans",
+     "brand": "Fancy Feast"
+    },
+    {
+     "barcode": "050000500895",
+     "title": "Purina Fancy Feast Tender Seafood, Turkey, Chicken and Salmon Flavor Variety Pack Wet Cat Food - 4.5lbs/24pk",
+     "brand": "Fancy Feast"
+    }
+   ]
+  },
+  "B000634CNM": {
+   "position": 70,
+   "title": "Purina ONE Indoor Advantage Senior Dry Cat Food, High Protein, 3.5 lb Bag | Made with real chicken and a natural fiber blend that helps minimize hairballs and supports immune health for senior cats",
+   "brand": "Purina ONE",
+   "query": "Purina ONE Indoor Advantage Senior",
+   "candidates": [
+    {
+     "barcode": "017800018852",
+     "title": "Purina ONE High Protein  Natural Senior Dry Cat Food  Indoor Advantage Senior+ - 3.5 lb. Bag",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "017800184236",
+     "title": "Purina ONE Indoor Advantage Senior 7+ Chicken and Ocean White Fish Wet Cat Food - 3oz",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "017800184243",
+     "title": "Purina One Indoor Advantage Wet Cat Food for Adult Cats  3 oz Can",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "017800184250",
+     "title": "Purina ONE Healthy Kitten Chicken and Salmon Wet Cat Food - 3oz",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "689088087990",
+     "title": "Purina ONE Indoor Advantage Senior 7+ High Protein  Natural Senior Dry & Wet Cat Food",
+     "brand": "Purina ONE"
+    }
+   ]
+  },
+  "B000634CO6": {
+   "position": 71,
+   "title": "Purina ONE High Protein Urinary Tract Health Dry Cat Food, 16 lb Bag | Made with real chicken, no artificial flavors or colors. Low-magnesium formula balances pH and boosts immune defense",
+   "brand": "Purina ONE",
+   "query": "Purina ONE High Protein Urinary Tract",
+   "candidates": [
+    {
+     "barcode": "017800144117",
+     "title": "Purina ONE High Protein Dry Cat Food  +Plus Urinary Tract Health Formula  22 lb. Bag",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "017800549172",
+     "title": "Purina ONE Plus  Uniary Tract Health Formula Dry Cat Food  Chicken  3.5 lb Bag",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "603134708752",
+     "title": "Purina ONE High Protein Dry Cat Food  +Plus Urinary Tract Health Formula  22 lb. Bag",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "724456979979",
+     "title": "Purina ONE High Protein Dry Cat Food  Urinary Tract Health Formula - 16 lb. Bag",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "768655348396",
+     "title": "Purina ONE High Protein Dry Cat Food  +Plus Urinary Tract Health Formula - 7 lb. Bag",
+     "brand": "Purina ONE"
+    }
+   ]
+  },
+  "B06WLH71PS": {
+   "position": 72,
+   "title": "Nutrish Indoor Complete Dry Cat Food, 14 lb. Bag (Rachael Ray) | Chicken, Lentils & Salmon Recipe, Crafted for Adult Indoor Cats, Veterinarian Reviewed Formula",
+   "brand": null,
+   "query": "Nutrish Indoor Complete",
+   "candidates": [
+    {
+     "barcode": "071190003607",
+     "title": "Rachael Ray Nutrish Indoor Complete Chicken  Lentils & Salmon Recipe Dry Cat Food  3 lb. Bag",
+     "brand": "Nutrish"
+    },
+    {
+     "barcode": "071190003614",
+     "title": "Rachael Ray Nutrish Indoor Complete Chicken  Lentils & Salmon Recipe Dry Cat Food  6 lb. Bag",
+     "brand": "Nutrish"
+    },
+    {
+     "barcode": "071190003621",
+     "title": "Rachael Ray Nutrish Indoor Complete Chicken  Lentils & Salmon Recipe Dry Cat Food  14 lb. Bag",
+     "brand": "Nutrish"
+    },
+    {
+     "barcode": "711900036210",
+     "title": "2pack Rachael Ray Nutrish Indoor Complete Cat Food - Natural, Chicken With 14lb",
+     "brand": "Rachael Ray Nutrish Indoor Complete"
+    },
+    {
+     "barcode": "714863976227",
+     "title": "Rachael Ray Nutrish Indoor Complete Premium Natural Dry Cat Food  Chicken with Lentils & Salmon Recipe  6 Pounds",
+     "brand": "Nutrish"
+    }
+   ]
+  },
+  "B0BWBMGPDZ": {
+   "position": 76,
+   "title": "Vital Essentials Freeze Dried Raw Chicken Hearts Cat Treats, 0.8 oz Bag | Single Ingredient, Premium Quality Protein, Grain-Free, USA Made with U.S. & Globally Sourced Ingredients",
+   "brand": null,
+   "query": "Vital Essentials Freeze Dried",
+   "candidates": [
+    {
+     "barcode": "033211005076",
+     "title": "Vital Essentials Freeze Dried Dog Treats  Rabbit Bites 2.0 oz",
+     "brand": "Vital Essentials"
+    },
+    {
+     "barcode": "033211005212",
+     "title": "Vital Essentials Freeze Dried Dog Treats  Minnows 1.0 oz",
+     "brand": "Vital Essentials"
+    },
+    {
+     "barcode": "033211008060",
+     "title": "Vital Essentials Freeze-Dried Patties Grain Free Beef Freeze Dried Dog Food, 1 lb",
+     "brand": "Vital Essentials"
+    },
+    {
+     "barcode": "033211008947",
+     "title": "Vital Essentials Freeze-Dried Nibblets Grain Free Beef Freeze Dried Dog Food, 1 lb",
+     "brand": "Vital Essentials"
+    },
+    {
+     "barcode": "033211008954",
+     "title": "Pet Food Experts 93200895 1 lbs Vital Essentials Freeze Dried Mini Patties Beef Entree for Dogs",
+     "brand": "Vital Essentials"
+    }
+   ]
+  },
+  "B083WM3K3H": {
+   "position": 78,
+   "title": "IAMS Proactive Health Sensitive Digestion Dry Cat Food, Turkey, 13 lb | Veterinarian-recommended, Real turkey #1 ingredient, prebiotics & fiber blend, Omega 6 & 3 for coat shine",
+   "brand": "Iams",
+   "query": "Iams Proactive Health Sensitive Digestion",
+   "candidates": [
+    {
+     "barcode": "019014712366",
+     "title": "Iams Proactive Health Adult Healthy Digestion with Chicken & Turkey Dry Cat Food, 7 lb",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "019014805105",
+     "title": "Iams Proactive Health Turkey Dry Cat Food  3 Lb Bag",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "019014805112",
+     "title": "IAMS Proactive Health Sensitive Digestion and Skin Turkey Flavor Dry Cat Food - 6lbs",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "019014805129",
+     "title": "IAMS Proactive Health Sensitive Digestion and Skin Turkey Flavor Dry Cat Food - 13lbs",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "731927621237",
+     "title": "Iams Proactive Health Sensitive Digestion & Skin Turkey Dry Cat Food  13lbs",
+     "brand": "IAMS"
+    }
+   ]
+  },
+  "B0010B3EWO": {
+   "position": 79,
+   "title": "Purina Fancy Feast Dry Cat Food with Ocean Fish and Salmon - 3 lb. Bag | 100% Complete & Balanced Cat Food with real ocean fish and salmon & accents of Garden Greens for a crunchy kibble cats love.",
+   "brand": "Fancy Feast",
+   "query": "Fancy Feast Purina Ocean Fish Salmon",
+   "candidates": [
+    {
+     "barcode": "050000463671",
+     "title": "Fancy Feast Dry Cat Food  With Ocean Fish & Salmon  16 oz. Bag",
+     "brand": "Fancy Feast"
+    },
+    {
+     "barcode": "050000463893",
+     "title": "Nestle Purina Pet Care Pro NP46389 12-16 oz Fancy Feast Gourmet Ocean Fish",
+     "brand": "Nestle Purina Pet Care Pro"
+    },
+    {
+     "barcode": "050000463916",
+     "title": "Purina Fancy Feast Indoor Dry Cat Food  Ocean Fish & Salmon  7 lb Bag",
+     "brand": "Fancy Feast"
+    },
+    {
+     "barcode": "050000467150",
+     "title": "Purina Fancy Feast with Ocean Fish, Salmon & Garden Greens Adult Gourmet Dry Cat Food - 48oz",
+     "brand": "Fancy Feast"
+    },
+    {
+     "barcode": "622013149363",
+     "title": "Purina Fancy Feast With Ocean Fish & Salmon And Accents Of Garden Greens Gourmet Cat Food",
+     "brand": "Fancy Feast"
+    }
+   ]
+  },
+  "B00RVMMHWO": {
+   "position": 84,
+   "title": "Purina Cat Chow Gentle Sensitive Stomach & Skin Dry Cat Food, 13 lb Bag | Gentle cat food with farm-raised turkey, easily digestible for sensitive systems, omega-6 fatty acids nourish skin and coat",
+   "brand": "Cat Chow",
+   "query": "Cat Chow Purina Gentle Sensitive Stomach",
+   "candidates": [
+    {
+     "barcode": "017800166331",
+     "title": "Purina Cat Chow Gentle  Sensitive Stomach Dry Cat Food  Turkey  13 lb Bag",
+     "brand": "Cat Chow"
+    },
+    {
+     "barcode": "017800179935",
+     "title": "Purina Cat Chow Gentle Dry Cat Food, 3.15 lb Bag",
+     "brand": ""
+    },
+    {
+     "barcode": "689738264955",
+     "title": "Purina Cat Chow Gentle Dry Cat Food  Sensitive Stomach + Skin  3.15 lb. Bag",
+     "brand": "Cat Chow"
+    },
+    {
+     "barcode": "689848005240",
+     "title": "Purina Cat Chow Sensitive Stomach Dry Cat Food; Gentle - 3.15 Lb. Bag Pack Of 4",
+     "brand": "Purina"
+    },
+    {
+     "barcode": "735203778813",
+     "title": "Purina Cat Chow  Gentle Dry Cat Food  Sensitive Stomach + Skin - 3.15 lb. Bag",
+     "brand": "Cat Chow"
     }
    ]
   }

@@ -773,7 +773,11 @@ Both earlier readings were wrong in opposite directions. On 2026-09-09, queries 
 
 ### Current phase
 
-MVP, live and running on real data. Search, brand browse, product pages, scanning, comparison, offline support and the Cat Care Guide are all shipped. What stands between here and a public beta is coverage: the API alone will not carry a top-100 SKU catalogue.
+**Restated 2026-09-27, against measurements taken the same day.** MVP, live and running on real data. Search, brand browse, product pages, scanning, comparison, offline support and the Cat Care Guide are all shipped, and the eight gates pass: 257 assertions, 29 catalogue entries agreeing with 25 captured panels, 29 live checks, contrast, accessibility, vitals and three engines.
+
+What stands between here and a public beta is still coverage, and the shape of that gap is now measured rather than asserted. **Top-100 coverage is 5 of 47** (12.9), up from zero on 2026-09-09, and **all five are served by the curated catalogue rather than by the API**, which is the first evidence that the transcription programme in 12.10 works end to end. The API alone will not carry a top-100 SKU catalogue and no longer looks like it ever could.
+
+**A second gap was named on 2026-09-27 and it is not the same one.** The catalogue holds 29 entries and **9 of them can be scanned**; the other 20 sit under provisional keys (12.12), which are fully transcribed panels with no barcode against them. Coverage measures whether a visitor searching by name gets a score, and it does not see this at all. Tenet 7 calls the scanner the real use case, so a coverage number that cannot fall when the scanner is nearly empty is a number measuring the wrong half of the product. M28 is that gap and 25.5 question 14 is the measurement that would size it.
 
 ### Milestone table
 
@@ -2434,7 +2438,15 @@ No `TODO`, `FIXME` or `HACK` markers exist anywhere in the codebase.
 
 ### 25.4 Work in progress
 
-The working tree is clean and `main` is deployed. M14 and all four parts of M15 are shipped. Nothing is half-finished in the tree. The next work is the M12 run-up: the accessibility and performance gates, then the curated catalogue that coverage actually depends on.
+**Rewritten 2026-09-27.** The paragraph that stood here described the M14 and M15 run-up to M12 and had been accurate on 2026-09-07. It survived twenty days and roughly a dozen shipped milestones without being read, which is worth recording: **a status section is the one part of a document that is wrong by default**, because everything else describes decisions that stay made and this describes a moment that does not stay current. It was noticed on 2026-09-27 while adding open questions immediately below it, and deliberately left alone in that change rather than rewritten in passing.
+
+*State on 2026-09-27, measured rather than recalled.* `main` is deployed and the site is live. All eight gates pass: `run-tests.py` at 257 assertions, `check-catalogue.py` at 29 entries agreeing with 25 captured panels, `check-live.py` at 29 checks, plus contrast, accessibility, vitals and the three-engine matrix. Nothing is half-finished in the site code.
+
+*What is in flight is data rather than code.* **M27b is one batch in of an expected nine or so**: six entries transcribed on 2026-09-11, coverage moved from 0 to 5 of 47, and the remaining top-100 rows are queued in batches of five. `tools/resolve-barcodes.py` reached 41 of the 47 non-assorted ranked rows before its run ended, **40 of which carry at least one barcode candidate and none of which have been reviewed**, which is the largest single piece of unconverted work the project holds: each review turns a proposal into a scannable entry and only a person can do it (12.10).
+
+*What is queued and unordered.* M28 and M29 were added on 2026-09-27 and neither has a place in the queue table. Open questions 12 to 17 in 25.5 are the concerns raised against them, six of which are unanswered, and questions 13, 14 and 15 should close before either is built.
+
+*Residue, small and known.* Section 24.1 still carries two items: parenthesised premix groups defeat `expandGroups`, which only handles square brackets, and fatty acids and vitamin E have no home in `DATA_FIELDS`. Twenty catalogue entries hold provisional keys and `check-catalogue.py` prints them on every run, which is the standing review obligation 12.12 describes rather than a defect.
 
 ### 25.5 Open questions
 

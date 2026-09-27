@@ -44,6 +44,41 @@ Notes
   is the first unplanned test of it.
 * No site code changed, so no gate behaviour changed.
 
+## [0.47.0] - 2026-09-27
+
+**Both status sections brought current, and the barcode resolver's output committed.** A status
+section is the one part of a document that is wrong by default: everything else records decisions
+that stay made, and these describe a moment that does not stay current.
+
+Fixed
+* **PRD section 25.4, "Work in progress", described the M14 and M15 run-up to M12.** It was accurate
+  on 2026-09-07 and **survived twenty days and roughly a dozen shipped milestones without being
+  read.** It now carries the state measured on 2026-09-27, and it says plainly why this particular
+  section went stale, because the next reader will be tempted to trust it.
+* **PRD section 13, "Current phase", said coverage is what stands between here and a beta** and left
+  the shape of that gap unmeasured. Coverage is 5 of 47 and all five come from the curated
+  catalogue. It also now names the second gap, which is not the same one: **the catalogue holds 29
+  entries and 9 of them can be scanned.** Coverage measures search and cannot see that at all, so a
+  number that stays still while the scanner is nearly empty is measuring the wrong half of a product
+  whose tenet 7 calls scanning the real use case.
+
+Added
+* **`tools/data/barcode-candidates.json` and `tools/data/purina-index.json`**, held back on
+  2026-09-11 because the resolver was mid-run and a growing file makes a noisy commit. The run
+  reached **41 of the 47 non-assorted ranked rows, 40 of them carrying at least one candidate, none
+  reviewed.** That is the largest piece of unconverted work the project holds: each review turns a
+  proposal into a scannable entry, and section 12.10 says only a person can do it.
+
+Notes
+* Verified rather than recalled before writing any of the above: 257 assertions, 29 entries agreeing
+  with 25 captured panels, coverage 5 of 47, 29 live checks.
+* Nothing in `README.md` or `docs/DESIGN.md` needed a correction. DESIGN.md dates its own last full
+  audit at 2026-09-06 and makes no claim that has since become false.
+* **One apparent contradiction was checked and is not one.** Section 25.1 describes a 600-product
+  sample and question 9 a 1000-product one. They are two different measurements on two different
+  dates, 2026-09-05 for the headline fields and 2026-09-07 for the language coverage, and both say
+  so. Left alone.
+
 ## [0.46.0] - 2026-09-27
 
 **The concerns raised against M28 and M29 become numbered open questions.** A concern nobody can

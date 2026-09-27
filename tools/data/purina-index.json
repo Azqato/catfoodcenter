@@ -2531,206 +2531,247 @@
   },
   "purina-one-grain-free-beef-wet-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-grain-free-beef-wet-cat-food",
    "title": "Purina ONE Grain Free Beef Wet Cat Food Recipe"
   },
   "purina-one-grain-free-chicken-wet-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-grain-free-chicken-wet-cat-food",
    "title": "Purina ONE Grain Free Chicken Wet Cat Food Recipe"
   },
   "purina-one-grain-free-ocean-whitefish-wet-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-grain-free-ocean-whitefish-wet-cat-food",
    "title": "Purina ONE Grain Free Ocean Whitefish Wet Cat Food Recipe"
   },
   "purina-one-grain-free-pate-beef-chicken-ocean-whitefish-variety-12-pack-wet-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-grain-free-pate-beef-chicken-ocean-whitefish-variety-12-pack-wet-cat-food",
    "title": "Purina ONE Grain Free Beef, Chicken, Ocean Whitefish Wet Cat Food Recipes 12 ct Variety Pack"
   },
   "purina-one-grain-free-turkey-wet-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-grain-free-turkey-wet-cat-food",
    "title": "Purina ONE Grain Free Turkey Wet Cat Food Recipe"
   },
   "purina-one-hairball-control-dry-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-hairball-control-dry-cat-food",
    "title": "Purina ONE +Plus Hairball Formula Dry Cat Food"
   },
   "purina-one-healthy-kitten-chicken-salmon-wet-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-healthy-kitten-chicken-salmon-wet-cat-food",
    "title": "Purina ONE Healthy Kitten Chicken and Salmon Recipe Wet Cat Food"
   },
   "purina-one-healthy-kitten-food-dry-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2026-07/4159_a415925_pone_plus_healthy_kitten_dry_cat_food_s39.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-healthy-kitten-food-dry-cat-food",
    "title": "Purina ONE +Plus Healthy Kitten Chicken Dry Cat Food"
   },
   "purina-one-high-protein-skin-coat-health-salmon-ocean-whitefish-dry-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2025-01/4139_a413924_purina_one_plus_hp_salmon_owf_dry_cat_food_hu3.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-high-protein-skin-coat-health-salmon-ocean-whitefish-dry-cat-food",
    "title": "Purina ONE Plus High Protein Salmon & Ocean Whitefish Skin & Coat Health Dry Cat Food Formula"
   },
   "purina-one-ideal-weight-high-protein-chicken-dry-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2025-01/4190_a419024_purina_one_plus_hp_ideal_weight_w_real_chicken_dry_cat_food_tu7.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-ideal-weight-high-protein-chicken-dry-cat-food",
    "title": "Purina ONE Plus High Protein Ideal Weight and Healthy Metabolism with Chicken Dry Cat Food Formula"
   },
   "purina-one-ideal-weight-high-protein-turkey-dry-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-ideal-weight-high-protein-turkey-dry-cat-food",
    "title": "Purina ONE® Ideal Weight High Protein Dry Cat Food"
   },
   "purina-one-ideal-weight-tender-salmon-wet-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-ideal-weight-tender-salmon-wet-cat-food",
    "title": "Purina ONE Ideal Weight Tender Salmon Recipe in Sauce Wet Cat Food"
   },
   "purina-one-ideal-weight-white-meat-chicken-wet-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-ideal-weight-white-meat-chicken-wet-cat-food",
    "title": "Purina ONE Ideal Weight White Meat Chicken Recipe in Sauce Wet Cat Food"
   },
   "purina-one-indoor-advantage-salmon-dry-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-indoor-advantage-salmon-dry-cat-food",
    "title": "Purina ONE +Plus Indoor Advantage Real Salmon #1 Ingredient Dry Cat Food"
   },
   "purina-one-indoor-cat-food-dry-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2026-08/4188_s418825_pone_plus_indoor_advantage_w_real_turkey_dry_cat_food_vs1.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-indoor-cat-food-dry-cat-food",
    "title": "Purina ONE +Plus Indoor Advantage Turkey Dry Cat Food"
   },
   "purina-one-indoor-hairball-ocean-whitefish-rice-wet-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-indoor-hairball-ocean-whitefish-rice-wet-cat-food",
    "title": "Purina ONE Indoor + Hairball Ocean Whitefish & Rice Recipe Wet Cat Food"
   },
   "purina-one-indoor-senior-chicken-ocean-fish-pate-wet-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-indoor-senior-chicken-ocean-fish-pate-wet-cat-food",
    "title": "Purina ONE Indoor Advantage Senior 7+ Chicken & Ocean Fish Recipe Paté Wet Cat Food"
   },
   "purina-one-live-clear-allergen-reducing-dry-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2024-11/4144_a414424_purina_one_liveclear_adult_formula_chicken_dry_cat_food_j93.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-live-clear-allergen-reducing-dry-cat-food",
    "title": "Purina ONE LiveClear Allergen Reducing Adult Dry Cat Food"
   },
   "purina-one-liveclear-allergen-reducing-kitten-food-dry-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2024-11/4145_a414524_purina_one_liveclear_kitten_formula_chicken_dry_cat_food_j92.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-liveclear-allergen-reducing-kitten-food-dry-cat-food",
    "title": "Purina ONE LiveClear Allergen Reducing Dry Kitten Food"
   },
   "purina-one-plus-whole-body-support-chicken-dry-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2026-01/4153_b415325_pone_plus_whole_body_support_w_chicken_dry_cat_food_cu7.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-plus-whole-body-support-chicken-dry-cat-food",
    "title": "Purina ONE +Plus Whole Body Support Chicken Dry Cat Food"
   },
   "purina-one-salmon-tender-selects-blend-dry-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2026-04/4156_f415625_pone_tsb_w_real_salmon_dry_cat_food_tc1.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-salmon-tender-selects-blend-dry-cat-food",
    "title": "Purina ONE Tender Selects Blend With Real Salmon Dry Cat Food"
   },
   "purina-one-senior-indoor-cat-food-dry-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-senior-indoor-cat-food-dry-cat-food",
    "title": "Purina ONE +Plus Indoor Advantage Senior 7+ Dry Cat Food"
   },
   "purina-one-sensitive-skin-stomach-dry-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2026-08/4186_q418625_pone_plus_sensitive_skin_stomach_dry_cat_food_vk3.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-sensitive-skin-stomach-dry-cat-food",
    "title": "Purina ONE +Plus Sensitive Skin & Stomach Dry Cat Food"
   },
   "purina-one-true-instinct-high-protein-chicken-gravy-wet-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2024-12/4311_g431124_purina_one_plus_hp_chicken_in_gravy_wet_cat_food_dh2.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-true-instinct-high-protein-chicken-gravy-wet-cat-food",
    "title": "Purina ONE Natural High Protein Cat Food, Chicken Recipe in Wet Cat Food Gravy"
   },
   "purina-one-true-instinct-high-protein-chicken-salmon-wet-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2024-12/4336_f433624_purina_one_plus_hp_chicken_salmon_in_sauce_wet_cat_food_rr2.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-true-instinct-high-protein-chicken-salmon-wet-cat-food",
    "title": "Purina ONE Natural, High Protein Cat Food, Chicken and Salmon Recipe in Sauce"
   },
   "purina-one-true-instinct-high-protein-chicken-turkey-gravy-wet-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2024-12/4337_f433724_purina_one_plus_hp_chicken_turkey_in_gravy_wet_cat_food_rr1.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-true-instinct-high-protein-chicken-turkey-gravy-wet-cat-food",
    "title": "Purina ONE Natural, High Protein Cat Food, Chicken and Turkey Recipe in Gravy"
   },
   "purina-one-true-instinct-high-protein-salmon-trout-wet-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2024-12/4338_f433824_purina_one_plus_hp_salmon_trout_in_sauce_wet_cat_food_rr4.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-true-instinct-high-protein-salmon-trout-wet-cat-food",
    "title": "Purina ONE Natural, High Protein Cat Food, Salmon and Trout Recipe in Sauce"
   },
   "purina-one-true-instinct-high-protein-tuna-wet-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2024-12/4312_g431224_purina_one_plus_hp_tuna_in_sauce_wet_cat_food_dh4.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-true-instinct-high-protein-tuna-wet-cat-food",
    "title": "Purina ONE Natural, High Protein Cat Food, Tuna Recipe in Sauce"
   },
   "purina-one-true-instinct-high-protein-turkey-gravy-wet-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2024-12/4313_g431324_purina_one_plus_hp_turkey_in_gravy_wet_cat_food_dh3.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-one-true-instinct-high-protein-turkey-gravy-wet-cat-food",
    "title": "Purina ONE True Instinct High Protein Turkey Recipe in Gravy Wet Cat Food"
   },
   "purina-one-true-instinct-tender-cuts-gravy-tuna-chicken-turkey-variety-12-pack": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-true-instinct-tender-cuts-gravy-tuna-chicken-turkey-variety-12-pack",
    "title": "Purina ONE Natural, High Protein Cat Food Variety Pack, Turkey, Chicken and Tuna Recipes"
   },
   "purina-one-urinary-tract-health-beef-liver-wet-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-urinary-tract-health-beef-liver-wet-cat-food",
    "title": "Purina ONE Urinary Tract Health Beef & Liver Recipe Wet Cat Food"
   },
   "purina-one-urinary-tract-health-dry-cat-food": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/purina-one-urinary-tract-health-dry-cat-food",
    "title": "Purina ONE +Plus Urinary Tract Health Formula Dry Cat Food"
   },
   "purina-pro-plan-indoor-chicken-wet-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2024-05/4756-b475622-pro-plan-indoor-balance-chicken-entree-in-gravy-cat-food-ja3.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-pro-plan-indoor-chicken-wet-cat-food",
    "title": "Pro Plan Indoor Balance Chicken Entrée in Gravy Wet Cat Food"
   },
   "purina-pro-plan-indoor-ocean-whitefish-tuna-wet-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2024-05/4757-b475723-pro-plan-indoor-balance-owf-tuna-entree-in-sauce-cat-food-9wg.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-pro-plan-indoor-ocean-whitefish-tuna-wet-cat-food",
    "title": "Pro Plan Indoor Balance Ocean Whitefish & Tuna Entrée in Sauce Wet Cat Food"
   },
   "purina-pro-plan-indoor-salmon-sauce-wet-cat-food": {
-   "deck": null,
+   "deck": "https://www.purina.com/sites/default/files/product-label-deck-file/2024-03/pdf5102-4755-a475522-pro-plan-indoor-balance-salmon-entre-in-sauce-cat-food-9sg.pdf",
+   "deckCount": 1,
    "path": "/cats/shop/purina-pro-plan-indoor-salmon-sauce-wet-cat-food",
    "title": "Pro Plan Indoor Balance Salmon Entrée in Sauce Wet Cat Food"
   },
   "savory-centers-variety-pack-12-cans": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/savory-centers-variety-pack-12-cans",
    "title": "Fancy Feast Savory Centers Wet Cat Food with a Gourmet Gravy Center 12 Count Variety Pack - Chicken, Salmon, Beef, and T"
   },
   "seafood-pate-variety-pack-36-cans": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/seafood-pate-variety-pack-36-cans",
    "title": "Fancy Feast Classic Paté Seafood Collection Wet Cat Food Variety Pack – 36 Cans"
   },
   "wild-favorites-mini-bites-cod-kale": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/wild-favorites-mini-bites-cod-kale",
    "title": "Friskies Wild Favorites Mini Bites With Wild Caught Cod & Kale In Sauce Wet Cat Food"
   },
   "wild-favorites-mini-bites-haddock-sweet-potato": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/wild-favorites-mini-bites-haddock-sweet-potato",
    "title": "Friskies Wild Favorites Mini Bites With Wild Caught Haddock & Sweet Potato In Sauce Wet Cat Food"
   },
   "wild-favorites-mini-bites-sardines-kale": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/wild-favorites-mini-bites-sardines-kale",
    "title": "Friskies Wild Favorites Mini Bites With Wild Caught Sardines & Kale In Sauce Wet Cat Food"
   },
   "wild-favorites-mini-bites-tuna-sweet-potato": {
    "deck": null,
+   "deckCount": 0,
    "path": "/cats/shop/wild-favorites-mini-bites-tuna-sweet-potato",
    "title": "Friskies Wild Favorites Mini Bites With Wild Caught Tuna & Sweet Potato In Sauce Wet Cat Food"
   }
