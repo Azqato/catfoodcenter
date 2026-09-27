@@ -44,6 +44,41 @@ Notes
   is the first unplanned test of it.
 * No site code changed, so no gate behaviour changed.
 
+## [0.46.0] - 2026-09-27
+
+**The concerns raised against M28 and M29 become numbered open questions.** A concern nobody can
+cite is a concern that gets rediscovered rather than answered. Documentation only, no code.
+
+Added
+* **PRD section 25.5 gains questions 12 to 17**, in the register that already says it is "numbered
+  so they can be answered by reference". They were raised in conversation when the two milestones
+  were proposed, and most of the reasoning was already in the section 13 narratives; what was
+  missing is that it was prose rather than something with a number on it.
+  * **12. Does the live Open Pet Food Facts read go entirely, or stay as a fallback?** The only one
+    that changes the shape of the build rather than its schedule. Either answer forces a rewrite of
+    16.5a's merge rules, which currently arbitrate between a live record and a local overlay.
+  * **13. What does the ODbL require of a database mixing imported and transcribed records?** Not
+    answered here and not answerable by an agent. The mitigation can be stated without a lawyer:
+    keep imported records separable and labelled.
+  * **14. How much scorable breadth is actually lost by dropping the live read?** Unrun. **Every
+    claim about the cost of M29 is currently a guess, including the optimistic one made here.**
+  * **15. What stops a valid barcode being attached to the wrong product, once strangers can submit
+    them?** The existing cross-check only covers entries that have a captured panel, so it does not
+    cover the case M28 creates.
+  * **16. Where do M28 and M29 sit relative to M12 and M27b?** Both rows carry "-" in the queue
+    table, which means unplaced rather than last.
+  * **17. Does an imported upstream record need a `sourceKind` of its own?** It is not a panel, not
+    a retailer listing, and arrives in volume, which is what makes a wrong rank expensive.
+* **Both milestone narratives now cross-link to their question numbers**, so the register and the
+  roadmap point at each other rather than each holding half the argument.
+
+Notes
+* **Questions 13, 14 and 15 should close before either milestone is built**; 12, 16 and 17 can close
+  during the design. That split is recorded rather than left to be re-derived.
+* Section 25.4, "Work in progress", still describes the M12 run-up and names M14 and M15 as the
+  recent work. **It is stale and was left alone**, because correcting it is not what this change was
+  asked to do and a drive-by rewrite of a status section is how status sections stop being trusted.
+
 ## [0.45.0] - 2026-09-27
 
 **M29 on the roadmap: our database becomes the spine, and Open Pet Food Facts becomes a source
