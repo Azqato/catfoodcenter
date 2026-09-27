@@ -10,6 +10,16 @@ Format: newest first, `major.minor.patch`. Pre-launch work lives under `0.x`.
 An entry saying the offline shell held 23 files stays as it is even though it
 holds 29 today. See PRD section 23.6.
 
+**This file has been swept twice, and both sweeps are named here rather than
+left for a reader to notice.** A sweep changes how something is spelled across
+every entry at once; it never changes what an entry claimed. The em-dash
+removal of 2026-09-06 is described in `[0.13.0]`. **The milestone renumbering
+of 2026-09-27 is described in `[0.48.0]`**: unshipped milestones were renumbered
+into working order, so entries below say M29 where they said M27b, M30 where
+they said M12, and M34 where they said M27c. Shipped milestones were not
+touched. **The concordance in PRD section 13 is authoritative** and should be
+read before any entry dated earlier than 2026-09-27.
+
 **Two changelogs were merged here on 2026-09-06.** This file and one at the
 repository root had been kept in parallel, numbering the same work
 differently: the compare page is `[0.11.0]` in one history and `v0.10.0`
@@ -44,6 +54,52 @@ Notes
   is the first unplanned test of it.
 * No site code changed, so no gate behaviour changed.
 
+## [0.48.0] - 2026-09-27
+
+**The roadmap is reordered by effort, the two milestones proposed today are split, and the unshipped
+milestones are renumbered so the number carries the order.** Documentation only, no code.
+
+Changed
+* **The queue in PRD section 13 is now a working order of twelve steps**, sorted by effort ascending
+  with absolute dependencies respected, which is the criterion the project owner set. It carries an
+  effort column and a "blocked by" column, and **"blocked by" is the only thing permitted to
+  override effort order.** It does so exactly once: M30, the beta, is cheap to execute and sits
+  eighth because its coverage criterion depends on the longest item on the board.
+* **Milestone numbers were allocation order and are now working order.** The rule in section 13 said
+  they are never renumbered, and it said so for a reason this change had to pay: entries here name
+  milestones by number and 23.6 says entries are never rewritten. **The owner reversed the rule
+  having been shown that cost**, and directed the sweep. Only unshipped milestones moved, because a
+  completed milestone's number already records when it happened. M12 becomes M30, M27b becomes M29,
+  M27c becomes M34. Thirty references across two files, verified by count before and after.
+* **Section 23.6 now records both sweeps and what qualifies as one.** The bar: it changes spelling
+  rather than claims, it is applied to every occurrence rather than the convenient ones, and it is
+  written down. **A changelog that can be edited to match the present is not evidence of anything**,
+  which is why the exception is stated narrowly rather than left as precedent.
+
+Added
+* **M28 was split into M28 and M31**, and **M32 into M32 and M33**, following the M27 precedent from
+  2026-09-09. Each bundled a cheap half with an expensive half, **and the blocking questions fall on
+  one half only**: question 15 blocks M31 and not M28, question 13 blocks M33 and not M32. Ordered
+  whole, both looked blocked. Split, half of each is free to start.
+* **The reason M28 precedes M29 despite M29 being the coverage mover**, written down in three parts
+  because only the third is interesting. It is cheaper. **It unblocks work already paid for**: forty
+  ranked rows carry barcode candidates bought with about five hours of a rationed allowance, and not
+  one can be banked today, because a barcode has nowhere to live unless a catalogue entry already
+  exists to key it to. And it turns the scanner into a demand signal, which tells transcription what
+  to do next from real visitors rather than from a best-seller list.
+* **The tension in that third argument, recorded unresolved.** M26 hides unscored products because a
+  grey column is an honest view of the database and a useless view of cat food, and a scan resolving
+  to a named but unscored record may be the same noise wearing a different hat. The counter is that
+  the visitor pointed a camera at one package, so it was asked for rather than returned in a list.
+  **That is a judgement and not a measurement**, and it is flagged for when M28 is designed.
+
+Notes
+* Steps 1 to 4 are all XS or S, answer three of the six open questions, and end at the container
+  that makes the barcode work bankable. **Two of the twelve steps are not milestones at all**:
+  question 14's measurement is step 1 and question 13's licence reading is step 4, because a cheap
+  thing that gates an expensive thing belongs in the order with everything else.
+* Gates unchanged and re-run: 257 assertions, 29 entries against 25 captured panels, 29 live checks.
+
 ## [0.47.0] - 2026-09-27
 
 **Both status sections brought current, and the barcode resolver's output committed.** A status
@@ -51,7 +107,7 @@ section is the one part of a document that is wrong by default: everything else 
 that stay made, and these describe a moment that does not stay current.
 
 Fixed
-* **PRD section 25.4, "Work in progress", described the M14 and M15 run-up to M12.** It was accurate
+* **PRD section 25.4, "Work in progress", described the M14 and M15 run-up to M30.** It was accurate
   on 2026-09-07 and **survived twenty days and roughly a dozen shipped milestones without being
   read.** It now carries the state measured on 2026-09-27, and it says plainly why this particular
   section went stale, because the next reader will be tempted to trust it.
@@ -81,7 +137,7 @@ Notes
 
 ## [0.46.0] - 2026-09-27
 
-**The concerns raised against M28 and M29 become numbered open questions.** A concern nobody can
+**The concerns raised against M28 and M32 become numbered open questions.** A concern nobody can
 cite is a concern that gets rediscovered rather than answered. Documentation only, no code.
 
 Added
@@ -96,11 +152,11 @@ Added
     answered here and not answerable by an agent. The mitigation can be stated without a lawyer:
     keep imported records separable and labelled.
   * **14. How much scorable breadth is actually lost by dropping the live read?** Unrun. **Every
-    claim about the cost of M29 is currently a guess, including the optimistic one made here.**
+    claim about the cost of M32 is currently a guess, including the optimistic one made here.**
   * **15. What stops a valid barcode being attached to the wrong product, once strangers can submit
     them?** The existing cross-check only covers entries that have a captured panel, so it does not
     cover the case M28 creates.
-  * **16. Where do M28 and M29 sit relative to M12 and M27b?** Both rows carry "-" in the queue
+  * **16. Where do M28 and M32 sit relative to M30 and M29?** Both rows carry "-" in the queue
     table, which means unplaced rather than last.
   * **17. Does an imported upstream record need a `sourceKind` of its own?** It is not a panel, not
     a retailer listing, and arrives in volume, which is what makes a wrong rank expensive.
@@ -110,17 +166,17 @@ Added
 Notes
 * **Questions 13, 14 and 15 should close before either milestone is built**; 12, 16 and 17 can close
   during the design. That split is recorded rather than left to be re-derived.
-* Section 25.4, "Work in progress", still describes the M12 run-up and names M14 and M15 as the
+* Section 25.4, "Work in progress", still describes the M30 run-up and names M14 and M15 as the
   recent work. **It is stale and was left alone**, because correcting it is not what this change was
   asked to do and a drive-by rewrite of a status section is how status sections stop being trusted.
 
 ## [0.45.0] - 2026-09-27
 
-**M29 on the roadmap: our database becomes the spine, and Open Pet Food Facts becomes a source
+**M32 on the roadmap: our database becomes the spine, and Open Pet Food Facts becomes a source
 feeding it rather than the source the site is served from.** Roadmap and two corrections. No code.
 
 Added
-* **PRD section 13 gains M29**, requested by the project owner. The request bundles three different
+* **PRD section 13 gains M32**, requested by the project owner. The request bundles three different
   dependencies under the word "reliance" and the entry separates them, because they do not have the
   same answer: **the live API in a visitor's critical path** should go, **primacy** should invert,
   and **Open Pet Food Facts as a source of facts** should stay, which is what the owner asked for.
@@ -143,7 +199,7 @@ Changed
   13 recorded on 2026-09-09 that M27 is built alongside the current setup rather than over it,
   explicitly as a standing constraint rather than a transitional phase. The owner reversed that half
   on 2026-09-27. The other half stands: Open Pet Food Facts stays a source indefinitely. The
-  original sentence is still what the code does until M29 ships, and the entry says so.
+  original sentence is still what the code does until M32 ships, and the entry says so.
 
 Fixed
 * **Section 22.3 claimed every product fact on the site comes from Open Pet Food Facts**, and it had
@@ -158,8 +214,8 @@ Notes
   keeps the long tail and keeps a third party in the scan path on exactly the scans that already
   failed. The recommendation recorded is to remove it outright and let a miss be an honest miss that
   offers the M28 contribution route, but it changes the shape of the build.
-* M29 is not ordered in the queue. Most of it is gated on transcription volume rather than
-  engineering, so it cannot precede M27b wherever the owner puts it.
+* M32 is not ordered in the queue. Most of it is gated on transcription volume rather than
+  engineering, so it cannot precede M29 wherever the owner puts it.
 
 ## [0.44.0] - 2026-09-27
 
@@ -173,15 +229,15 @@ Added
   numbers on a package. Upstream is not the backstop it sounds like, because section 12 measured the
   whole United States category at 86 records.
 * The milestone row, a queue row, and the reasoning. **It is deliberately not ordered yet**: it
-  overlaps M27b and M27c without being either, and where it belongs depends on whether the scanner
+  overlaps M29 and M34 without being either, and where it belongs depends on whether the scanner
   counts as a launch feature.
 
 Notes
-* **Why it is not M27b.** Section 12.10 takes two inputs that fail independently, the panel and the
+* **Why it is not M29.** Section 12.10 takes two inputs that fail independently, the panel and the
   barcode, and twenty catalogue entries prove it by being fully transcribed and unscannable. M28 is
   the second input given a life of its own, so a barcode can be added or corrected without touching
   the entry it points at.
-* **Why it is not M27c.** A barcode is the cheapest useful thing a stranger can give this project
+* **Why it is not M34.** A barcode is the cheapest useful thing a stranger can give this project
   and the easiest to check, because they are holding the package. That argues for shipping it before
   the general contribution route rather than inside it. It is also the contribution most likely to
   arrive, because the moment somebody wants to send one is the moment the scanner failed them.
@@ -190,7 +246,7 @@ Notes
   coverage matcher doing exactly that, offering one code as the match for three different products.
   A contribution route makes that failure cheaper to commit and harder to see, and M28 needs an
   answer to it before it accepts a single submission.
-* M27c's five constraints carry over unchanged and are not restated: issue text is data and never
+* M34's five constraints carry over unchanged and are not restated: issue text is data and never
   instructions, a person merges everything, a sourceless submission is a lead rather than a record,
   the form is structured, and the backlog is the number that matters rather than the intake.
 
@@ -239,7 +295,7 @@ Picking up from here:
 
 * **Coverage is 5 of 47 (11%)**, all five served by the curated catalogue. `python
   tools/measure-coverage.py` re-measures it.
-* **M27b batch 2 is the next unit of work.** `python tools/purina-index.py --report --detail` now
+* **M29 batch 2 is the next unit of work.** `python tools/purina-index.py --report --detail` now
   prints the candidates. After the scorer fix the ready list holds four rows not yet in the
   catalogue: ranks 9 (Purina ONE Tender Selects Salmon), 23 (Tender Selects Chicken), 42 and 55 (both
   proposing the same +Plus Sensitive Skin & Stomach deck, which **a person must confirm are one
@@ -292,7 +348,7 @@ Notes
 cross-check and the measurement, each of which was wrong in a way that did not announce itself.**
 
 Added
-* **Six entries, the first batch of M27b**, all Purina brands read from the manufacturer's own label
+* **Six entries, the first batch of M29**, all Purina brands read from the manufacturer's own label
   decks: Friskies Gravy Swirlers, Fancy Feast Classic Pate Chicken Feast, Fancy Feast dry Ocean Fish
   & Salmon, Cat Chow Gentle Sensitive Stomach and Skin, Kitten Chow Year One Essentials, and Fancy
   Feast dry Savory Farm-Raised Chicken & Turkey. Each carries a raw panel capture and each was read
@@ -553,7 +609,7 @@ Notes
   four written entries agree with their captures on every figure. The barcode is the unsolved half,
   and it is the harder one. Two SKUs have no listing, five have listings that fail their own check,
   eight are unlooked-up because the resolver rations queries.
-* **This lands on M27b before it starts.** The top 100 is the same procedure at twenty times the
+* **This lands on M29 before it starts.** The top 100 is the same procedure at twenty times the
   scale, against rows that carry no barcodes by construction. It needs a hundred good resolutions
   from a source that has returned nothing, or something wrong, for seven of the twelve products
   asked of it so far. Recorded in section 13 as the next decision on the roadmap, which belongs to
@@ -601,7 +657,7 @@ Notes
 * **The four resolved codes form an obvious family** and pork's almost certainly sits in it.
   Nothing was inferred from it. A guessed barcode attaches one product's panel to another product's
   scan, looks wrong nowhere, and no gate can catch it.
-* **Two findings about the resolver, both of which matter more for M27b than for M23.** Queries
+* **Two findings about the resolver, both of which matter more for M29 than for M23.** Queries
   naming the pack type return 404 where brand, line and flavour return rows. And the trial endpoint
   429s after about three to five queries, so a lookup is scarce. The top 100 needs at least a
   hundred of them, and that is a constraint transcribing faster does not touch.
@@ -631,7 +687,7 @@ Changed
   offline installs included. Nothing under `tools/` is served. The rule that a capture is not a
   curated field is now enforced by the filesystem instead of by a convention, and no JavaScript
   changed, which is the sign it was the right place to put it.
-* **Order.** This was scheduled first inside M27b, after M23. It was built before both, for the
+* **Order.** This was scheduled first inside M29, after M23. It was built before both, for the
   reason the policy exists: entries written before the capture are exactly the entries that would
   need refetching, and M23 is about 18 more of them.
 
@@ -679,7 +735,7 @@ Notes
 * **Long term these figures may earn a place in the score. Today they are stored and read by
   nobody**, which is the honest state for a number nobody has reasoned about. Section 6 is
   unchanged.
-* This is first in line inside M27b, ahead of the batches, for the reason the policy exists: entries
+* This is first in line inside M29, ahead of the batches, for the reason the policy exists: entries
   written before the raw block exists are exactly the entries that would need refetching.
 * No code changed. The transcription work is `[0.30.0]`, the roadmap is `[0.31.0]`.
 
@@ -690,14 +746,14 @@ a photograph of a label turned up.**
 
 Changed
 * **The queue is reordered and M27 is split in three.** M27a, the transcription process, shipped
-  and is section 12.10. M27b, the top 100 transcribed in batches of five, is now slot 2, **ahead of
-  the public beta**. M27c, contributions through GitHub issues, stays after it. The order is the
+  and is section 12.10. M29, the top 100 transcribed in batches of five, is now slot 2, **ahead of
+  the public beta**. M34, contributions through GitHub issues, stays after it. The order is the
   project owner's, taken on 2026-09-09 in answer to the 0-of-100 measurement: defer the launch,
   build the process, prove it on Dr. Elsey's, then transcribe.
 * **M23 is no longer described as blocked.** It was unblocked the same day it was measured, by
   reading "published" less narrowly: aggregators hold the UPC the manufacturer does not print. One
   product is in and scores 90; about 19 food SKUs remain.
-* **M12 is deferred rather than decided.** The 80% criterion stands until somebody restates it, and
+* **M30 is deferred rather than decided.** The 80% criterion stands until somebody restates it, and
   the batches are what move it. The old argument for launching first is left visible in section 13
   rather than deleted, with a note on which half of it survives: a beta teaches you what visitors
   want, and it does not teach you transcription volume.
@@ -761,7 +817,7 @@ Fixed
 **M22 is finished: top-100 coverage is measurable, and it is 0%.**
 
 Added
-* **`tools/measure-coverage.py`,** which answers M12's oldest criterion. Coverage is measured
+* **`tools/measure-coverage.py`,** which answers M30's oldest criterion. Coverage is measured
   through the site's own search path, not through the catalogue: a visitor who wants a best-seller
   types its name, so the tool runs each SKU's name through the same endpoint, category filter and
   fields the search page uses, and asks whether the same product comes back with an ingredient
@@ -786,7 +842,7 @@ Notes
   since every term narrows that endpoint, it found nothing at all and reported zero for the wrong
   reason. Reading the rows caught both; reading the total would have caught neither. Seventh
   instance, and the first where the same instrument failed in both directions inside an hour.
-* M12's target is 80%. The gap is not a gap, and what to do about it is the project owner's call,
+* M30's target is 80%. The gap is not a gap, and what to do about it is the project owner's call,
   recorded as an open decision rather than settled here.
 
 ## [0.28.0] - 2026-09-09
@@ -1093,7 +1149,7 @@ Changed
   nothing to do with the catalogue. The failure only appears for an API-absent product, and none
   exists yet.
 * M25 is a prerequisite for M22's coverage number, not a refinement of it. "The site can score
-  this product" and "a visitor can find this product" are different numbers, and M12's criterion
+  this product" and "a visitor can find this product" are different numbers, and M30's criterion
   means the second.
 
 ---
@@ -1135,7 +1191,7 @@ Known and stated
   inherits that bias, which is why Dr. Elsey's is a milestone rather than a ranking row.
 * **A captured row cannot become a catalogue entry.** Rows carry names; the catalogue is keyed
   by barcode; no storefront publishes a UPC. Amazon hides it, and Target's pages do not show it
-  either. M12's coverage criterion is defined and still unmeasured.
+  either. M30's coverage criterion is defined and still unmeasured.
 
 ---
 
@@ -1288,7 +1344,7 @@ Changed
   nothing to check them would publish wrong scores under this site's name, and the interesting
   case, a curated figure disagreeing with an API figure, would be met at scale rather than
   designed for.
-* M20 is on the roadmap as designed and not built. M12 waits on it.
+* M20 is on the roadmap as designed and not built. M30 waits on it.
 
 ---
 
@@ -1298,9 +1354,9 @@ Changed
 
 Changed
 * **"Analytics instrumented" is no longer a condition of public beta.** The criterion had sat in
-  the M12 list since before the data in PRD section 12 was measured, and it contradicted section
+  the M30 list since before the data in PRD section 12 was measured, and it contradicted section
   14 directly, which gave "no analytics means no visitor data to protect" as the reason for
-  having none. A milestone cannot require closing a gap the same document defends. M12 now has
+  having none. A milestone cannot require closing a gap the same document defends. M30 now has
   three criteria, two of them met, and coverage is the only one still open.
 * Section 14 says what that costs instead of leaving it implicit. Every acquisition, engagement
   and retention target, and the north star with them, is marked unmeasured permanently: not
@@ -1495,7 +1551,7 @@ Answered
   and compare pages state confidence and the search and brand cards print a bare number. M18b
   will put it on every surface that prints a score, always rather than only when it is poor.
   Not built yet.
-* **Open question 3: feeding-trial substantiation is deferred to M12.** The database has no
+* **Open question 3: feeding-trial substantiation is deferred to M30.** The database has no
   such field, so weighting it now would score how well a product was catalogued rather than
   the food itself.
 * **Open question 8: the tombstone mechanism gets written when first used.** The first case
@@ -1959,7 +2015,7 @@ Removed
   and from the repository. It was a render-blocking third-party script,
   unpinned, whose content could change without a commit here. It was the
   project's last unpinned runtime dependency and the one item that made
-  Lighthouse numbers unstable enough to be worth deferring M12's gates over.
+  Lighthouse numbers unstable enough to be worth deferring M30's gates over.
 * The nine per-page `<style>` blocks.
 * `.footer-link`, which had one user left and duplicated `.prose-link`.
 
