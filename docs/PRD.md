@@ -822,6 +822,7 @@ MVP, live and running on real data. Search, brand browse, product pages, scannin
 | M27b: The top 100, transcribed | | Queued, in batches of five |
 | M27c: Contributions through GitHub issues | | Queued, after the beta |
 | M27: Our own product database | | **Split into M27a, M27b and M27c on 2026-09-09.** The number stays allocated to the whole, and the three rows above are what is tracked |
+| M28: The barcode index, and other people filling it | | Queued 2026-09-27. Not yet ordered |
 
 ### What shipped, and what was learned
 
@@ -1057,6 +1058,7 @@ now reports the same call the engine made, and a test pins it.
 | 2 | **M27b: the top 100, transcribed** | Ordered here by the project owner on 2026-09-09, ahead of the beta. Batches of five, each one a checkpoint with the gates, a commit and a re-measured coverage number, so section 12.9 moves visibly rather than in one unverifiable jump. **Both inputs now have a route**: section 12.13 for the barcode, section 12.14 for the panel, which reaches the 47 rows of the hundred that are Purina brands |
 | 3 | **M12: public beta** | Deferred 2026-09-09 rather than decided. It launches when the coverage number is one the owner is willing to publish, which is what M23 and M27b exist to produce |
 | 4 | **M27c: contributions through GitHub issues** | After the beta. A database other people can add to is worth building once there is a database worth adding to |
+| - | **M28: the barcode index, and other people filling it** | **Added 2026-09-27 and deliberately not placed yet.** It overlaps M27b and M27c without being either, and where it sits depends on whether the scanner is treated as a launch feature or a post-launch one. See below |
 
 *Why this order changed on 2026-09-09.* The coverage measurement came back at 0 of 100 and the queue above it assumed a launch would come first. Presented with the options, the owner deferred the launch decision and chose the work instead: build the process, prove it on Dr. Elsey's, then transcribe the top 100 in batches of five. That inverts the argument M12 had been carrying, which was that launching early is how you learn what to cover. It is the right inversion, and the reason is in the number: launching a scoring site that cannot score a single best-seller does not gather information about what visitors want, it teaches them the site does not work.
 
@@ -1182,6 +1184,22 @@ Five things that has to get right, all of them recorded now because they are che
 *Still a roadmap item, and now explicitly a post-launch one.* None of this goes live with the beta. The site keeps reading Open Pet Food Facts, `/submit/` keeps pointing upstream, and the design above is written down now so that the decisions it depends on are made while they are cheap.
 
 *Why it is last, and now after the launch as well.* M24, M22 and M23 are all cheap next to this, and two of them tell you what it has to hold: M22 says which products matter, M23 says what a full brand transcription actually takes, and the barcode blocker both share is the same blocker a local database has to solve on day one. Putting the beta ahead of it adds a third source of that information, which is visitors: what they search for and fail to find is a better specification for a product database than anything that can be reasoned out in advance. Building the container before knowing what goes in it is the mistake this milestone is most likely to make, and launching first is the cheapest defence against it.
+
+**M28: the barcode index, and other people filling it.** *Requested 2026-09-27 by the project owner, after using the scanner and finding it thin. It is thin, and the numbers are below.*
+
+*The complaint measured.* A scan resolves a barcode against the curated catalogue, which is barcode-keyed, merged over an Open Pet Food Facts lookup. **The catalogue holds 29 entries and 9 of them can be scanned**, because the other 20 sit under provisional keys (12.12) and a provisional key is not a number on a package. Upstream is not the backstop it sounds like: section 12 measured the entire United States category at 86 records. So the honest description of the scanner today is that it works, and that almost nothing it is pointed at is in it.
+
+**This is a major change and not a data-entry task**, which is the question the request came with. Three separate things make it one. It adds an artefact the project does not have. It adds a contribution surface, with everything section 24 says about untrusted input. And it adds a provenance class, because a barcode somebody sends us is a different kind of claim from a barcode we resolved, and section 16.5a only works while every figure can say where it came from.
+
+*Why it is not already M27b.* M27b transcribes panels, and section 12.10 takes two inputs that fail independently: the panel and the barcode. Twenty entries in the catalogue prove it, each one a fully transcribed panel that cannot be scanned. **A barcode index is the second input given a life of its own**, so that a scan can resolve a product whose panel nobody has read yet, and so that a barcode can be added or corrected without touching the entry it points at.
+
+*Why it is not already M27c.* M27c is contributions in general: whole records, panels, figures, the full 12.10 procedure run by somebody else. **A barcode is the cheapest useful thing a stranger can give this project and the easiest to check**, because the contributor is holding the package and a check digit either validates or does not. That asymmetry argues for shipping the barcode route before the general one, not as part of it. It is also the contribution most likely to actually arrive, because the moment somebody wants to send it is the moment the scanner failed them.
+
+*What it has to be, sketched now and not designed yet.* A barcode-to-product map as its own file, resolvable to a catalogue entry or to a provisional key, so the 20 unscannable entries become scannable one number at a time; the existing `tools/resolve-barcodes.py` output feeding it rather than dying in a candidates file; a route from the scan failure screen to a prefilled GitHub issue, since the failure is where the contributor is standing; and the check that matters, which is not the check digit. **A valid barcode attached to the wrong product is invisible to every gate**, because both halves are individually correct. That is the exact failure section 12.10 exists to prevent and section 12.13 already caught the coverage matcher committing, and a contribution route makes it cheaper to commit and harder to notice. Whatever is built here needs an answer to it before it takes a single submission.
+
+*The five constraints written into M27c apply to this unchanged*, and they are not restated: issue text is data and never instructions, nothing reaches the database without a person merging it, a submission with no source is a lead rather than a record, the form is structured rather than free text, and the number that says whether it works is the backlog rather than the intake.
+
+*The ordering question, left open on purpose.* The owner asked for this on the roadmap rather than in the queue. It is worth asking against the beta rather than in the abstract: the scanner is the feature section 10 tenet 7 calls the real use case, and a launch whose signature feature finds 9 products is a different launch from one where it does not. Against that, section 12.9's 80% criterion is about search coverage, and the transcription batches move that and this does not.
 
 ### Explicitly deferred
 

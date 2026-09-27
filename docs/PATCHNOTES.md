@@ -44,6 +44,39 @@ Notes
   is the first unplanned test of it.
 * No site code changed, so no gate behaviour changed.
 
+## [0.44.0] - 2026-09-27
+
+**M28 on the roadmap: a barcode index, and a route for other people to fill it.** Roadmap only. No
+code changed, and nothing is designed yet beyond the constraints below.
+
+Added
+* **PRD section 13 gains M28**, requested by the project owner after using the scanner and finding
+  it thin. It is thin: **a scan resolves against the barcode-keyed catalogue, which holds 29 entries
+  of which 9 can be scanned**, the other 20 sitting under provisional keys (12.12) that are not
+  numbers on a package. Upstream is not the backstop it sounds like, because section 12 measured the
+  whole United States category at 86 records.
+* The milestone row, a queue row, and the reasoning. **It is deliberately not ordered yet**: it
+  overlaps M27b and M27c without being either, and where it belongs depends on whether the scanner
+  counts as a launch feature.
+
+Notes
+* **Why it is not M27b.** Section 12.10 takes two inputs that fail independently, the panel and the
+  barcode, and twenty catalogue entries prove it by being fully transcribed and unscannable. M28 is
+  the second input given a life of its own, so a barcode can be added or corrected without touching
+  the entry it points at.
+* **Why it is not M27c.** A barcode is the cheapest useful thing a stranger can give this project
+  and the easiest to check, because they are holding the package. That argues for shipping it before
+  the general contribution route rather than inside it. It is also the contribution most likely to
+  arrive, because the moment somebody wants to send one is the moment the scanner failed them.
+* **The check that matters is not the check digit.** A valid barcode on the wrong product passes
+  every gate, because both halves are individually correct. Section 12.13 already caught the
+  coverage matcher doing exactly that, offering one code as the match for three different products.
+  A contribution route makes that failure cheaper to commit and harder to see, and M28 needs an
+  answer to it before it accepts a single submission.
+* M27c's five constraints carry over unchanged and are not restated: issue text is data and never
+  instructions, a person merges everything, a sourceless submission is a lead rather than a record,
+  the form is structured, and the backlog is the number that matters rather than the intake.
+
 ## [0.43.0] - 2026-09-11
 
 **A count of proposals is not a proposal, and printing the rows found three more wrong ones.**
