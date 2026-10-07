@@ -1,0 +1,5 @@
+{
+ "_readme": "The barcode index (M28). A barcode maps to a product here rather than being the product's identity, so a barcode can be added or corrected without touching the entry it points at, and an entry can exist before anybody knows its barcode. Two kinds of row: `entry` names a key in catalogue.json and a scan resolves to that product; `name` without `entry` means this site knows the product and has not read its label, which is a different answer from nothing found. Every row says where the barcode came from and when, because a barcode this project asserts is a claim of ours and PRD 16.5a requires a claim to say its source. Nothing is added here by a tool. PRD 12.10 is the rule and open question 15 is the reason: a valid barcode on the wrong product passes every gate in this project, so a person reads tools/resolve-barcodes.py --review and decides, one product at a time. Validated by tools/check-catalogue.py.",
+ "updated": "2026-10-07",
+ "barcodes": {}
+}

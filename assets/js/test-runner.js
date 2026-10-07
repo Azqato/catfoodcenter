@@ -61,8 +61,21 @@ function makeContext(results) {
 /**
  * Run every registered suite, render the outcome, and publish
  * window.__testResults for a headless caller.
+ *
+ * **Each body is awaited, which it was not until 2026-10-07.** Before that the
+ * call was `body(ctx)`, so an `async` suite returned a promise nobody held: its
+ * assertions landed in `results` after the report had been built from it, and
+ * the suite was counted as having passed with nothing in it. **A test that
+ * cannot fail is worse than a missing test**, because the missing one is
+ * visible in the count. Nothing in the suite was async when this was written,
+ * so the trap was set for whoever first wrote one, which happened to be M28.
+ *
+ * `await` on a value that is not a promise is a no-op, so every existing
+ * synchronous suite is unaffected. `run()` now returns a promise; the caller in
+ * tools/tests.html does not await it and does not need to, because the headless
+ * runner polls for `window.__testResults` rather than racing it.
  */
-export function run(mount = document.getElementById('results')) {
+export async function run(mount = document.getElementById('results')) {
   const report = [];
   let passed = 0;
   let failed = 0;
@@ -70,7 +83,7 @@ export function run(mount = document.getElementById('results')) {
   for (const { name, body } of suites) {
     const results = [];
     try {
-      body(makeContext(results));
+      await body(makeContext(results));
     } catch (err) {
       results.push({ pass: false, message: 'suite threw', detail: String(err && err.stack || err) });
     }

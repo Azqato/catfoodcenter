@@ -54,6 +54,86 @@ Notes
   is the first unplanned test of it.
 * No site code changed, so no gate behaviour changed.
 
+## [0.54.0] - 2026-10-07
+
+**Step 5, and M28 is complete. A barcode now points at a product instead of being one.** That is one
+sentence and it undoes a constraint that had stood since the catalogue was created: twenty fully
+transcribed products that this site can score and could not scan.
+
+Added
+* **`assets/data/barcodes.json`**, the barcode index. `catalogue.json` is keyed by barcode, which
+  sounds like an index already and is why this took until M28 to exist. It is not one, because
+  section 12.10 takes two inputs that fail independently, the panel and the barcode, and making the
+  barcode the identity meant **a product with a readable panel and no published UPC could not be
+  recorded as scannable at all**. Now the barcode points at the entry, so either can be fixed
+  without disturbing the other.
+* **`assets/js/barcodes.js`**, and `fetchProduct` consults the index **before the network**. A
+  barcode this project resolved to a product is a better answer than whatever upstream says about
+  it, for the same reason a manufacturer panel outranks a database record in 16.5a: somebody read it
+  off the package deliberately.
+* **A third product page state.** A row with a name and no entry means this site knows the product
+  and has not read its label, which renders as that rather than as "product not found". **"Not
+  found" for a barcode held in a file we maintain would be a false statement about our own data**,
+  and the visitor is standing in front of the package, which makes them the cheapest possible source
+  for what is missing. It also turns the scanner into a demand signal: what to transcribe next, from
+  real visitors rather than from a best-seller list.
+* **Eleven checks in `check-catalogue.py`**, which holds them rather than a new tool because every
+  one is a check against the catalogue and a separate tool would have to load it anyway and could
+  then disagree about what it contains. A key that is not 6 to 14 digits, a key failing its own GTIN
+  check digit, a key that is already a catalogue key, a row pointing at an entry that does not
+  exist, a second barcode for a product without a note saying why, a row resolving to neither an
+  entry nor a name, a missing source, a `sourceKind` outside the three permitted, and a `checked`
+  date absent, malformed or in the future. **Verified by writing a file that breaks all of them and
+  watching every one fire**, then deleting it.
+* **PRD section 12.16**, which is the record of the artefact rather than of the milestone.
+
+Changed
+* **The index ships empty, and that is the design rather than an unfinished job.** Section 12.10's
+  rule is that the tool proposes and a person decides, every time, and open question 15 is the
+  reason: **a valid barcode attached to the wrong product passes every gate in this project**,
+  because the check digit validates and the entry is well formed and both halves are individually
+  correct. So no tool writes to this file. 60 rows of candidates are on file from step 2 and reading
+  them is step 6, which is the owner's time.
+* `sourceKind` accepts `manufacturer`, `retailer-listing` and `aggregator`. **`submitted` is
+  deliberately absent**: that is M31 and it waits for question 15.
+* **A product reached through the index says so.** The footer prints "matched to this product by
+  us", with a link to where the barcode came from. It would otherwise have said "no published
+  barcode, so this product cannot be scanned yet" about a scan that had just succeeded, and printing
+  the number without naming it as ours would pass off a match this project made as one the
+  manufacturer published. 16.5a applies to a barcode exactly as it applies to a protein figure.
+* `check-catalogue.py` now prints two numbers where it printed one. "20 awaiting a barcode" and "20
+  that cannot be scanned" were the same statement until the index existed and are not any more, and
+  the second is the one tenet 7 cares about.
+* Service worker `v16`. Both new files are needed by the product page, so a `v15` device would fail
+  to load a module offline. Same case as `v5`.
+
+Fixed
+* **The test runner did not await a suite body, so an `async` suite silently passed with no
+  assertions.** `run()` called `body(ctx)` and built its report immediately; an async body's
+  assertions landed in the results array afterwards, counted by nobody. **A test that cannot fail is
+  worse than a missing test, because the missing one shows up in the count.** Nothing in the suite
+  was async when the runner was written, so the trap was set for whoever wrote the first one, which
+  was this milestone. `run()` is now `async` and awaits each body; `await` on a non-promise is a
+  no-op, so every existing suite is unaffected.
+* **Three stale assertion counts in the PRD**, which said 257. The suite is 284.
+
+Notes
+* **284 assertions, up from 263.** Among them: a malformed index must load as an empty one rather
+  than throw, because the index sits in front of every scan and a bad deploy of it has to degrade
+  the scanner rather than break it. The file this site actually ships is loaded and checked too, not
+  just a fixture.
+* **One branch is knowingly untested and the test file says so.** Provoking `!response.ok` needs a
+  fetch that 404s, `run-tests.py` fails the gate on any console error, and a browser logs a 404
+  whatever the code does with it. **The choice was between covering three lines and keeping a gate
+  that notices every unexpected console error on every page.** The gate is worth more and has caught
+  real defects.
+* **The second row type shipped as an unresolved judgement and 12.16 says so.** M26 hides unscored
+  products on the finding that a column of grey "Not scored" tiles is an honest view of the database
+  and a useless view of cat food, and a scan resolving to a named but unscored product is arguably
+  that noise in a different hat. The argument against: the visitor pointed a camera at one specific
+  package, so it was asked for by name rather than returned in a list. That is still a judgement and
+  not a measurement.
+
 ## [0.53.0] - 2026-10-07
 
 **Step 4 of the working order. Question 13 is scoped, measured and gated, and deliberately not

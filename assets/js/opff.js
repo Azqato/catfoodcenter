@@ -33,6 +33,7 @@ import {
   loadCatalogue, mergeCurated, applyCurated, searchCatalogue, catalogueBrands, isProvisional,
 } from './catalogue.js';
 import { expandGroups } from './ingredients.js';
+import { loadBarcodeIndex, resolveBarcode } from './barcodes.js';
 
 const API = 'https://world.openpetfoodfacts.org/api/v2';
 
@@ -324,7 +325,16 @@ async function getJSON(url, signal) {
  * A miss is an ordinary outcome, not an error: most barcodes are not in the
  * database. Callers get {found:false} rather than an exception.
  *
- * @returns {Promise<{found: boolean, product?: object, error?: string}>}
+ * **The barcode index is consulted before the network (M28).** A barcode this
+ * project has resolved to a product is a better answer than whatever upstream
+ * says about it, for the same reason a manufacturer panel outranks a database
+ * record in 16.5a: somebody read it off the package deliberately. And a
+ * barcode the index knows without an entry behind it returns `known`, which is
+ * neither a hit nor a miss and the product page renders as its own state.
+ *
+ * @returns {Promise<{found: boolean, product?: object, error?: string,
+ *                    known?: {name?: string, brand?: string},
+ *                    indexed?: object}>}
  */
 export async function fetchProduct(barcode, { signal } = {}) {
   const code = String(barcode || '').trim();
@@ -333,6 +343,43 @@ export async function fetchProduct(barcode, { signal } = {}) {
     return { found: false, error: 'That does not look like a barcode.' };
   }
   if (cache.has(code)) return cache.get(code);
+
+  /* The index first, because it is the only source here that was filled by a
+     person on purpose. A row naming an entry resolves to that entry, which is
+     how a product filed under a provisional key becomes scannable without
+     changing its key: the product keeps its identity and the barcode merely
+     points at it. The entry having gone missing is treated as the index being
+     wrong rather than as a product not existing, and falls through. */
+  if (!provisional) {
+    const indexed = resolveBarcode(await loadBarcodeIndex(), code);
+    if (indexed && indexed.entry) {
+      const catalogue = await loadCatalogue();
+      const entry = catalogue[indexed.entry];
+      const merged = entry ? mergeCurated(null, entry) : null;
+      if (merged && merged.curated) {
+        /* The product keeps the identity it is filed under and gains the number
+           it was scanned as. Both have to travel, because the page's footer
+           would otherwise print "no published barcode, so this product cannot
+           be scanned yet" about a product the visitor had just scanned, and
+           16.5a means a barcode this project asserts says where it came from
+           like any other curated figure. */
+        merged.scannedAs = code;
+        merged.barcodeSource = indexed.row.source;
+        merged.barcodeSourceKind = indexed.row.sourceKind;
+        const answer = { found: true, product: merged, indexed: indexed.row };
+        cache.set(code, answer);
+        return answer;
+      }
+    } else if (indexed && indexed.name) {
+      /* Known and not transcribed. This deliberately does not go on to ask
+         upstream: the index says a person has already identified this package,
+         and a database record for it would be a second opinion about identity
+         that nobody asked for. It is also the case M31 exists to collect. */
+      const answer = { found: false, known: { name: indexed.name, brand: indexed.brand } };
+      cache.set(code, answer);
+      return answer;
+    }
+  }
 
   /* A provisional key means "this site holds a panel for this product and
      nobody publishes its barcode". Open Pet Food Facts is keyed by barcode and

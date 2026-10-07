@@ -23,6 +23,11 @@
 /* Bump this to retire every old cache at once. It is the only lever that
    reliably clears a bad deploy from a device we cannot reach.
 
+   v16: M28 added assets/js/barcodes.js, which opff.js imports on every barcode
+   lookup, and assets/data/barcodes.json, which it reads. A v15 device has
+   neither, so offline the product page would fail to load a module it cannot
+   run without. Same case as v5 and the same reason.
+
    v3: M16a rewrote cfc.css and cfc-app.css to fix accessibility defects. The
    shell is served stale-while-revalidate, so a returning device would have
    shown the old stylesheet once more before picking up the new one. A contrast
@@ -42,7 +47,7 @@
    precached under addresses that no longer exist, and would serve them from
    the shell cache indefinitely. Every one of those entries has to go, and
    bumping the version is the only lever that reaches a device we cannot. */
-const VERSION = 'v15';
+const VERSION = 'v16';
 const SHELL = `cfc-shell-${VERSION}`;
 const API = `cfc-api-${VERSION}`;
 const IMAGES = `cfc-images-${VERSION}`;
@@ -68,6 +73,7 @@ const SHELL_ASSETS = [
   './assets/cfc-app.css',
   './assets/cfc-docs.js',
   './assets/js/site.js',
+  './assets/js/barcodes.js',
   './assets/js/catalogue.js',
   './assets/js/ingredients.js',
   './assets/js/opff.js',
@@ -84,6 +90,7 @@ const SHELL_ASSETS = [
   './assets/js/home-page.js',
   './assets/js/pwa.js',
   './assets/data/additives.json',
+  './assets/data/barcodes.json',
   './assets/data/catalogue.json',
   './manifest.webmanifest',
   './assets/icons/icon-192.png',

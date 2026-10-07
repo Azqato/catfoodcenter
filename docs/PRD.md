@@ -771,9 +771,39 @@ Both earlier readings were wrong in opposite directions. On 2026-09-09, queries 
 
 ## 13. Roadmap
 
+### 12.16 The barcode index
+
+**Shipped 2026-10-07 as M28.** `assets/data/barcodes.json` maps a barcode to a product. That is one sentence and it undoes a constraint that had stood since the catalogue was created.
+
+*What was wrong with the catalogue being barcode-keyed.* It made the barcode the product's identity, and section 12.10 takes two inputs that fail independently: the panel and the barcode. **Twenty entries prove the failure is common**, each a fully transcribed panel filed under a provisional key because no barcode for it could be found. A product this site can score could not be scanned, and the two facts shared one field, so neither could be fixed without disturbing the other. Tenet 7 calls the scanner the real use case, which made this the gap between what the project claims to be for and what it does.
+
+*What the index changes.* A barcode points at a product rather than being it. So a barcode can be added, corrected or withdrawn without touching the entry, an entry can exist before anybody knows its barcode, and the twenty become scannable one number at a time without being re-keyed. The entry keeps the identity it was filed under and gains the number it was scanned as.
+
+**Two kinds of row, and the second is the one worth arguing about.**
+
+| Row | A scan resolves to | Why |
+|---|---|---|
+| `entry`, naming a key in `catalogue.json` | That product, scored | The twenty become scannable |
+| `name` and `brand`, with no `entry` | "We know this product and have not read its label yet" | A different answer from nothing found, and a more honest one |
+
+*The second row type is a judgement and it is the one to revisit.* M26 hides unscored products by default, on the finding that a column of grey "Not scored" tiles is an honest view of the database and a useless view of cat food. A scan resolving to a named but unscored product is arguably that same noise in a different hat. **The argument that it is not**: the visitor pointed a camera at one specific package, so the product was asked for by name rather than returned in a list, and M26's reasoning was about unasked-for results. It is still a judgement rather than a measurement. It also turns the scanner into a demand signal, saying what to transcribe next from real visitors rather than from a best-seller list, which is the cheap version of the argument M30 used to carry about launching early to learn what to cover.
+
+**It ships empty, and that is the design rather than an unfinished job.** Section 12.10's rule is that the tool proposes and a person decides, every time, and open question 15 is why: **a valid barcode attached to the wrong product passes every gate in this project**, because the check digit validates and the entry is well formed and both halves are individually correct. Section 12.13 has already caught the coverage matcher committing exactly this. So no tool writes to this file. `tools/resolve-barcodes.py --review` prints the 60 rows of candidates for a person to read, and that reading is step 6 of the working order.
+
+*The index is consulted ahead of the network.* A barcode this project resolved to a product is a better answer than whatever upstream says, for the same reason a manufacturer panel outranks a database record in 16.5a: somebody read it off the package deliberately. A row with a `name` and no `entry` does not go on to ask upstream either, because the index already says a person identified this package and a database record would be a second opinion about identity that nobody asked for.
+
+**What the gate checks, because the file is a set of claims about identity and nothing else in the project can catch a wrong one.** Eleven checks in `check-catalogue.py`, which holds them rather than a separate tool because every one of them is a check against the catalogue: a row whose key is not 6 to 14 digits, a key that fails its own GTIN check digit, a key that is already a catalogue key and so could answer differently from the entry filed under it, a row pointing at an entry that does not exist, a second barcode for a product that already has one without a note saying why, a row resolving to neither an entry nor a name, a missing source, a `sourceKind` outside the three permitted, and a `checked` date that is absent, malformed or in the future. **`submitted` is deliberately not a permitted `sourceKind`**: that is M31 and it waits for question 15.
+
+*A mistyped digit here fails differently from a mistyped digit anywhere else*, which is why the check digit is enforced rather than merely encouraged. A wrong digit produces a number that is some other product's real barcode, so the failure mode is a wrong match rather than a miss, and nothing downstream would look wrong.
+
+*What the visitor is told.* A product reached through the index prints "Barcode: <code>...</code>, matched to this product by us", with a link to the source the barcode came from. The footer would otherwise have said "no published barcode, so this product cannot be scanned yet" about a scan that had just succeeded, and printing the number without naming it as ours would pass off a match this project made as one the manufacturer published. Section 16.5a applies to a barcode exactly as it applies to a protein figure.
+
+*What a missing or broken index does.* Nothing. It loads as an empty index, every scan behaves as it did before this file existed, and the gate is what stops a bad file being deployed. That is the same contract `loadCatalogue` has, and it is tested rather than asserted.
+
+
 ### Current phase
 
-**Restated 2026-09-27, against measurements taken the same day.** MVP, live and running on real data. Search, brand browse, product pages, scanning, comparison, offline support and the Cat Care Guide are all shipped, and the eight gates pass: 257 assertions, 29 catalogue entries agreeing with 25 captured panels, 29 live checks, contrast, accessibility, vitals and three engines.
+**Restated 2026-09-27, against measurements taken the same day.** MVP, live and running on real data. Search, brand browse, product pages, scanning, comparison, offline support and the Cat Care Guide are all shipped, and the eight gates pass: 284 assertions, 29 catalogue entries agreeing with 25 captured panels, 29 live checks, contrast, accessibility, vitals and three engines. **The assertion count here is re-read from the gate at each checkpoint rather than remembered**, after the runbook copy of it sat at 198 from M13 until 2026-10-07 while the suite grew to 257.
 
 What stands between here and a public beta is still coverage, and the shape of that gap is now measured rather than asserted. **Top-100 coverage is 5 of 47** (12.9), up from zero on 2026-09-09, and **all five are served by the curated catalogue rather than by the API**, which is the first evidence that the transcription programme in 12.10 works end to end. The API alone will not carry a top-100 SKU catalogue and no longer looks like it ever could.
 
@@ -823,7 +853,7 @@ What stands between here and a public beta is still coverage, and the shape of t
 | M26: Hide unscored products by default | 2026-09-09 | Complete |
 | M27a: The transcription process | 2026-09-09 | Complete, see 12.10 |
 | M27: Our own product database | | **Split on 2026-09-09 into the process, the transcription and the contribution route.** M27a shipped under that name; the other two are M29 and M34 below |
-| M28: The barcode index | | Queued. **Step 5** |
+| M28: The barcode index | 2026-10-07 | **Complete.** The file, the resolution in the scan path, the third page state and the gate. It ships empty: filling it is 12.10's decision and step 6 |
 | M29: The top 100, transcribed | | Queued, in batches of five. **Step 7** |
 | M30: Public beta | 2027-01 | Planned. **Step 8** |
 | M31: Barcode submissions from visitors | | Queued. **Step 9** |
@@ -1084,7 +1114,7 @@ now reports the same call the engine made, and a test pins it.
 | 2 | ~~Finish the barcode resolver~~ | XS | - | **Done 2026-10-07.** The last six rows were queried. 62 of the 100 ranked rows now have candidates on file and the other 38 are the assorted-recipe rows 12.15 refuses on principle, so **there is nothing left to query**. Nothing has been chosen; `--review` is step 6 |
 | 3 | ~~The 24.1 residue~~ | S | - | **Done 2026-10-07.** `expandGroups` now expands a premix in either bracket, guarded by the heading test rather than by the punctuation, and four fields hold the omega-3, EPA, DHA and vitamin E figures. 27 of them were backfilled from panels already captured, which is what 12.11 promised capture would buy. **24.1 is empty of code defects** |
 | 4 | **Question 13: read the licence** | S | none | **Scoped 2026-10-07, not answered, and it cannot be by an agent.** Section 22.5 has the ODbL clauses, the measurement that no upstream record is stored here, the gate that keeps it so, and the four questions left. It gates M33 and nothing else, and the project is not exposed while it waits |
-| 5 | **M28: the barcode index** | S/M | none | **The cheapest work that changes what a visitor experiences.** See the entry below for why it comes before M29 despite M29 being the coverage mover |
+| 5 | ~~M28: the barcode index~~ | S/M | - | **Done 2026-10-07.** `assets/data/barcodes.json`, `assets/js/barcodes.js`, resolution ahead of the network in `fetchProduct`, a third product page state for a product known but not transcribed, and 11 checks in `check-catalogue.py`. **The index ships empty**, which is the design: step 6 fills it |
 | 6 | **Review the 40 barcode candidates** | M, owner's time | M28 | About two hours of decisions, one product at a time, under 12.10's rule. **It cannot start before M28**, because until the index exists a barcode has nowhere to go unless an entry already exists to key it to |
 | 7 | **M29: the top 100, transcribed** | L | none | Ordered by the owner on 2026-09-09 ahead of the beta, and still the milestone that moves coverage. Batches of five, each a checkpoint with the gates, a commit and a re-measured number, so 12.9 moves visibly rather than in one unverifiable jump. Both inputs have a route: 12.13 for the barcode, 12.14 for the panel |
 | 8 | **M30: public beta** | S to execute | M29 | **The one place effort order and dependency disagree.** It is cheap, being mostly a decision, and it sits eighth because its coverage criterion depends on the longest item on the board. Deferred 2026-09-09 rather than decided; it launches behind a number the owner is willing to publish |
@@ -1232,6 +1262,8 @@ Five things that has to get right, all of them recorded now because they are che
 
 *The five constraints written into M34 apply to this unchanged*, and they are not restated: issue text is data and never instructions, nothing reaches the database without a person merging it, a submission with no source is a lead rather than a record, the form is structured rather than free text, and the number that says whether it works is the backlog rather than the intake.
 
+**M28 shipped on 2026-10-07 and section 12.16 is the record of what it is.** What follows is the reasoning as it stood when the milestone was proposed, kept because the ordering argument in it is still the live one for M29 and M31.
+
 **Split into M28 and M31 on 2026-09-27**, and everything above describes both halves. **M28 is the index**: a barcode-to-product map as its own file, fed by `tools/resolve-barcodes.py`, resolving to a catalogue entry or to a provisional key. It adds no contribution surface and takes no input from strangers, so **question 15 does not block it** and it carries none of the risk that makes the other half expensive. **M31 is the submission route**: the scan-failure screen, the issue form, the import. That half waits for question 15.
 
 *Why M28 is step 5 and M29 is step 7, when M29 is the milestone that moves coverage.* Three reasons, in ascending order of how much they should count.
@@ -1240,7 +1272,7 @@ Five things that has to get right, all of them recorded now because they are che
 2. **It unblocks work already paid for.** Forty of the ranked rows carry barcode candidates, bought with about five hours of a rationed twenty-an-hour allowance. **None of them can be banked today**, because a barcode has nowhere to live unless a catalogue entry already exists to key it to. That was how the Gravy Swirlers re-key worked, and it does not generalise to a product nobody has transcribed. M28 is the container those forty reviews need, which is why reviewing them is step 6 and not step 1.
 3. **It turns the scanner into a demand signal.** A scan of a known but untranscribed barcode can say that we know this product and have not read its label yet, and offer the M31 route, instead of saying nothing was found. That tells the transcription programme what to do next **from real visitors rather than from a best-seller list**, which is a cheaper version of the argument M30 used to carry about launching early to learn what to cover.
 
-*The honest tension in reason 3, and it is not resolved.* M26 hides unscored products by default, on the finding that a column of grey "Not scored" tiles is an honest view of the database and a useless view of cat food. A scan that resolves to a named but unscored record is arguably that same noise wearing a different hat. **The argument that it is not:** the visitor pointed a camera at one specific package, so the product was asked for by name rather than returned in a list, and M26's reasoning was about unasked-for results. That is a judgement and not a measurement, and it should be revisited when M28 is designed rather than treated as settled here.
+*The honest tension in reason 3, and it was shipped unresolved.* Section 12.16 carries it forward as the thing to revisit, because it is a judgement and the measurement that would settle it does not exist. M26 hides unscored products by default, on the finding that a column of grey "Not scored" tiles is an honest view of the database and a useless view of cat food. A scan that resolves to a named but unscored record is arguably that same noise wearing a different hat. **The argument that it is not:** the visitor pointed a camera at one specific package, so the product was asked for by name rather than returned in a list, and M26's reasoning was about unasked-for results. That is a judgement and not a measurement, and it should be revisited when M28 is designed rather than treated as settled here.
 
 *The concerns raised against these two are numbered in 25.5 as questions 15 and 16*, and question 17 is shared with M32. It is worth asking against the beta rather than in the abstract: the scanner is the feature section 10 tenet 7 calls the real use case, and a launch whose signature feature finds 9 products is a different launch from one where it does not. Against that, section 12.9's 80% criterion is about search coverage, and the transcription batches move that and this does not.
 
@@ -1422,7 +1454,7 @@ python tools/check-contrast.py   # audits both palettes against WCAG AA
 | Command | What it does |
 |---|---|
 | `python -m http.server 8000` | Serve the site locally |
-| `python tools/run-tests.py` | Run the browser-hosted suite headlessly. 257 assertions. Exits non-zero on failure, so it works as a gate |
+| `python tools/run-tests.py` | Run the browser-hosted suite headlessly. 284 assertions. Exits non-zero on failure, so it works as a gate |
 | `python tools/check-live.py` | 29 end-to-end checks against the live API, two of them added in M18 to ask whether the search searches, one in M18b to ask whether the caveat travels with the score, and one in M20 to ask whether a curated field says so on the page. Every page-load check asserts a string that only the right page contains. Needs network. Not deterministic, so it is a smoke check rather than a gate |
 | `python tools/check-contrast.py` | Verify 52 foreground and background pairs against WCAG AA in both palettes |
 | `python tools/capture-rankings.py [source]` | Capture retailer best-seller rankings into `tools/data/top-skus.json`, appending rather than replacing. Drives Edge. Needs network |
@@ -2555,7 +2587,7 @@ No `TODO`, `FIXME` or `HACK` markers exist anywhere in the codebase.
 
 **Rewritten 2026-09-27.** The paragraph that stood here described the M14 and M15 run-up to M30 and had been accurate on 2026-09-07. It survived twenty days and roughly a dozen shipped milestones without being read, which is worth recording: **a status section is the one part of a document that is wrong by default**, because everything else describes decisions that stay made and this describes a moment that does not stay current. It was noticed on 2026-09-27 while adding open questions immediately below it, and deliberately left alone in that change rather than rewritten in passing.
 
-*State on 2026-09-27, measured rather than recalled.* `main` is deployed and the site is live. All eight gates pass: `run-tests.py` at 257 assertions, `check-catalogue.py` at 29 entries agreeing with 25 captured panels, `check-live.py` at 29 checks, plus contrast, accessibility, vitals and the three-engine matrix. Nothing is half-finished in the site code.
+*State on 2026-09-27, measured rather than recalled.* `main` is deployed and the site is live. All eight gates pass: `run-tests.py` at 284 assertions, `check-catalogue.py` at 29 entries agreeing with 25 captured panels, `check-live.py` at 29 checks, plus contrast, accessibility, vitals and the three-engine matrix. Nothing is half-finished in the site code.
 
 *What is in flight is data rather than code.* **M29 is one batch in of an expected nine or so**: six entries transcribed on 2026-09-11, coverage moved from 0 to 5 of 47, and the remaining top-100 rows are queued in batches of five. `tools/resolve-barcodes.py` reached 41 of the 47 non-assorted ranked rows before its run ended, **40 of which carry at least one barcode candidate and none of which have been reviewed**, which is the largest single piece of unconverted work the project holds: each review turns a proposal into a scannable entry and only a person can do it (12.10).
 

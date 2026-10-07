@@ -425,7 +425,14 @@ function renderMeta(product) {
   return `<div class="border-t border-hairline pt-4" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
     <div style="display:flex;align-items:center;gap:6px">${glyph}<span class="text-micro text-ink-soft">${completeness}</span></div>
     ${product.lastModified ? `<span class="text-micro text-ink-soft">Record updated: ${esc(product.lastModified)}</span>` : ''}
-    ${isProvisional(product.barcode)
+    ${product.scannedAs
+    // Scanned through the barcode index (M28): the product is filed under a
+    // provisional key and a barcode points at it. Saying "cannot be scanned"
+    // here would be a false statement about a scan that had just happened, and
+    // printing the number without naming it as ours would pass off a match
+    // this project made as one the manufacturer published.
+    ? `<span class="text-micro text-ink-soft">Barcode: ${esc(product.scannedAs)}, matched to this product by us${product.barcodeSource ? ` from <a href="${esc(product.barcodeSource)}" rel="nofollow noopener">this source</a>` : ''}</span>`
+    : isProvisional(product.barcode)
       ? `<span class="text-micro text-ink-soft">No published barcode, so this product cannot be scanned yet</span>`
       : `<span class="text-micro text-ink-soft">Barcode: ${esc(product.barcode)}</span>`}
   </div>
@@ -433,6 +440,28 @@ function renderMeta(product) {
 }
 
 /* ── Page states ── */
+
+/* Known, and nobody has read its label yet (M28).
+ *
+ * This is a third page state and it was worth building as one. "Product not
+ * found" for a barcode this site has in a file it maintains would be a false
+ * statement about its own data, and the visitor is standing in front of the
+ * package, which makes them the cheapest possible source for what is missing.
+ * That is the demand signal reason 3 of the M28 entry describes: it says what
+ * to transcribe next from real visitors rather than from a best-seller list. */
+function renderKnown(barcode, known) {
+  const name = esc(known.name || 'This product');
+  const brand = known.brand ? `<p class="text-small text-ink-soft" style="margin:0 0 24px">${esc(known.brand)}</p>` : '';
+  return `<div class="text-center py-16">
+    <p class="font-display text-h2 text-ink mb-3">${name}</p>
+    ${brand}
+    <p class="text-small text-ink-soft mb-6" style="max-width:48ch;margin-left:auto;margin-right:auto">We know this product and we have not read its label yet, so there is no score to show you. Barcode <code>${esc(barcode)}</code> is in our index; the ingredient list and guaranteed analysis are not. That is a gap in our work rather than anything about the food.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="${SITE}search/" class="btn-link rounded-pill bg-accent text-on-accent text-small font-medium px-6 py-3" style="display:inline-block">Search for something else</a>
+      <a href="${SITE}learn/labels/" class="btn-link rounded-pill text-small font-medium px-6 py-3" style="display:inline-block;border:1px solid var(--hairline);color:var(--ink)">Read the panel yourself</a>
+    </div>
+  </div>`;
+}
 
 function renderNotFound(barcode, error) {
   return `<div class="text-center py-16">
@@ -470,10 +499,16 @@ async function main() {
     return;
   }
 
-  const [{ found, product, error, servedFromCache }, kb] = await Promise.all([
+  const [{ found, product, error, servedFromCache, known }, kb] = await Promise.all([
     fetchProduct(barcode),
     loadKnowledgeBase(),
   ]);
+
+  if (!found && known) {
+    document.title = `${known.name}: Cat Food Center`;
+    paint(renderKnown(barcode, known));
+    return;
+  }
 
   if (!found || !product) {
     document.title = 'Product not found: Cat Food Center';

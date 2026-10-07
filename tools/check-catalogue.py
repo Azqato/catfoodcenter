@@ -29,6 +29,7 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PATH = os.path.join(ROOT, 'assets', 'data', 'catalogue.json')
+INDEX = os.path.join(ROOT, 'assets', 'data', 'barcodes.json')
 
 # Mirrors DATA_FIELDS in assets/js/catalogue.js. A key outside this set is
 # rejected rather than ignored: the merge would skip it in silence, and a
@@ -359,6 +360,118 @@ def read_panels(problems):
             problems.append('panels/%s: not valid JSON: %s' % (name, exc))
     return found
 
+# Fields a barcode index row may carry (M28). `entry` names a catalogue key;
+# `name` and `brand` describe a product nobody has transcribed yet.
+INDEX_FIELDS = {'entry', 'name', 'brand', 'source', 'sourceKind', 'checked', 'note'}
+# A barcode asserted by this project rather than resolved from a published
+# source would have no provenance, and 16.5a does not allow a claim without
+# one. 'submitted' is reserved for M31 and is not accepted until question 15
+# has an answer, because that is the whole content of question 15.
+INDEX_SOURCE_KINDS = {'manufacturer', 'retailer-listing', 'aggregator'}
+
+
+def check_digit_ok(code):
+    """GTIN check digit, for 8, 12, 13 and 14 digit codes.
+
+    Mirrors `isValidBarcode` in assets/js/scanner.js. Duplicated rather than
+    shared because nothing here runs in a browser and nothing there runs in
+    Python, and the arithmetic is five lines that have not changed since 1973.
+    """
+    if len(code) not in (8, 12, 13, 14) or not code.isdigit():
+        return False
+    digits = [int(c) for c in code]
+    *body, check = digits
+    # The weight alternates 3 and 1 from the rightmost body digit leftwards,
+    # which is why this reverses rather than indexing from the left: the
+    # pattern is anchored to the check digit, not to the start of the code.
+    total = sum(d * (3 if i % 2 == 0 else 1) for i, d in enumerate(reversed(body)))
+    return (10 - total % 10) % 10 == check
+
+
+def check_index(index, products, problems):
+    """The barcode index against the catalogue it points into."""
+    seen_entries = {}
+    for code in sorted(index):
+        row = index[code]
+
+        def bad(message, code=code):
+            problems.append('barcodes.json %s: %s' % (code, message))
+
+        if not isinstance(row, dict):
+            bad('row is not an object')
+            continue
+        unknown = set(row) - INDEX_FIELDS
+        if unknown:
+            bad('unknown key(s): %s' % ', '.join(sorted(unknown)))
+
+        if not re.match(r'^\d{6,14}$', str(code)):
+            bad('key is not 6 to 14 digits. A provisional key is not a barcode '
+                'and an index of provisional keys would index nothing')
+        elif not check_digit_ok(str(code)):
+            # Not pedantry: a mistyped digit produces a number that is some
+            # other product's real barcode, so the failure mode of a typo here
+            # is a wrong match rather than a miss.
+            bad('fails its own check digit, so one of the digits is wrong')
+
+        if code in products:
+            # Both would resolve and they could resolve differently, and
+            # nothing on the page would show which one answered.
+            bad('is already a catalogue key, so this row can only duplicate or '
+                'contradict the entry filed under it')
+
+        entry = row.get('entry')
+        if entry is not None:
+            if entry not in products:
+                bad('points at %r, which is not in the catalogue' % entry)
+            elif entry in seen_entries:
+                # One product, two barcodes, is a real thing: a pack size
+                # change or a regional variant. But it is also exactly what a
+                # wrong match looks like, and it should be stated rather than
+                # discovered, so the note has to say so.
+                if 'barcode' not in (row.get('note') or '').lower():
+                    bad('is the second barcode for %r, after %s. That happens, and an '
+                        'entry claiming two barcodes needs a note saying why'
+                        % (entry, seen_entries[entry]))
+            seen_entries.setdefault(entry, code)
+        elif not row.get('name'):
+            bad('names neither an entry nor a product. A row that resolves to '
+                'nothing is worse than no row, because the scanner would report '
+                'it as known')
+
+        if not (row.get('source') or '').strip():
+            bad('no source. A barcode this project asserts is a claim of ours and '
+                'PRD 16.5a does not allow a claim without a provenance')
+        if row.get('sourceKind') not in INDEX_SOURCE_KINDS:
+            bad('sourceKind must be one of %s. "submitted" waits for open question 15'
+                % ', '.join(sorted(INDEX_SOURCE_KINDS)))
+        try:
+            when = datetime.date.fromisoformat(str(row.get('checked')))
+        except (TypeError, ValueError):
+            bad('checked must be an ISO date, got %r' % row.get('checked'))
+        else:
+            if when > datetime.date.today():
+                bad('checked date %s is in the future' % row.get('checked'))
+
+
+def read_index(problems):
+    """The index, or an empty one. A missing file is not a failure.
+
+    The site treats a missing index as an empty index and keeps working, so a
+    gate that failed on its absence would be stricter than the thing it guards.
+    """
+    if not os.path.exists(INDEX):
+        return {}
+    try:
+        data = json.loads(io.open(INDEX, encoding='utf-8').read())
+    except ValueError as exc:
+        problems.append('barcodes.json is not valid JSON: %s' % exc)
+        return {}
+    index = data.get('barcodes')
+    if not isinstance(index, dict):
+        problems.append('barcodes.json has no "barcodes" object')
+        return {}
+    return index
+
 
 def main():
     if not os.path.exists(PATH):
@@ -381,6 +494,9 @@ def main():
 
     provisional = sorted(k for k in products if PROVISIONAL.match(str(k)))
 
+    index = read_index(problems)
+    check_index(index, products, problems)
+
     panels = read_panels(problems)
     for key in sorted(panels):
         check_panel(panels[key], key, products.get(key), problems)
@@ -401,13 +517,28 @@ def main():
                 '', len(panel.get('text') or ''),
                 ', %d figures' % len(panel['analysis']) if panel.get('analysis') else ''))
 
+    # Which provisional entries the index has rescued (M28). Printed as two
+    # numbers rather than one. "20 awaiting a barcode" and "20 that cannot be
+    # scanned" were the same statement until the index existed and are not any
+    # more, and the second is the one tenet 7 cares about.
+    indexed_entries = set(row.get('entry') for row in index.values()
+                          if isinstance(row, dict) and row.get('entry'))
     if provisional:
+        unscannable = [k for k in provisional if k not in indexed_entries]
         print('')
-        print('  %d entr%s awaiting a real barcode. Each is searchable and scorable,'
-              % (len(provisional), 'y' if len(provisional) == 1 else 'ies'))
-        print('  and none of them can be scanned. See PRD section 12.12.')
+        print('  %d entr%s filed under a provisional key, and %d of them cannot be scanned.'
+              % (len(provisional), 'y' if len(provisional) == 1 else 'ies', len(unscannable)))
+        print('  Each is searchable and scorable. See PRD sections 12.12 and 13 (M28).')
         for key in provisional:
-            print('    %-46s %s' % (key, (products[key].get('name') or '')[:30]))
+            print('    %-46s %-30s %s' % (key, (products[key].get('name') or '')[:30],
+                                          'indexed' if key in indexed_entries else ''))
+
+    if index:
+        print('')
+        print('  %d barcode(s) in the index, %d resolving to an entry and %d to a product '
+              'nobody has transcribed.'
+              % (len(index), sum(1 for r in index.values() if isinstance(r, dict) and r.get('entry')),
+                 sum(1 for r in index.values() if isinstance(r, dict) and not r.get('entry'))))
 
     print('')
     if problems:
@@ -419,8 +550,8 @@ def main():
     # Not a failure. Captures are backfilled as products are revisited, and an
     # entry written before PRD 12.11 existed is not wrong, only thinner.
     print('%d entr%s, all sourced, within the plausible bands, and agreeing with '
-          'the %d raw panel(s) captured.'
-          % (len(products), 'y' if len(products) == 1 else 'ies', len(panels)))
+          'the %d raw panel(s) captured. %d barcode(s) indexed.'
+          % (len(products), 'y' if len(products) == 1 else 'ies', len(panels), len(index)))
     return 0
 
 
