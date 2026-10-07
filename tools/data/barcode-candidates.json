@@ -11,11 +11,11 @@
   "that query. That is an answer, not a failure, and it is what provisional keys",
   "exist for (section 12.12)."
  ],
- "measured": "2026-09-14",
+ "measured": "2026-10-07",
  "endpoint": {
   "limit": 100,
-  "remaining": 80,
-  "spentThisRun": 27
+  "remaining": 97,
+  "spentThisRun": 3
  },
  "resolved": {
   "B072DTFZHL": {
@@ -1779,6 +1779,79 @@
      "brand": "Cat Chow"
     }
    ]
+  },
+  "B0002MLAEQ": {
+   "position": 42,
+   "title": "Purina ONE +Plus Sensitive Stomach Sensitive Skin, Natural Dry Cat Food | Easily digestible cat food with prebiotic fiber, calcium and antioxidants for cats with sensitive systems.",
+   "brand": "Purina ONE",
+   "query": "Purina ONE Plus Sensitive Stomach Sensitive",
+   "candidates": [
+    {
+     "barcode": "017800031998",
+     "title": "Purina ONE Sensitive Skin & Stomach Natural Turkey Flavor Dry Cat Food - 3.5lbs",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "310425684359",
+     "title": "Purina ONE Natural  Sensitive Stomach Dry Dog Food  +Plus Skin and Coat Formula - 31.1 lb. Bag",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "376128683754",
+     "title": "Purina ONE Natural  Sensitive Stomach Dry Dog Food  +Plus Skin and Coat Formula",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "685645361213",
+     "title": "Purina ONE Natural  Sensitive Stomach Dry Dog Food  +Plus Skin and Coat Formula 31.1 lb. Bag",
+     "brand": "Purina ONE"
+    },
+    {
+     "barcode": "731927621213",
+     "title": "Purina ONE +Plus Sensitive Skin & Stomach Natural Adult Dry Cat Food  16 pounds",
+     "brand": "Purina ONE"
+    }
+   ]
+  },
+  "B07MX66NY3": {
+   "position": 88,
+   "title": "IAMS Perfect Portions Cuts in Gravy Wet Cat Food, Tuna & Salmon, 12 Count | Tuna & Salmon cuts in gravy, 2.6 oz. snap-peel-serve twin packs, Vitamin E immune support, prebiotic fiber, protein rich",
+   "brand": "Iams",
+   "query": "Iams Perfect Portions Cuts Gravy",
+   "candidates": [
+    {
+     "barcode": "019014802678",
+     "title": "Iams Perfect Portions Healthy Kitten Wet Cat Food Cuts In Gravy  Grain Free Chicken  2.6 Oz Twin-Pack Trays",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "019014802708",
+     "title": "IAMS Perfect Portions Cuts in Gravy Chicken, Tuna and Salmon Flavor Wet Cat Food - 1.98lbs/12ct",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "019014803217",
+     "title": "IAMS Perfect Portions Cuts in Gravy Chicken Flavor Indoor Wet Cat Food - 2.6oz",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "019014807963",
+     "title": "IAMS Perfect Portions Cuts in Gravy Chicken, Tuna and Salmon Flavor Wet Cat Food - 3.96lbs/24ct",
+     "brand": "IAMS"
+    },
+    {
+     "barcode": "336277180450",
+     "title": "Iams Perfect Portions Cuts In Gravy & Pate Kitten Grain Free Wet Cat (pate)",
+     "brand": "Iams"
+    }
+   ]
+  },
+  "B000WFKMRY": {
+   "position": 91,
+   "title": "Purina Kitten Chow Year One Essentials Dry Kitten Food, 14 lb Bags | Healthy Development high protein cat food for kittens, real farm-raised chicken, with DHA for brain and vision development",
+   "brand": "Purina",
+   "query": "Purina Chow Year One Essentials",
+   "candidates": []
   }
  }
 }

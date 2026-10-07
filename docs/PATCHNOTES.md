@@ -54,6 +54,57 @@ Notes
   is the first unplanned test of it.
 * No site code changed, so no gate behaviour changed.
 
+## [0.50.0] - 2026-10-07
+
+**Step 1 of the working order. Question 14 is answered, and it refutes the argument that came
+attached to it.** Dropping the live upstream read today would turn 45% of queries into an empty
+page.
+
+Added
+* **`tools/measure-fallback.py`**, which asks what a visitor would stop seeing if the live upstream
+  read went away. Not how many records each source holds: **how many scorable results a visitor
+  would lose**, which is a different number because M26 hides unscored products and most of upstream
+  is already in that invisible part. Writes `tools/data/fallback.json`.
+* It **matches the catalogue exactly the way the site matches it**, a plain substring over name,
+  brand and pack size, replicating `searchCatalogue`. A more generous matcher here would flatter the
+  catalogue and under-report the loss, and the site's matcher is the one that decides what a visitor
+  sees.
+* It **reuses `scorable` from `measure-coverage.py` rather than restating it.** A second copy would
+  be free to drift, and a measurement whose definitions disagree with the one it is compared against
+  is worse than no measurement.
+
+Measured
+| Over 125 queries, 100 naming a product and 25 a word | |
+|---|---|
+| Queries upstream answers with something scorable | 108 |
+| Queries the catalogue answers at all | 52 |
+| **Queries that would return nothing instead of something** | **56, which is 45%** |
+| Scorable results that would stop being shown | 1016 |
+
+* **The question was raised with an optimistic argument attached and the PRD recorded it as a guess
+  the measurement might refute.** It did. The argument was that because M26 hides unscored products
+  and 12.1 puts a scorable record at roughly one in five, the visible loss must be far smaller than
+  the raw counts suggest. The reasoning was sound and the conclusion wrong: **upstream's breadth is
+  concentrated exactly where the catalogue is narrowest**, in the generic words somebody types when
+  browsing rather than holding a package. The old paragraph is left visible in section 13 rather
+  than deleted, as an example of an argument that survives until somebody measures it.
+* **Two causes were separated, and that was the useful part.** Of the 56, **46 are missing data** and
+  only transcription fixes them; **10 are the matcher**, because the catalogue is searched by
+  substring while upstream is searched by token, so a catalogue that holds grain-free food returns
+  nothing for "grain free". Ten of fifty-six is an afternoon against weeks. A number that blended
+  the two could not have been acted on.
+
+Changed
+* **M32 is gated on M29 harder than it was estimated to be**, and the dependency column now has
+  evidence behind it rather than an intuition. It stays at step 10.
+* **A matcher fix is probably worth a milestone of its own** and does not have one yet. Recorded
+  rather than created, because inventing a milestone is the owner's call.
+
+Notes
+* The queries are chosen rather than sampled, because section 14 says this site has no analytics and
+  means it. **This is evidence about the shape of the loss, not a measurement of visitor
+  behaviour**, and `fallback.json` says so in its own header.
+
 ## [0.49.0] - 2026-10-07
 
 **The site names its own domain. Every page served at catfoodcenter.com had been telling Google to
