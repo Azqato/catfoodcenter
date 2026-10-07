@@ -35,6 +35,15 @@ export const DATA_FIELDS = [
   'ingredientsText',
   'crudeProteinPct', 'crudeFatPct', 'crudeFibrePct', 'ashPct', 'moisturePct',
   'kcalPer100g', 'taurinePresent',
+  /* Published by many panels, scored by nothing, and dropped on the floor
+     until 2026-10-07 because there was no key to put them under. Section 24.1
+     carried that as a defect and this is its fix. **They are recorded and
+     shown, and they are deliberately not scored**: adding a field is cheap and
+     deciding what a score should do with an omega-3 minimum is not, so that
+     decision stays with the scoring work rather than arriving by the back door
+     of a transcription. `vitaminEIuPerKg` is IU per kilogram of food, which is
+     the unit the panel prints; the other three are percentages by weight. */
+  'omega3Pct', 'epaPct', 'dhaPct', 'vitaminEIuPerKg',
   'name', 'brand', 'quantity', 'format', 'lifeStage', 'aafcoComplete',
 ];
 
@@ -310,6 +319,7 @@ export function catalogueBrands(catalogue) {
 const NUTRITION_FIELDS = [
   'crudeProteinPct', 'crudeFatPct', 'crudeFibrePct', 'ashPct',
   'moisturePct', 'kcalPer100g', 'taurinePresent',
+  'omega3Pct', 'epaPct', 'dhaPct', 'vitaminEIuPerKg',
 ];
 
 /* The same splitting rule opff.js applies to an upstream list. Duplicated

@@ -54,6 +54,56 @@ Notes
   is the first unplanned test of it.
 * No site code changed, so no gate behaviour changed.
 
+## [0.52.0] - 2026-10-07
+
+**Step 3 of the working order. Section 24.1 no longer lists a defect in shipped code**, for the
+first time since it was written.
+
+Fixed
+* **A premix printed in parentheses is now expanded like one printed in brackets.** Purina prints
+  `VITAMINS [...]` and Dr. Elsey's prints `Vitamins (Niacin, ...)`, and `expandGroups` only
+  understood the first, so the second arrived as a single ingredient that would wear its worst
+  component's flag. **That is the exact condition M24 shipped to fix, met again in different
+  punctuation.**
+* **The guard was never the bracket shape and widening it proved that.** What keeps `meat and
+  animal derivatives (including chicken, 4%)` whole is that its heading is not a group name and
+  that a single member is a note rather than a list. Both tests were already there and both still
+  do the work. `Mixed Tocopherols (Preservative)` stays whole for the same reason.
+* **It was not the one-character change the diagnosis estimated.** A character class cannot see
+  past a nested `niacin (Vitamin B-3)` to find the real closing bracket, so `trailingGroup` walks
+  back from the end of the entry counting depth. Six assertions added, including the nested case.
+* **Verified to change no score before being believed to.** Ten catalogue entries print menadione
+  and every one of them prints it inside square brackets or at top level, so the defect was real
+  and had never reached a visitor. The 263-assertion suite agrees.
+
+Added
+* **`omega3Pct`, `epaPct`, `dhaPct` and `vitaminEIuPerKg`.** Many panels publish these and
+  `DATA_FIELDS` had no key for them, so transcription dropped them rather than misfiling them,
+  which was the right call and not a resting place. They are now recorded in the catalogue, read by
+  `check-catalogue.py` with plausible bands and a panel cross-check, extracted by `label-deck.py`,
+  and shown on the product page.
+* **They are deliberately not scored, and the page says so.** They sit under a heading of their own
+  rather than in the nutrition grid, because every card in that grid feeds the score and these do
+  not, and a reader looking at them side by side has no way to tell which is which. Adding a field
+  is cheap; deciding what a score should do with an omega-3 minimum is not, and that decision stays
+  with the scoring work rather than arriving by the back door of a transcription.
+* **27 figures were backfilled across 8 entries from panels captured weeks ago.** Section 12.11
+  argued for capturing the whole panel on the grounds that it would cost a future field nothing to
+  backfill from. **This is that invoice, and it came to nothing.** The captures already had the
+  figures under the labels the new cross-check looks for.
+
+Notes
+* **The backfill cannot be validated by the cross-check and the tool says so.** Entry and panel
+  agree by construction because both are the same reading of the same capture. What the cross-check
+  protects is a later edit to one of them.
+* `label-deck.py` gets no bare fallback for any of the four, for the reason the existing comment
+  gives about protein and fat: `vitamin e` without the printed `(Min)` finds "Vitamin E Supplement"
+  in the ingredient list of nearly every dry food. A guarantee always qualifies its figures.
+* Vitamin E is accepted only in IU/kg. A panel printing IU/lb is a different number and converting
+  it quietly is how a unit error becomes a figure.
+* Service worker `v15`. `ingredients.js` and `product-page.js` are both precached, so a returning
+  visitor would have kept the old copies and seen neither fix until the version changed.
+
 ## [0.51.0] - 2026-10-07
 
 **Step 2 of the working order. The barcode resolver has asked about everything it is ever going to

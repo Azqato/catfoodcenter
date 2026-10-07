@@ -95,6 +95,43 @@ function splitInner(text) {
 }
 
 /**
+ * Find a bracketed group at the end of an entry, in either punctuation.
+ *
+ * Square brackets are how Purina prints a premix and round brackets are how
+ * Dr. Elsey's and most European labels print the same thing, so the shape of
+ * the bracket says nothing about whether the contents are a group. **What
+ * decides that is the heading**, and `isGroupHeading` is the guard that keeps
+ * "meat and animal derivatives (including chicken, 4%)" whole. Treating the
+ * bracket shape as the guard was a safe mistake for as long as no catalogue
+ * entry printed a parenthesised premix containing an additive; it would stop
+ * being safe the moment one did, because the whole premix would then wear
+ * menadione's Tier 3 flag.
+ *
+ * The closing bracket is matched by walking back from the end and counting
+ * depth, not by a regular expression, because a member may carry its own
+ * parentheses: "Vitamins (niacin (Vitamin B-3), ...)" nests, and a character
+ * class that excludes the closing bracket cannot see past the inner one.
+ *
+ * @param {string} text one trimmed entry
+ * @returns {?{heading: string, inside: string}} null if it has no trailing group
+ */
+function trailingGroup(text) {
+  const s = String(text || '');
+  const close = s[s.length - 1];
+  const open = close === ']' ? '[' : close === ')' ? '(' : '';
+  if (!open) return null;
+  let depth = 0;
+  for (let i = s.length - 1; i >= 0; i -= 1) {
+    if (s[i] === close) depth += 1;
+    else if (s[i] === open) {
+      depth -= 1;
+      if (depth === 0) return { heading: s.slice(0, i), inside: s.slice(i + 1, -1) };
+    }
+  }
+  return null;
+}
+
+/**
  * Expand premix groups in a split ingredient list.
  *
  * Entries that are not groups are returned untouched and in place, so this is
@@ -106,12 +143,12 @@ function splitInner(text) {
 export function expandGroups(entries) {
   const out = [];
   for (const entry of entries || []) {
-    const match = /^(.*?)\[([^\]]*)\]\s*$/.exec(String(entry || '').trim());
-    if (!match) {
+    const group = trailingGroup(String(entry || '').trim());
+    if (!group) {
       out.push(entry);
       continue;
     }
-    const [, heading, inside] = match;
+    const { heading, inside } = group;
     const members = splitInner(inside);
     // One member is not a list, it is a note: "chicken fat [preserved with
     // mixed tocopherols]" says something about the fat rather than replacing
@@ -126,4 +163,4 @@ export function expandGroups(entries) {
 }
 
 /** Exported for the test suite only. */
-export const _internal = { isGroupHeading, splitInner, GROUP_HEADINGS };
+export const _internal = { isGroupHeading, splitInner, trailingGroup, GROUP_HEADINGS };

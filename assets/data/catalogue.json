@@ -21,6 +21,10 @@
  "products": {
   "000338016605": {
    "barcode": "000338016605",
+   "dhaPct": 0.25,
+   "epaPct": 0.25,
+   "omega3Pct": 1.6,
+   "vitaminEIuPerKg": 150,
    "source": "https://drelseys.com/product/salmon-recipe-kibble/",
    "sourceKind": "manufacturer",
    "checked": "2026-09-09",
@@ -42,6 +46,10 @@
   },
   "000338026604": {
    "barcode": "000338026604",
+   "dhaPct": 0.06,
+   "epaPct": 0.06,
+   "omega3Pct": 0.4,
+   "vitaminEIuPerKg": 150,
    "source": "https://drelseys.com/product/chicken-recipe-kibble/",
    "sourceKind": "manufacturer",
    "checked": "2026-09-09",
@@ -63,6 +71,10 @@
   },
   "000338036603": {
    "barcode": "000338036603",
+   "dhaPct": 0.06,
+   "epaPct": 0.06,
+   "omega3Pct": 0.75,
+   "vitaminEIuPerKg": 150,
    "source": "https://drelseys.com/product/turkey-recipe-kibble/",
    "sourceKind": "manufacturer",
    "checked": "2026-09-09",
@@ -84,6 +96,10 @@
   },
   "000338056601": {
    "barcode": "000338056601",
+   "dhaPct": 0.06,
+   "epaPct": 0.06,
+   "omega3Pct": 0.6,
+   "vitaminEIuPerKg": 150,
    "source": "https://drelseys.com/product/duck-chicken-recipe-kibble/",
    "sourceKind": "manufacturer",
    "checked": "2026-09-09",
@@ -157,6 +173,7 @@
   },
   "050000168620": {
    "barcode": "050000168620",
+   "vitaminEIuPerKg": 100,
    "source": "https://www.purina.com/sites/default/files/product-label-deck-file/2025-10/6007_e600725_friskies_gravy_swirlers_dry_cat_food_fs1.pdf",
    "sourceKind": "manufacturer",
    "checked": "2026-09-11",
@@ -326,6 +343,10 @@
   },
   "CFC-drelseys-pork-recipe-kibble": {
    "barcode": "CFC-drelseys-pork-recipe-kibble",
+   "dhaPct": 0.06,
+   "epaPct": 0.06,
+   "omega3Pct": 0.7,
+   "vitaminEIuPerKg": 150,
    "source": "https://drelseys.com/product/pork-recipe-kibble/",
    "sourceKind": "manufacturer",
    "checked": "2026-09-09",
@@ -364,6 +385,10 @@
   },
   "CFC-drelseys-rabbit-chicken-recipe-kibble": {
    "barcode": "CFC-drelseys-rabbit-chicken-recipe-kibble",
+   "dhaPct": 0.06,
+   "epaPct": 0.06,
+   "omega3Pct": 0.75,
+   "vitaminEIuPerKg": 150,
    "source": "https://drelseys.com/product/rabbit-chicken-recipe-kibble/",
    "sourceKind": "manufacturer",
    "checked": "2026-09-09",
@@ -537,6 +562,8 @@
   },
   "CFC-purina-kitten-chow-year-one-essentials": {
    "barcode": "CFC-purina-kitten-chow-year-one-essentials",
+   "dhaPct": 0.02,
+   "vitaminEIuPerKg": 150,
    "source": "https://www.purina.com/sites/default/files/product-label-deck-file/2026-06/4530_m453025_kitten_chow_year_one_essentials_w_real_chicken_dry_kitten_food_cb5_1.pdf",
    "sourceKind": "manufacturer",
    "checked": "2026-09-11",

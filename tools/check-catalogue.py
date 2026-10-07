@@ -38,6 +38,9 @@ DATA_FIELDS = {
     'ingredientsText',
     'crudeProteinPct', 'crudeFatPct', 'crudeFibrePct', 'ashPct', 'moisturePct',
     'kcalPer100g', 'taurinePresent',
+    # Published by many panels and scored by nothing. See the note beside them
+    # in assets/js/catalogue.js: recorded and shown, deliberately not scored.
+    'omega3Pct', 'epaPct', 'dhaPct', 'vitaminEIuPerKg',
     'name', 'brand', 'quantity', 'format', 'lifeStage', 'aafcoComplete',
 }
 META_FIELDS = {'barcode', 'source', 'sourceKind', 'checked', 'note'}
@@ -70,6 +73,15 @@ BANDS = {
     'ashPct': (0, 15),
     'moisturePct': (0, 92),
     'kcalPer100g': (15, 600),
+    # Read off the panels this project has captured, where omega-3 minimums run
+    # 0.02% to 1.6% and vitamin E runs 100 to 150 IU/kg. The bands are wider
+    # than that on purpose: a band drawn tight around twenty-nine panels would
+    # reject the thirtieth for being unusual rather than for being wrong, which
+    # is the mistake the protein band already made once at 50%.
+    'omega3Pct': (0, 8),
+    'epaPct': (0, 5),
+    'dhaPct': (0, 5),
+    'vitaminEIuPerKg': (10, 2000),
 }
 
 # PRD 12.11: everything the panel prints is captured, including the figures
@@ -107,6 +119,14 @@ CROSS_CHECK = {
     'crudeFibrePct': ('crude fib', 'dietary fib', 'fib'),
     'moisturePct': ('moisture',),
     'ashPct': ('crude ash', 'ash'),
+    # The panel prints these inside a parenthesised gloss, as "Omega-3 Fatty
+    # Acids* (Min) 0.40%" and "Eicosapentaenoic Acid (EPA) (Min) 0.06%", so the
+    # chemical name is the reliable half of the label and the abbreviation is
+    # the one a reader recognises. Both are listed.
+    'omega3Pct': ('omega-3', 'omega 3'),
+    'epaPct': ('eicosapentaenoic', 'epa'),
+    'dhaPct': ('docosahexaenoic', 'dha'),
+    'vitaminEIuPerKg': ('vitamin e',),
 }
 
 FORMATS = {'wet', 'dry', 'unknown'}

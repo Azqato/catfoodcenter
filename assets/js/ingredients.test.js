@@ -54,12 +54,36 @@ suite('premix: what must never be expanded', (t) => {
 
   const round = ['meat and animal derivatives (including chicken, 4%)'];
   t.equal(expandGroups(round)[0], round[0],
-    'round brackets qualify an ingredient and are never a group; splitting this would '
-    + 'invent two ingredients that are not on the label');
+    'round brackets usually qualify an ingredient, and the heading test is what keeps '
+    + 'this whole now that bracket shape no longer does: splitting it would invent two '
+    + 'ingredients that are not on the label');
+
+  const preservative = ['Mixed Tocopherols (Preservative)'];
+  t.equal(expandGroups(preservative)[0], preservative[0],
+    'one member is not a list whichever bracket it arrives in');
 
   t.equal(expandGroups(['chicken', 'rice']).length, 2, 'a list with no group comes back as it was');
   t.equal(expandGroups([]).length, 0, 'an empty list is not an error');
   t.equal(expandGroups(null).length, 0, 'and neither is no list at all');
+});
+
+suite('premix: parentheses are a premix too', (t) => {
+  // Dr. Elsey's cleanprotein prints the same premix Purina prints, in round
+  // brackets. Until 2026-10-07 it arrived as one ingredient, which was the
+  // exact condition M24 shipped to fix, met again in different punctuation.
+  const elseys = expandGroups([
+    'chicken',
+    'Vitamins (Niacin Supplement, Vitamin E Supplement, Menadione Sodium Bisulfite Complex)',
+  ]);
+  t.equal(elseys.length, 4, 'two entries become four, because one of them was three');
+  t.equal(elseys[0], 'chicken', 'and the real ingredient is untouched and in place');
+  t.equal(elseys[3], 'Menadione Sodium Bisulfite Complex',
+    'the additive is now an entry of its own, so the Tier 3 flag lands on it rather '
+    + 'than on the two vitamins beside it');
+
+  const nested = expandGroups(['MINERALS (zinc proteinate, pyridoxine hydrochloride (Vitamin B-6))']);
+  t.equal(nested.length, 2, 'a member may carry its own parentheses');
+  t.equal(nested[1], 'pyridoxine hydrochloride (Vitamin B-6)', 'and keeps its gloss');
 });
 
 suite('premix: which headings count', (t) => {

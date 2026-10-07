@@ -319,7 +319,38 @@ function renderNutrition(product) {
       ${card('Moisture (as fed)', n.moisturePct, '%')}
       ${card('Energy', n.kcalPer100g, ' kcal/100g', n.energyCorrected ? 'Read as a per-kilogram value; the published figure was implausible per 100 g' : '')}
       ${taurine}
-    </div>${dmNote}`);
+    </div>${dmNote}${renderAlsoPublished(n)}`);
+}
+
+/* Figures the panel publishes that nothing here scores.
+ *
+ * They are shown in their own block rather than mixed into the grid above,
+ * because every card in that grid feeds the score and these do not, and a
+ * reader has no way to tell which is which if they sit side by side. Section
+ * 24.1 carried their absence as a defect from 2026-09-26 to 2026-10-07: the
+ * panels were captured with the figures in them and the catalogue had no field
+ * to hold them, so they were dropped rather than misfiled, which was the right
+ * call at the time and not a resting place.
+ *
+ * The block renders only when a figure exists. An empty "also published"
+ * heading over four "Not published" cards would imply the project had looked
+ * and found nothing, when for almost every product it has not yet looked. */
+function renderAlsoPublished(n) {
+  const rows = [
+    ['Omega-3 (min)', n.omega3Pct, '%'],
+    ['EPA (min)', n.epaPct, '%'],
+    ['DHA (min)', n.dhaPct, '%'],
+    ['Vitamin E (min)', n.vitaminEIuPerKg, ' IU/kg'],
+  ].filter(([, value]) => typeof value === 'number');
+  if (!rows.length) return '';
+
+  const cells = rows.map(([label, value, unit]) => `<div class="nutrition-card">
+      <p class="nutrition-label">${label}</p>
+      <p class="nutrition-value">${value}<span class="nutrition-unit">${unit}</span></p>
+    </div>`).join('');
+  return `<h3 class="text-small font-medium text-ink mt-4" style="margin-bottom:8px">Also published on the panel</h3>
+    <div class="nutrition-grid">${cells}</div>
+    <p class="text-micro text-ink-soft mt-2">Transcribed from the panel and shown because it is published, not because it is scored: nothing in the score on this page uses these figures.</p>`;
 }
 
 function renderAdequacy(product) {
@@ -347,6 +378,10 @@ const FIELD_LABELS = {
   moisturePct: 'moisture',
   kcalPer100g: 'energy',
   taurinePresent: 'the taurine declaration',
+  omega3Pct: 'the omega-3 minimum',
+  epaPct: 'EPA',
+  dhaPct: 'DHA',
+  vitaminEIuPerKg: 'vitamin E',
   name: 'the product name',
   brand: 'the brand',
   quantity: 'the pack size',

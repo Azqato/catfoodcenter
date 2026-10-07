@@ -66,6 +66,17 @@ GA_FIELDS = [
                        r'\b(?:dietary\s+)?fib(?:er|re)\s*\((?:min|max)']),
     ('moisturePct', [r'moisture']),
     ('ashPct', [r'(?:crude\s+)?ash']),
+    # No bare fallback for any of these four, and that is the same argument the
+    # comment above makes: "vitamin e" without the "(Min)" finds "Vitamin E
+    # Supplement" in the ingredient list on nearly every dry food, and "dha"
+    # without it finds the gloss in "Docosahexaenoic Acid (DHA)" rather than a
+    # figure. The guarantee always qualifies its numbers.
+    ('omega3Pct', [r'omega[\s-]*3[^\n]{0,24}?\((?:min|max)']),
+    ('epaPct', [r'eicosapentaenoic[^\n]{0,24}?\((?:min|max)',
+                r'\(epa\)\s*\((?:min|max)']),
+    ('dhaPct', [r'docosahexaenoic[^\n]{0,24}?\((?:min|max)',
+                r'\(dha\)\s*\((?:min|max)']),
+    ('vitaminEIuPerKg', [r'vitamin\s+e\s*\((?:min|max)']),
 ]
 TAURINE = r'taurine'
 
