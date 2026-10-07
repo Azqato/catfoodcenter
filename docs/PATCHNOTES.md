@@ -54,6 +54,37 @@ Notes
   is the first unplanned test of it.
 * No site code changed, so no gate behaviour changed.
 
+## [0.54.1] - 2026-10-07
+
+**Live verification of M28 returned 28 of 29, and the two findings were different kinds of thing.**
+Recorded separately because collapsing them would have hidden the real one.
+
+Fixed
+* **Five pages were not regenerated after `opff.js` gained an import.** `check-live.py` reported
+  "module graph preloaded, not discovered" and named search, brands and product as missing
+  `barcodes.js`. The `modulepreload` list in the head is computed from the imports rather than
+  written down, exactly so it cannot be forgotten, and it was not forgotten: it was not rebuilt.
+  **A computed list closes the route where somebody forgets to add an entry and leaves open the
+  route where the page holding it is stale**, which is the one that happened. 16.10 measured the
+  cost of the serial waterfall this preload collapses at 1794ms of the 2271ms before the first API
+  request left the browser, so this was a real regression and not a cosmetic one.
+* **The PRD claimed this check "also catches a page that was not rebuilt after an import changed"
+  and had never been tested by a failure.** It has now, and the section says so.
+
+Notes
+* **The second failure was the documented non-determinism and was confirmed rather than assumed.**
+  "unqualified search filters, and discloses it" failed once, reading `filtered=False
+  discloses=False`, which means the results label never populated. The runbook says to confirm
+  against the live API before treating a live-check failure as a regression, so the upstream search
+  endpoint was queried directly: **HTTP 200 in 1.56s, 5 products of 553 matched.** Upstream was
+  healthy and fast. Three further runs of the full suite returned 29 of 29. Reported as the flake
+  it is, not as a pass and not as a regression.
+* **That is the third observed instance of this class and it accumulates against open question 12**,
+  which asks whether the live read goes entirely or stays as a fallback. A check that depends on a
+  third party is a check that fails for reasons the project did not cause, and the visitor-facing
+  version of the same dependency fails in the same way at the moment the visitor is least patient.
+  It is weak evidence and it is evidence, so it is written down rather than shrugged off.
+
 ## [0.54.0] - 2026-10-07
 
 **Step 5, and M28 is complete. A barcode now points at a product instead of being one.** That is one
