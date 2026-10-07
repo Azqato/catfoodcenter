@@ -49,6 +49,9 @@ META_FIELDS = {'barcode', 'source', 'sourceKind', 'checked', 'note'}
 MODIFIER_FIELDS = {'ingredientsLang'}
 SOURCE_KINDS = {'manufacturer', 'retailer-listing'}
 
+# Hosts whose data arrives under the ODbL. See the check that uses this.
+UPSTREAM_HOST = re.compile(r'open(?:pet)?foodfacts', re.I)
+
 # Mirrors PROVISIONAL_KEY in assets/js/catalogue.js. An entry may be filed
 # under one of these while its panel is published and its barcode is not.
 #
@@ -164,6 +167,23 @@ def check(entry, key, problems):
     source = (entry.get('source') or '').strip()
     if not source:
         bad('no source. Every entry says where it was read')
+    # PRD 22.5 and open question 13. Upstream publishes its database under the
+    # ODbL, whose share-alike clause attaches to a derived database rather than
+    # to individual facts, and this file is published under a licence that
+    # grants nothing. Those two postures coexist today only because **this file
+    # contains no upstream record at all**: upstream data is fetched by the
+    # visitor's browser and never stored here.
+    #
+    # That is the kind of property that is true until somebody adds one entry
+    # in a hurry, and nothing would look wrong afterwards. So it is a gate
+    # rather than a paragraph. M33 is the milestone that would deliberately
+    # change it, and when it does, this check is what has to be argued with
+    # first.
+    if UPSTREAM_HOST.search(source):
+        bad('source is upstream, and no entry may be imported from it while open '
+            'question 13 is open. See PRD 22.5: the share-alike question does not '
+            'currently bite on anything published here, and this is the only reason '
+            'why. M33 is where that changes, by a person')
     if entry.get('sourceKind') not in SOURCE_KINDS:
         bad('sourceKind must be one of %s' % ', '.join(sorted(SOURCE_KINDS)))
 

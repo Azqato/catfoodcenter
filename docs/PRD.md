@@ -1083,7 +1083,7 @@ now reports the same call the engine made, and a test pins it.
 | 1 | ~~Question 14: measure what the live read is worth~~ | XS | - | **Done 2026-10-07.** `tools/measure-fallback.py`. The answer is 56 of 125 queries would return nothing, and it refuted the optimistic guess that came with the question. M32 is gated on M29 harder than estimated |
 | 2 | ~~Finish the barcode resolver~~ | XS | - | **Done 2026-10-07.** The last six rows were queried. 62 of the 100 ranked rows now have candidates on file and the other 38 are the assorted-recipe rows 12.15 refuses on principle, so **there is nothing left to query**. Nothing has been chosen; `--review` is step 6 |
 | 3 | ~~The 24.1 residue~~ | S | - | **Done 2026-10-07.** `expandGroups` now expands a premix in either bracket, guarded by the heading test rather than by the punctuation, and four fields hold the omega-3, EPA, DHA and vitamin E figures. 27 of them were backfilled from panels already captured, which is what 12.11 promised capture would buy. **24.1 is empty of code defects** |
-| 4 | **Question 13: read the licence** | S | none | Not engineering time. It gates M33 and nothing else, and it is cheaper to answer now than to discover during an import |
+| 4 | **Question 13: read the licence** | S | none | **Scoped 2026-10-07, not answered, and it cannot be by an agent.** Section 22.5 has the ODbL clauses, the measurement that no upstream record is stored here, the gate that keeps it so, and the four questions left. It gates M33 and nothing else, and the project is not exposed while it waits |
 | 5 | **M28: the barcode index** | S/M | none | **The cheapest work that changes what a visitor experiences.** See the entry below for why it comes before M29 despite M29 being the coverage mover |
 | 6 | **Review the 40 barcode candidates** | M, owner's time | M28 | About two hours of decisions, one product at a time, under 12.10's rule. **It cannot start before M28**, because until the index exists a barcode has nowhere to go unless an entry already exists to key it to |
 | 7 | **M29: the top 100, transcribed** | L | none | Ordered by the owner on 2026-09-09 ahead of the beta, and still the milestone that moves coverage. Batches of five, each a checkpoint with the gates, a commit and a re-measured number, so 12.9 moves visibly rather than in one unverifiable jump. Both inputs have a route: 12.13 for the barcode, 12.14 for the panel |
@@ -2278,7 +2278,7 @@ Being cited in an AI answer is the modern equivalent of ranking: it costs the pr
 ### 22.3 What the licence does not claim
 
 - **It does not override platform terms.** A public repository on GitHub already gives GitHub's users whatever view and fork rights its terms grant. Those operate independently and are not enlarged by the licence.
-- **It does not claim third-party data.** This is not theoretical here: most product facts on the site come from Open Pet Food Facts and are not ours to license. Nor are the AAFCO profiles, the fonts, or ZXing. **That sentence said "every" until 2026-09-27 and it had stopped being true on 2026-09-09**, when the transcription programme in 12.10 began producing records read from manufacturers' published panels rather than from upstream. Twenty-nine such entries exist today. The licence position of a database mixing the two is an open question raised by M32 and is not answered here.
+- **It does not claim third-party data.** This is not theoretical here: most product facts on the site come from Open Pet Food Facts and are not ours to license. Nor are the AAFCO profiles, the fonts, or ZXing. **That sentence said "every" until 2026-09-27 and it had stopped being true on 2026-09-09**, when the transcription programme in 12.10 began producing records read from manufacturers' published panels rather than from upstream. Twenty-nine such entries exist today. The licence position of a database mixing the two is an open question raised by M32 and is not answered here. **Section 22.5 now carries the clauses it turns on and the measurement that says it does not bite yet**: no upstream record is stored in this repository, and a gate in `check-catalogue.py` keeps it that way until a person decides otherwise.
 - **It does not restrict rights that cannot be restricted**, such as fair use or fair dealing.
 
 ### 22.4 Permission requests
@@ -2298,6 +2298,44 @@ A visible record of what has and has not been permitted suits a posture whose en
 **A note on scope that the audit had to check:** this site is served from a subpath of `azqato.github.io`, a domain this project does not own. The `robots.txt` that actually governs crawler behaviour for that host is the one at `https://azqato.github.io/robots.txt`, which belongs to the domain owner. The `robots.txt` committed here is served at `https://azqato.github.io/catfoodcenter/robots.txt` and is **not** the authoritative robots policy for the host. It is committed anyway because it is correct if the site ever moves to its own domain, and because it documents the intent. The sitemap is subject to the same limitation: it is only trusted for URLs under its own path unless a host-level `robots.txt` names it.
 
 ---
+
+### 22.5 The Open Database Licence, and what this project publishes
+
+**This section quotes terms and reports a measurement. It is not legal advice and it does not answer open question 13**, which says the terms should be read by a person who does licensing rather than recalled by an agent. What is here is the material that person would otherwise have to assemble: the clauses that bear on the question, and the fact about this repository that decides whether they bear on it yet.
+
+*What upstream publishes under what.* Open Pet Food Facts states three separate licences, and the split matters more than any single one of them:
+
+| | |
+|---|---|
+| The database | [Open Database License 1.0](https://opendatacommons.org/licenses/odbl/1-0/) |
+| Individual contents of the database | [Database Contents License 1.0](https://opendatacommons.org/licenses/dbcl/1-0/), which grants "a worldwide, royalty-free, non-exclusive, perpetual, irrevocable copyright license to do any act that is restricted by copyright over anything within the Contents" |
+| Product images | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
+
+**So a fact and a database are not under the same terms**, and the share-alike obligation lives on the database. The clauses, quoted:
+
+> **4.4 a.** Any Derivative Database that You Publicly Use must be only under the terms of: i. This License; ii. A later version of this License similar in spirit to this License; or iii. A compatible license.
+>
+> **4.4 b.** For the avoidance of doubt, Extraction or Re-utilisation of the whole or a Substantial part of the Contents into a new database is a Derivative Database and must comply with Section 4.4.
+>
+> **4.5 b.** Using this Database, a Derivative Database, or this Database as part of a Collective Database to create a Produced Work does not create a Derivative Database for purposes of Section 4.4.
+>
+> **4.6.** If You Publicly Use a Derivative Database or a Produced Work from a Derivative Database, You must also offer to recipients [...] a copy in a machine readable form of: a. The entire Derivative Database; or b. A file containing all of the alterations made to the Database or the method of making the alterations.
+
+**Measured 2026-10-07 by `python tools/check-catalogue.py`: `catalogue.json` holds 29 entries and not one of them came from upstream.** Twenty-eight are read from a manufacturer's published panel and one from a retailer listing. **No upstream record is stored in this repository at all**, because upstream data is fetched by the visitor's browser at the moment they look at a product and is never written down here.
+
+*Why that is the whole answer for today.* The share-alike clause attaches to a Derivative Database that is Publicly Used. This project publishes no database derived from upstream, so there is nothing for 4.4 to attach to, and the question of how a share-alike file and an all-rights-reserved file coexist does not arise yet. **It is not resolved, it is not yet reached.**
+
+*And that is a fragile property, so it is now a gate rather than a sentence.* `check-catalogue.py` refuses any entry whose `source` names an upstream host. One entry added in a hurry would change this project's licence position, and nothing about the file would look wrong afterwards. A gate is the only form in which a claim like this stays true.
+
+**What is left for a person, and it is not avoidable.** These are the questions M33 cannot be built without answering, and none of them is answered here.
+
+1. **Does importing upstream records into `catalogue.json` make it a Derivative Database?** 4.4 b says extraction of a Substantial part into a new database does. "Substantial" is defined in the licence as substantial in quantity or quality, with repeated systematic extraction of insubstantial parts capable of amounting to it, which is exactly what a hundred-product import over months looks like.
+2. **If it is, what does 4.4 then require of a file that also holds 29 records this project transcribed itself?** The transcribed records carry no ODbL encumbrance and would not have to be given away, which is the mitigation question 13 already identified. Whether a single JSON file can hold both and honour 4.4 on half of it, or whether the import has to live in a separate file under separate terms, is a decision about structure as much as about law.
+3. **Does 4.6 then oblige this project to publish the import in machine-readable form?** It is already a public file in a public repository, so this may cost nothing. "May" is doing real work in that sentence.
+4. **What is the site itself?** A page showing one product's score reads like a Produced Work, which 4.5 b exempts. That is an argument, not a finding, and it is the argument most worth having checked, because the whole live-read architecture rests on it today.
+
+*What this does to the roadmap.* Nothing moves. M33 stays blocked on question 13 and the block is now specific: four questions, with the clause text beside each. **The project is not exposed while it waits**, which was the thing worth establishing, and the gate is what keeps that true rather than a note asking people to remember.
+
 
 ## 23. Deprecation and removal
 
@@ -2546,6 +2584,8 @@ Numbered so they can be answered by reference. Answering one folds the answer in
 12. **Does the live Open Pet Food Facts read go entirely, or stay as a fallback for a barcode the local database does not hold?** *Raised 2026-09-27 by M32, and the only question in that milestone that changes the shape of the build rather than its schedule.* A fallback keeps the long tail and costs almost nothing to leave in place. It also keeps a third party in the scan path on **exactly the scans that already failed**, which is the moment a visitor is least patient and the moment the site most wants to offer them the M28 contribution route instead. **The recommendation on record is to remove it outright**, on the argument that a miss which is honest and actionable beats a miss which is slow and then still a miss, and that ADR-001 describes a site served from its own files. It is the owner's call. Whichever way it goes, section 16.5a's merge rules need rewriting, because they currently arbitrate between a live record and a local overlay and there would no longer be a live record to arbitrate with.
 
 13. **What does the Open Database Licence actually require of a database that mixes imported records with transcribed ones?** *Raised 2026-09-27 by M32. Recorded nowhere in this project before that date, which is the concerning part.* Open Food Facts publishes its database under the ODbL, whose share-alike terms attach to a derived database rather than to individual facts, and this project's `LICENSE.md` grants nothing. **Those two postures do not obviously coexist in one published file.** This document does not answer it and neither should an agent: the terms should be read rather than recalled, by a person who does licensing. **What can be said without a lawyer is the mitigation**, and it is the same one that makes M32 attractive rather than risky: a record transcribed from a manufacturer's published panel carries no such encumbrance, so keeping imported records separable and labelled means whatever the licence requires can be honoured on the part it applies to, rather than on the whole file. Section 22.3 now says the question is open rather than implying it is settled.
+
+    **Scoped on 2026-10-07 by step 4 of the working order, and deliberately not answered.** Section 22.5 quotes ODbL 4.4, 4.5 and 4.6, records that upstream licenses its database, its individual contents and its images under three different terms, and reports the measurement that settles the urgency: **`catalogue.json` holds 29 entries and none is from upstream**, because upstream data is fetched by the visitor's browser and never stored here. So there is no Derivative Database for the share-alike clause to attach to. **The question is not resolved, it is not yet reached**, and `check-catalogue.py` now refuses an entry sourced to an upstream host so that this stays true by gate rather than by memory. Four questions are left for a person and 22.5 lists them beside the clause text.
 
 14. ~~**How much scorable breadth would actually be lost by dropping the live read?**~~ **Answered 2026-10-07 by `python tools/measure-fallback.py`, and the answer is that it would be lost in bulk.** The question was raised with an argument attached: M26 hides unscored products, section 12.1 puts a scorable record at roughly one in five, so the breadth a visitor sees must be far smaller than the breadth that exists, and the loss was probably smaller than the raw counts suggested. **That argument was recorded here as a guess that the measurement might refute, and it did.**
 

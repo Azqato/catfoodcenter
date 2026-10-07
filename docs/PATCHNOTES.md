@@ -54,6 +54,40 @@ Notes
   is the first unplanned test of it.
 * No site code changed, so no gate behaviour changed.
 
+## [0.53.0] - 2026-10-07
+
+**Step 4 of the working order. Question 13 is scoped, measured and gated, and deliberately not
+answered.** The measurement is the useful part: **this repository stores no upstream record at all**,
+so the share-alike question does not bite on anything published today.
+
+Added
+* **PRD section 22.5**, which quotes ODbL 4.4, 4.5 and 4.6 rather than recalling them, records that
+  upstream licenses its database, its individual contents and its product images under **three
+  different terms**, and reports what `catalogue.json` actually contains.
+* **A gate.** `check-catalogue.py` now refuses any entry whose `source` names an upstream host.
+  Verified by adding one and watching it fail, then removing it.
+
+Measured
+* **29 entries, 28 from a manufacturer's published panel and 1 from a retailer listing, and 0 from
+  upstream.** Upstream data is fetched by the visitor's browser when they open a product and is
+  never written down here. ODbL 4.4 attaches to a Derivative Database that is Publicly Used, and
+  this project publishes none, so **the question is not resolved, it is not yet reached.**
+* **That property is one hurried commit away from being false, and nothing would look wrong
+  afterwards.** Which is the argument for a gate instead of a paragraph: a licence position that
+  depends on everybody remembering a rule is not a position.
+
+Notes
+* **It is still not answered, and an agent should not be the one to answer it.** Question 13 said
+  the terms should be read by a person who does licensing. Four questions are left and 22.5 lists
+  them with the clause text beside each: whether an import makes the file a Derivative Database
+  under 4.4 b, what 4.4 then requires of a file that also holds records this project transcribed
+  itself, whether 4.6 obliges publishing the import in machine-readable form when it is already a
+  public file, and whether a product page is a Produced Work exempted by 4.5 b.
+* **The fourth is the one most worth having checked**, because the entire live-read architecture
+  rests on it today rather than at M33.
+* M33 stays blocked and nothing on the roadmap moves. What changed is that **the project is now
+  known not to be exposed while it waits**, which it was not before.
+
 ## [0.52.0] - 2026-10-07
 
 **Step 3 of the working order. Section 24.1 no longer lists a defect in shipped code**, for the
