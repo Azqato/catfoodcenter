@@ -8,14 +8,21 @@
 #
 # LICENSE.md is authoritative if this file and it ever appear to disagree.
 #
-# SCOPE, which matters here: this site is served from a subpath of
-# azqato.github.io, a domain this project does not own. The robots.txt that
-# actually governs crawler behaviour for that host is the one at
-# https://azqato.github.io/robots.txt, which belongs to the domain owner. This
-# file is served at https://azqato.github.io/catfoodcenter/robots.txt and is
-# NOT the authoritative robots policy for the host. It is committed because it
-# is correct if the site ever moves to its own domain, and because it records
-# the intent either way. The same limitation applies to the sitemap below.
+# SCOPE: this file became authoritative on 2026-10-07, and the paragraph it
+# replaces said it was not. Until then the site was served from a subpath of
+# azqato.github.io, a domain this project does not own, so the robots.txt that
+# actually governed the host was the owner's at the apex and this one was a
+# statement of intent nobody was obliged to read. That paragraph ended by
+# saying it was committed anyway because it would be correct if the site ever
+# moved to its own domain. It has. This file is now served at
+# https://catfoodcenter.com/robots.txt, which is the apex of a domain the
+# project does own, and it governs. The same is true of the sitemap below.
+#
+# The site is still reachable at https://azqato.github.io/catfoodcenter/, and
+# that copy is not the canonical one: every page there names catfoodcenter.com
+# as its canonical, so a search engine consolidates onto this domain. No
+# Disallow is used to achieve it, for the reason given further down about the
+# difference between withholding a fetch and withholding a listing.
 
 # One page asks not to be listed, and it asks in its own head rather than
 # here: tools/tests.html carries <meta name="robots" content="noindex, follow">.
@@ -31,4 +38,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://azqato.github.io/catfoodcenter/sitemap.xml
+Sitemap: https://catfoodcenter.com/sitemap.xml

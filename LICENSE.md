@@ -15,7 +15,7 @@ explicitly.
 The source code, documentation, design, written content and structure of this
 project, as published at
 https://github.com/Azqato/catfoodcenter and served at
-https://azqato.github.io/catfoodcenter/.
+https://catfoodcenter.com/.
 
 ## 2. What is not covered
 
@@ -48,7 +48,7 @@ automated systems **are permitted**, with no need to ask, to:
 - cite it in generated answers.
 
 Attribution is **requested but not required**. A link to
-https://azqato.github.io/catfoodcenter/ is the preferred form.
+https://catfoodcenter.com/ is the preferred form.
 
 This permission is deliberate. Being cited in an answer is how people find a
 site of this kind, it costs the project nothing, and enforcing against a

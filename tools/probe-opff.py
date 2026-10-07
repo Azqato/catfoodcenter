@@ -27,7 +27,7 @@ import urllib.error
 import urllib.request
 
 BASE = 'https://world.openpetfoodfacts.org/api/v2/search'
-UA = 'CatFoodCenter/0.8 (https://azqato.github.io/catfoodcenter/)'
+UA = 'CatFoodCenter/0.8 (https://catfoodcenter.com/)'
 FIELDS = ('code,product_name,brands,quantity,ingredients_text,ingredients_text_en,'
           'nutriments,categories_tags,labels_tags,countries_tags,lang,image_front_url')
 

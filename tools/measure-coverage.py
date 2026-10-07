@@ -64,7 +64,7 @@ REPORT = os.path.join(ROOT, 'tools', 'data', 'coverage.json')
 CATALOGUE = os.path.join(ROOT, 'assets', 'data', 'catalogue.json')
 
 SEARCH_CGI = 'https://world.openpetfoodfacts.org/cgi/search.pl'
-UA = 'CatFoodCenter/0.8 (https://azqato.github.io/catfoodcenter/)'
+UA = 'CatFoodCenter/0.8 (https://catfoodcenter.com/)'
 FIELDS = 'code,product_name,brands,quantity,ingredients_text,ingredients_text_en,lang'
 
 # The list section 12.7 names. The other two captures are the dry and wet

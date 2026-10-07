@@ -54,6 +54,55 @@ Notes
   is the first unplanned test of it.
 * No site code changed, so no gate behaviour changed.
 
+## [0.49.0] - 2026-10-07
+
+**The site names its own domain. Every page served at catfoodcenter.com had been telling Google to
+index a different host instead, and Google had been obeying.**
+
+Fixed
+* **Every canonical URL pointed at `azqato.github.io/catfoodcenter/`, including the ones served at
+  `catfoodcenter.com`.** Google Search Console reported it as "Alternate page with proper canonical
+  tag", and **the word doing the damage is "proper"**: the tag was well formed, which is the only
+  thing that word claims. A canonical pointing confidently at the wrong host is not a malformed tag
+  and nothing reports it as one. The effect was that the domain the project owns was not indexed at
+  all, and the ranking signal consolidated onto a subdirectory of a domain it does not own.
+* `sitemap.xml` listed nineteen `azqato.github.io` URLs while being served from the apex, which
+  reinforced the same instruction. Regenerated, nineteen URLs, all on the apex.
+* `robots.txt` advertised the old sitemap, and `check-live.py`, both API user-agent strings,
+  `README.md` and `LICENSE.md` all still named the old origin.
+* **The runbook advertised 198 assertions.** It is 257 and has been since well before 2026-09-11.
+
+Changed
+* **One constant did almost all of it.** `BASE` in `tools/site/chrome.py` is the single definition
+  both generators use, and the comment above it already said that one definition is what makes the
+  next move a one-line change. **It was, and that is a design decision paying out.** Rebuilding
+  regenerated twenty pages and the sitemap.
+* **`robots.txt` became authoritative, having never been so.** Its own scope note said a robots.txt
+  served from a subpath does not govern the host, that the governing file was the domain owner's at
+  the apex, and that this one was committed anyway because it would be correct if the site ever
+  moved to its own domain. It moved. The paragraph now says so rather than describing a limitation
+  that has lifted.
+* **PRD section 16.12 is new**, carrying the three addresses this site has had, what the mix-up
+  cost, and the three things that remain outside the repository.
+
+Notes
+* **No gate caught this, and the reason is worth keeping.** `check-live.py` has asserted since M24a
+  that every page carries its own canonical, and it passed throughout, because it compared each page
+  against a base URL held as a constant **inside the checking tool**. The tool and the generator
+  agreed with each other and both were wrong about the world. Same shape as the headless misreading
+  in 12.14 and the coverage tool querying the wrong database in 12.9: **an instrument that shares an
+  assumption with the thing it measures cannot test that assumption.**
+* **The github.io copy is left reachable on purpose.** It now names the apex as its canonical, so
+  engines consolidate onto the domain. No `Disallow`, for the reason open question 10 settled: a
+  disallowed URL can still be indexed from a link alone, described by nothing, because the crawler
+  was never let in to read the `noindex`.
+* **Three things were deliberately not done, because they are not in this repository.** Whether a
+  `CNAME` file belongs in the root, given the domain resolves through Cloudflare rather than GitHub
+  and **a blind `CNAME` could put the Pages site into a failed certificate state and take down the
+  copy that currently works**; whether apex or `www` wins, since both answer 200 and neither
+  redirects; and what to do about two separate Search Console properties. Section 16.12 has all
+  three.
+
 ## [0.48.0] - 2026-09-27
 
 **The roadmap is reordered by effort, the two milestones proposed today are split, and the unshipped

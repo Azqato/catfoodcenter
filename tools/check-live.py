@@ -471,7 +471,7 @@ async def main():
             # page carrying another page's canonical, which is what a
             # hand-written absolute URL does when a file is copied, and which no
             # amount of local browsing would reveal.
-            base_url = 'https://azqato.github.io/catfoodcenter/'
+            base_url = 'https://catfoodcenter.com/'
             wrong = []
             for dirpath, dirnames, filenames in os.walk(ROOT):
                 dirnames[:] = [d for d in dirnames

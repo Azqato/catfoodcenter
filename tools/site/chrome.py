@@ -57,12 +57,20 @@ FOOTER_LINKS = [
 ]
 
 
-# The production origin and subpath. It lives here rather than in build.py
-# because both generators need it for the canonical URL, and it has already
-# moved once: the repository was renamed on 2026-09-09 and the old Pages path
-# answers 404 rather than redirecting. One definition is what makes the next
-# move a one-line change. See PRD section 21.
-BASE = 'https://azqato.github.io/catfoodcenter/'
+# The production origin. It lives here rather than in build.py because both
+# generators need it for the canonical URL, and it has now moved twice: the
+# repository was renamed on 2026-09-09, and on 2026-10-07 the site moved to its
+# own domain. One definition is what made the second move a one-line change,
+# which is the whole reason it was put here. See PRD section 21.
+#
+# **The canonical URL is the one thing on this site that must name an absolute
+# origin**, and naming the wrong one is not a cosmetic error: between
+# 2026-09-27 and 2026-10-07 every page served at catfoodcenter.com carried a
+# canonical pointing at azqato.github.io, so Google indexed the github.io copy
+# and refused the domain the project actually owns. Section 16.12 has the
+# measurement and what it cost. Every other URL in the generated pages is
+# relative, via {{root}}, and is unaffected by a move.
+BASE = 'https://catfoodcenter.com/'
 
 
 def head(title, description, page_css=True, extra='', module=None):

@@ -1418,7 +1418,7 @@ python tools/check-contrast.py   # audits both palettes against WCAG AA
 | Command | What it does |
 |---|---|
 | `python -m http.server 8000` | Serve the site locally |
-| `python tools/run-tests.py` | Run the browser-hosted suite headlessly. 198 assertions. Exits non-zero on failure, so it works as a gate |
+| `python tools/run-tests.py` | Run the browser-hosted suite headlessly. 257 assertions. Exits non-zero on failure, so it works as a gate |
 | `python tools/check-live.py` | 29 end-to-end checks against the live API, two of them added in M18 to ask whether the search searches, one in M18b to ask whether the caveat travels with the score, and one in M20 to ask whether a curated field says so on the page. Every page-load check asserts a string that only the right page contains. Needs network. Not deterministic, so it is a smoke check rather than a gate |
 | `python tools/check-contrast.py` | Verify 52 foreground and background pairs against WCAG AA in both palettes |
 | `python tools/capture-rankings.py [source]` | Capture retailer best-seller rankings into `tools/data/top-skus.json`, appending rather than replacing. Drives Edge. Needs network |
@@ -1937,6 +1937,33 @@ The `SHELL_ASSETS` list is currently 31 entries and the installed cache holds 32
 | Types | Nothing enforces the shapes in 16.5 | Optional `tsc --checkJs --noEmit` job with JSDoc types |
 
 ---
+
+### 16.12 The site's address, and the canonical that names it
+
+**The site has lived at three addresses and the canonical tag only ever named one of them.** This section exists because that cost the project its own domain in Google's index for ten days, and because the failure was invisible to every gate the project has.
+
+| | |
+|---|---|
+| `azqato.github.io/<old repo name>/` | Retired 2026-09-09 when the repository was renamed. Answers 404 rather than redirecting; nineteen addresses retired under the pre-beta exception in 24.6 |
+| `azqato.github.io/catfoodcenter/` | Served by GitHub Pages. **Still live and still reachable**, now carrying canonicals that name the apex |
+| `catfoodcenter.com` | **The canonical home since 2026-10-07.** Served through Cloudflare, at the root rather than a subpath, and tracking the same repository |
+
+**What went wrong, measured 2026-10-07 after Google Search Console reported it.** The custom domain had been pointed at the site without the one constant that names the origin being changed with it. So every page served at `catfoodcenter.com` carried `<link rel="canonical" href="https://azqato.github.io/catfoodcenter/...">`, and `sitemap.xml` at that domain listed nineteen `azqato.github.io` URLs. Google did exactly as instructed: it read a canonical pointing at a different host, concluded the page was a duplicate, indexed the github.io copy and declined to index the domain the project owns. The Search Console message was **"Alternate page with proper canonical tag"**, and the word doing the damage is *proper*: the tag was well formed, which is all that "proper" claims. **A canonical pointing confidently at the wrong place is not a malformed tag and nothing will report it as one.**
+
+*Why no gate caught it.* `check-live.py` has asserted since M24a that every page carries its own canonical, and it passed throughout, because it compared each page against a base URL **held as a constant in the checking tool**. The tool and the generator agreed with each other and both were wrong about the world. This is the same shape as the defects in 12.14 and the coverage measurement of 12.9: **an instrument that shares an assumption with the thing it measures cannot test that assumption.** The gate was not weak, it was pointed inward.
+
+*What changed on 2026-10-07.* `BASE` in `tools/site/chrome.py` now reads `https://catfoodcenter.com/`, which is the single definition both generators use for the canonical, and the comment above it had already said that one definition is what makes a move a one-line change. It was, and that is the design working. Rebuilding regenerated twenty pages and a nineteen-URL sitemap. `robots.txt` moved its `Sitemap:` line and had its scope paragraph rewritten; `check-live.py`, the two API user-agent strings, `README.md` and `LICENSE.md` followed.
+
+**`robots.txt` became authoritative on the same day, having never been so before.** Its own scope note said a robots.txt served from a subpath does not govern the host, that the governing file was the domain owner's at the apex, and that this one was committed because it would be correct if the site ever moved to its own domain. It moved. The file is now at the apex of a domain the project owns and it governs, and the same is true of the sitemap.
+
+*The github.io copy is left reachable on purpose.* It now names `catfoodcenter.com` as its canonical, so search engines consolidate onto the apex, and that is the whole mechanism. No `Disallow` is used, for the reason open question 10 already settled: a disallowed URL can still be indexed from a link alone, described by nothing, because the crawler was never let in to read the `noindex`. Withholding a fetch is not withholding a listing.
+
+**Three things remain outside this repository and none of them is the agent's to decide.**
+
+1. **Whether a `CNAME` file belongs in the root.** There is none, and that is not obviously wrong here. `CNAME` is a GitHub Pages mechanism, and `catfoodcenter.com` resolves through Cloudflare rather than GitHub. **Adding one blind is a real risk**: GitHub Pages would try to take ownership of the domain and provision a certificate for a host whose DNS does not point at it, and a failed provision can leave the Pages site in an error state, which would take down the copy that currently works. This needs somebody looking at the GitHub Pages settings and the Cloudflare DNS together.
+2. **Apex or `www`.** Both answer 200 today and neither redirects to the other. The apex was chosen here because it is what the Search Console property names and what the owner registered, but a redirect from one to the other should exist and does not.
+3. **The Search Console properties.** A property for the github.io prefix and one for `catfoodcenter.com` are different properties with different histories, and a change of address cannot be filed between them because the old address is a subpath of a domain this project does not own.
+
 
 ## 17. Conventions
 

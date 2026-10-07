@@ -7,7 +7,7 @@ explanation of what is in it: the ingredients, any additives linked to health
 concerns in cats, the nutrition on a comparable basis, and a single score from
 0 to 100 with a verdict.
 
-**[Open the site](https://azqato.github.io/catfoodcenter/)**
+**[Open the site](https://catfoodcenter.com/)**
 
 Free. No account, nothing to install, no advertising, and no relationship with
 any pet food manufacturer.
@@ -54,7 +54,7 @@ in the United States, so a food containing it lands in the Bad band whatever
 else it does well.
 
 The full method is on the
-[methodology page](https://azqato.github.io/catfoodcenter/methodology/),
+[methodology page](https://catfoodcenter.com/methodology/),
 and the score is calculated in your own browser, so anyone who wants to check
 it can watch it happen.
 
