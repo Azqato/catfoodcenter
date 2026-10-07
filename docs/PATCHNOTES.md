@@ -54,6 +54,25 @@ Notes
   is the first unplanned test of it.
 * No site code changed, so no gate behaviour changed.
 
+## [0.54.2] - 2026-10-07
+
+**A second live check flaked in the same session, and that it was a different check is the point.**
+No code change; this entry exists because the observation says something the previous one could not.
+
+Notes
+* **"a query that cannot match returns nothing" failed once, reading "0 cards".** The card count was
+  correct and the assertion needs two things: zero cards and the words "No matches" on the page. The
+  panel had not rendered inside the wait window. Confirmed against upstream rather than assumed:
+  **the nonsense query answered 200 in 0.45s.** Two further runs returned 29 of 29.
+* **0.54.1 recorded this class of failure in one check and could not distinguish a flaky assertion
+  from a flaky dependency. Two different checks in one session distinguishes them.** The timing
+  sensitivity is not a property of how either assertion is written; it is a property of waiting on a
+  third party inside a fixed window. That is the same shape as the visitor experience the live read
+  produces, which is what makes it evidence for open question 12 rather than merely an annoyance.
+* **Both failures passed on retry and neither was reported as a pass.** Section 13's runbook calls
+  `check-live.py` a smoke check rather than a gate for exactly this reason, and the discipline it
+  asks for is confirming against the live API before calling a failure a regression. Done both times.
+
 ## [0.54.1] - 2026-10-07
 
 **Live verification of M28 returned 28 of 29, and the two findings were different kinds of thing.**
