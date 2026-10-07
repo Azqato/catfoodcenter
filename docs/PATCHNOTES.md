@@ -54,6 +54,30 @@ Notes
   is the first unplanned test of it.
 * No site code changed, so no gate behaviour changed.
 
+## [0.51.0] - 2026-10-07
+
+**Step 2 of the working order. The barcode resolver has asked about everything it is ever going to
+ask about.** 62 of the 100 ranked SKUs have candidates on file; the remaining 38 are the ones no
+candidate can be right for.
+
+Changed
+* **The last six rows were queried**, finishing a run that has been resumed across four sessions at
+  one query every three minutes. `tools/data/barcode-candidates.json` holds 62 rows with 60 of them
+  carrying candidates, and 94 of the day's 100 lookups were still unspent when it finished.
+* **The other 38 are not pending, they are refused.** They are the assorted-recipe and variety-pack
+  rows that section 12.15 rules out: one listing covers several different recipes, so there is no
+  single panel to transcribe and no single barcode to key it to. A tool that kept retrying them
+  would look busy and never finish.
+
+Notes
+* **The remaining number was misread as 40 before the output was read.** 100 minus 62 is 38, and
+  38 unqueried rows at three minutes each is two hours, so the run looked unfinished when it had
+  already stopped. **It had excluded them on purpose and said so in a line printed before the
+  queries started.** Arithmetic over a total is not a reading of a log.
+* **Nothing has been chosen and the file still proposes only.** Section 12.10's rule holds: a wrong
+  barcode is individually valid on both halves and no gate can catch it, so a person reads
+  `--review` and decides. That is step 6 of the queue and it is the owner's time, not the agent's.
+
 ## [0.50.0] - 2026-10-07
 
 **Step 1 of the working order. Question 14 is answered, and it refutes the argument that came

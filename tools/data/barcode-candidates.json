@@ -14,8 +14,8 @@
  "measured": "2026-10-07",
  "endpoint": {
   "limit": 100,
-  "remaining": 97,
-  "spentThisRun": 3
+  "remaining": 94,
+  "spentThisRun": 6
  },
  "resolved": {
   "B072DTFZHL": {
@@ -1852,6 +1852,95 @@
    "brand": "Purina",
    "query": "Purina Chow Year One Essentials",
    "candidates": []
+  },
+  "B071GVGFPY": {
+   "position": 92,
+   "title": "Sheba Perfect Portions Cuts Wet Cat Food, Roasted Chicken, 2.6 oz, 24 ct | Grain-free, Roasted Chicken, 48 servings, no fillers or artificial flavors, essential vitamins & minerals, twin-pack trays",
+   "brand": "Sheba",
+   "query": "Sheba Perfect Portions Cuts",
+   "candidates": [
+    {
+     "barcode": "023100114200",
+     "title": "SHEBA Wet Cat Food Cuts in Gravy Delicate White Fish & Tuna Entree",
+     "brand": "SHEBA"
+    },
+    {
+     "barcode": "689738159916",
+     "title": "Jada Toys Girlmazing Big Foot Jeep R/c Vehicle 1:16 Scale, Pink",
+     "brand": "Jada Toys"
+    },
+    {
+     "barcode": "689742478898",
+     "title": "Evoke Pro Back Posture Corrector For Women And Men + Resistance Band",
+     "brand": "SHEBA"
+    },
+    {
+     "barcode": "689993252551",
+     "title": "Nanyi F Plug Male To Coax Socket Male Adaptor, Tv Aerial Coaxial Cable Adaptor F",
+     "brand": "NANYI"
+    },
+    {
+     "barcode": "691163097473",
+     "title": "2cff Professional Deodorant Anti Itch Feet/foot Liquid Anti-fungi Mist Spray",
+     "brand": "Sheba Perfect Portions"
+    }
+   ]
+  },
+  "B00REJU4V0": {
+   "position": 94,
+   "title": "Blue Buffalo Wilderness Chicken Adult Dry Cat Food, Grain-Free, 11 lb | High Protein, Real Chicken #1 Ingredient, Supports Immunity with Antioxidant-Rich LifeSource Bits, Promotes Strong Muscles",
+   "brand": "Blue Buffalo",
+   "query": "Blue Buffalo Wilderness Chicken",
+   "candidates": [
+    {
+     "barcode": "859610005673",
+     "title": "Blue Buffalo Wilderness High Protein Small Breed Chicken Dry Dog Food for Adult Dogs  Grain-Free  4.5 lb. Bag",
+     "brand": "Blue Buffalo"
+    },
+    {
+     "barcode": "859610002702",
+     "title": "Blue Buffalo Blue Wilderness Natural Adult High Protein Chicken Recipe Dry Dog Food, 11 lbs.",
+     "brand": "Blue Buffalo"
+    },
+    {
+     "barcode": "859610005703",
+     "title": "Blue Buffalo Wilderness High Protein Large Breed Chicken Dry Dog Food for Adult Dogs  Grain-Free  24 lb. Bag",
+     "brand": "Blue Buffalo"
+    },
+    {
+     "barcode": "859610007943",
+     "title": "Blue Buffalo Wilderness Chicken & Salmon Flavor Dry Soft Treats for Cats  Grain-Free  2 oz. Bag",
+     "brand": "Blue Buffalo"
+    },
+    {
+     "barcode": "859610001279",
+     "title": "Blue Buffalo Wilderness Chicken Dog Food - 11lb",
+     "brand": "Blue Buffalo"
+    }
+   ]
+  },
+  "B0010B3EWE": {
+   "position": 97,
+   "title": "Fancy Feast Purina Savory Farm-Raised Chicken & Turkey Dry Cat Food 3lb Bag | 100% Complete & Balanced Cat Food crafted with High - Quality Ingredients",
+   "brand": "Fancy Feast",
+   "query": "Fancy Feast Purina Savory Farm-Raised Chicken",
+   "candidates": [
+    {
+     "barcode": "050000463114",
+     "title": "Fancy Feast Gourmet Savory Chicken and Turkey Dry Cat Food - 7lbs",
+     "brand": "Fancy Feast"
+    },
+    {
+     "barcode": "050000576227",
+     "title": "Fancy Feast Gourmet Savory Chicken and Turkey Dry Cat Food - 12lbs",
+     "brand": "Fancy Feast"
+    },
+    {
+     "barcode": "715450870287",
+     "title": "Purina Fancy Feast Dry Cat Food Savory Farm Raised Chicken Turkey  3 lb Bag",
+     "brand": "Fancy Feast"
+    }
+   ]
   }
  }
 }
